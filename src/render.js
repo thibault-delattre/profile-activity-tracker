@@ -146,10 +146,10 @@ export function renderCard(metrics, config, mode) {
   </style>
   <rect width="${WIDTH}" height="${height}" fill="${theme.background}"/>
   <text x="32" y="38" class="introduction" fill="${theme.primary}">${escapeXml(introduction)}</text>
-  <text x="${WIDTH / 2}" y="65" text-anchor="middle" class="about" fill="${theme.secondary}">${aboutLayout.lines
+  <text x="32" y="65" class="about" fill="${theme.secondary}">${aboutLayout.lines
     .map(
       (line, index) =>
-        `<tspan x="${WIDTH / 2}" dy="${index === 0 ? 0 : line.dy}" font-size="${line.fontSize}px">${escapeXml(line.text)}</tspan>`,
+        `<tspan x="32" dy="${index === 0 ? 0 : line.dy}" font-size="${aboutLayout.fontSize}px" word-spacing="${line.wordSpacing}px">${escapeXml(line.text)}</tspan>`,
     )
     .join("")}</text>
 
@@ -234,37 +234,76 @@ export function wrapText(value, maximumCharacters) {
  */
 export function layoutAbout(value) {
   const maximumWidth = 836;
+  const fontSize = 14;
   const lineHeight = 21;
   const paragraphGap = 12;
   const paragraphs = String(value).trim().split(/\n\s*\n/);
   const lines = paragraphs.flatMap((paragraph, paragraphIndex) =>
-    wrapText(paragraph, 124).map((text, lineIndex) => ({
-      text,
-      dy:
-        paragraphIndex > 0 && lineIndex === 0
-          ? lineHeight + paragraphGap
-          : lineHeight,
-      fontSize: formatSvgDecimal(
-        Math.max(
-          13,
-          Math.min(
-            16,
-            maximumWidth /
-              Math.max(estimateTextWidth(text), 1),
-          ),
-        ),
-      ),
-    })),
+    wrapTextByWidth(paragraph, maximumWidth, fontSize).map(
+      (text, lineIndex, paragraphLines) => {
+        const spaces = Math.max(text.trim().split(/\s+/).length - 1, 0);
+        const naturalWidth = estimateTextWidth(text) * fontSize;
+        const isLastLine = lineIndex === paragraphLines.length - 1;
+
+        return {
+          text,
+          dy:
+            paragraphIndex > 0 && lineIndex === 0
+              ? lineHeight + paragraphGap
+              : lineHeight,
+          wordSpacing:
+            !isLastLine && spaces > 0
+              ? formatSvgDecimal(
+                  Math.max((maximumWidth - naturalWidth) / spaces, 0),
+                )
+              : "0",
+        };
+      },
+    ),
   );
 
   return {
     lines,
+    fontSize,
     lineHeight,
     paragraphGap,
     height:
       lines.length * lineHeight +
       Math.max(paragraphs.length - 1, 0) * paragraphGap,
   };
+}
+
+/**
+ * Wrap text using the same proportional-width estimate used to calculate
+ * justification spacing.
+ *
+ * @param {string} value
+ * @param {number} maximumWidth
+ * @param {number} fontSize
+ */
+function wrapTextByWidth(value, maximumWidth, fontSize) {
+  const words = String(value).trim().split(/\s+/);
+  const lines = [];
+  let line = "";
+
+  for (const word of words) {
+    const candidate = line ? `${line} ${word}` : word;
+    if (
+      line &&
+      estimateTextWidth(candidate) * fontSize > maximumWidth
+    ) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
+  }
+
+  if (line) {
+    lines.push(line);
+  }
+
+  return lines;
 }
 
 /**

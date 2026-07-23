@@ -54,7 +54,7 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /I enjoy turning complex engineering problems/);
   assert.match(
     svg,
-    /<tspan x="450"[^>]*font-size="[^"]+px"/,
+    /<tspan x="32"[^>]*font-size="14px" word-spacing="[^"]+px"/,
   );
   assert.doesNotMatch(svg, /<tspan[^>]*textLength=/);
   assert.match(svg, /FAVORITE LANGUAGES/);
@@ -99,23 +99,22 @@ test("wrapText keeps prose intact and wraps only at word boundaries", () => {
   assert.ok(lines.every((line) => line.length <= 32));
 });
 
-test("layoutAbout fits balanced lines by font size without stretching text", () => {
+test("layoutAbout justifies paragraphs using word spacing only", () => {
   const text =
-    "I enjoy building thoughtful software and useful products.\n\nI want to deepen my engineering skills and create tools with a clear purpose.";
+    "I enjoy building thoughtful software and useful products while continuing to learn from difficult engineering challenges across several different technical environments and product teams.\n\nI want to deepen my engineering skills and create tools with a clear purpose.";
   const layout = layoutAbout(text);
 
   assert.equal(
     layout.lines.map((line) => line.text).join(" "),
     text.replace(/\n+/g, " "),
   );
-  assert.ok(
-    layout.lines.every(
-      (line) => Number(line.fontSize) >= 13 && Number(line.fontSize) <= 16,
-    ),
-  );
+  assert.equal(layout.fontSize, 14);
+  assert.ok(layout.lines.every((line) => Number(line.wordSpacing) >= 0));
   assert.equal(layout.lineHeight, 21);
   assert.equal(layout.paragraphGap, 12);
   assert.ok(layout.lines.some((line) => line.dy === 33));
+  assert.ok(layout.lines.some((line) => Number(line.wordSpacing) > 0));
+  assert.equal(layout.lines.at(-1).wordSpacing, "0");
   assert.equal(
     layout.height,
     layout.lines.length * layout.lineHeight + layout.paragraphGap,
