@@ -3,8 +3,9 @@ import test from "node:test";
 import { validateConfig } from "../src/config.js";
 
 const validConfig = {
-  username: "thibault-delattre",
-  additionalUsernames: ["t000132"],
+  username: "example-user",
+  introduction: "I build reliable software and thoughtful products.",
+  additionalUsernames: ["example-work"],
   excludedRepositories: ["profile"],
   brand: {
     accent: "#2f81f7",
@@ -14,8 +15,12 @@ const validConfig = {
 test("validateConfig accepts and normalizes a valid configuration", () => {
   const config = validateConfig(validConfig);
 
-  assert.equal(config.username, "thibault-delattre");
-  assert.deepEqual(config.additionalUsernames, ["t000132"]);
+  assert.equal(config.username, "example-user");
+  assert.equal(
+    config.introduction,
+    "I build reliable software and thoughtful products.",
+  );
+  assert.deepEqual(config.additionalUsernames, ["example-work"]);
   assert.equal(config.brand.accent, "#2f81f7");
   assert.deepEqual(config.excludedRepositories, ["profile"]);
 });
@@ -32,9 +37,16 @@ test("validateConfig rejects duplicate account usernames", () => {
     () =>
       validateConfig({
         ...validConfig,
-        additionalUsernames: ["THIBAULT-DELATTRE"],
+        additionalUsernames: ["EXAMPLE-USER"],
       }),
     /cannot contain the primary username/,
+  );
+});
+
+test("validateConfig rejects an empty introduction", () => {
+  assert.throws(
+    () => validateConfig({ ...validConfig, introduction: " " }),
+    /introduction must contain/,
   );
 });
 

@@ -16,7 +16,7 @@ test("fetchGitHubActivity retrieves metadata and historical periods", async () =
       return jsonResponse({
         data: {
           user: {
-            login: "thibault-delattre",
+            login: "example-user",
             languageRepositories: {
               nodes: [],
               pageInfo: { hasNextPage: false, endCursor: null },
@@ -46,7 +46,7 @@ test("fetchGitHubActivity retrieves metadata and historical periods", async () =
 
   const result = await fetchGitHubActivity({
     token: "test-token",
-    username: "thibault-delattre",
+    username: "example-user",
     windows: createActivityWindows(new Date("2026-07-23T14:00:00Z")),
     fetchImpl,
   });
@@ -61,7 +61,7 @@ test("fetchGitHubActivity retrieves metadata and historical periods", async () =
   assert.match(requests[1].body.query, /year2026/);
   assert.match(requests[1].body.query, /totalContributions/);
   assert.doesNotMatch(requests[1].body.query, /totalCommitContributions/);
-  assert.equal(result.user.login, "thibault-delattre");
+  assert.equal(result.user.login, "example-user");
   assert.deepEqual(Object.keys(result.user.periods.yearly), ["2025", "2026"]);
 });
 
@@ -85,7 +85,7 @@ test("fetchGitHubActivity reports GraphQL errors", async () => {
   await assert.rejects(
     fetchGitHubActivity({
       token: "test-token",
-      username: "thibault-delattre",
+      username: "example-user",
       windows: createActivityWindows(new Date("2026-07-23T14:00:00Z")),
       fetchImpl,
     }),

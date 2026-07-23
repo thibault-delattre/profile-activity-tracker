@@ -1,6 +1,4 @@
 const WIDTH = 900;
-const INTRODUCTION =
-  "My name is Thibault Delattre. I'm a second-year master's student at Efrei University in Paris.";
 const PANEL = {
   x: 16,
   y: 72,
@@ -66,9 +64,11 @@ export function renderCard(metrics, config, mode) {
   const columnCenters = [275, 435, 595, 760];
   const date = formatDisplayDate(metrics.generatedAt);
   const isCombined = Number(metrics.sourceCount) > 1;
+  const introduction = config.introduction;
+  const introductionSize = fitIntroductionFontSize(introduction);
 
   const title = `${isCombined ? "Combined GitHub activity" : "GitHub activity"} for @${metrics.username}`;
-  const description = `${INTRODUCTION} ${
+  const description = `${introduction} ${
     isCombined
       ? `Combined across ${metrics.sourceCount} GitHub accounts. `
       : ""
@@ -125,7 +125,7 @@ export function renderCard(metrics, config, mode) {
   </defs>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-    .introduction { font-size: 15px; font-weight: 500; letter-spacing: -0.1px; }
+    .introduction { font-size: ${introductionSize}px; font-weight: 500; letter-spacing: -0.1px; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
     .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
     .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
@@ -133,7 +133,7 @@ export function renderCard(metrics, config, mode) {
     .language { font-size: 12px; font-weight: 600; }
   </style>
   <rect width="${WIDTH}" height="${height}" fill="${theme.background}"/>
-  <text x="${WIDTH / 2}" y="35" text-anchor="middle" class="introduction" fill="${theme.primary}">${escapeXml(INTRODUCTION)}</text>
+  <text x="${WIDTH / 2}" y="35" text-anchor="middle" class="introduction" fill="${theme.primary}">${escapeXml(introduction)}</text>
 
   <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL.radius}" fill="${theme.glassEnd}" opacity="0.74" filter="url(#panel-shadow)"/>
   <g clip-path="url(#glass-clip)" filter="url(#liquid-blur)" opacity="${mode === "light" ? 0.34 : 0.28}">
@@ -269,6 +269,19 @@ function formatDisplayDate(isoDate) {
     .format(date)
     .replace(",", "")
     .toUpperCase();
+}
+
+/**
+ * Keep configurable introductions on one centered line without requiring a
+ * repository-specific font size.
+ *
+ * @param {string} introduction
+ */
+function fitIntroductionFontSize(introduction) {
+  const estimatedSize = 780 / Math.max(introduction.length * 0.52, 1);
+  return Math.max(11.5, Math.min(15, estimatedSize))
+    .toFixed(1)
+    .replace(/\.0$/, "");
 }
 
 /**

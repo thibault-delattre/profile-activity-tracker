@@ -3,7 +3,8 @@ import test from "node:test";
 import { layoutLanguageItems, renderCard } from "../src/render.js";
 
 const config = {
-  username: "thibault-delattre",
+  username: "example-user",
+  introduction: "I build reliable software and thoughtful products.",
   excludedRepositories: [],
   brand: {
     accent: "#2f81f7",
@@ -11,7 +12,7 @@ const config = {
 };
 
 const metrics = {
-  username: "thibault-delattre",
+  username: "example-user",
   sourceCount: 2,
   generatedAt: "2026-07-23T14:00:00.000Z",
   activity: {
@@ -40,7 +41,7 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /CONTRIBUTIONS/);
   assert.match(
     svg,
-    /My name is Thibault Delattre\. I&apos;m a second-year master&apos;s student/,
+    /I build reliable software and thoughtful products\./,
   );
   assert.match(svg, /LANGUAGES I USE/);
   assert.doesNotMatch(svg, />COMMITS</);

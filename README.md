@@ -1,12 +1,13 @@
 # Profile Activity Tracker
 
-A distinctive, automatically updated GitHub activity card for
-[@thibault-delattre](https://github.com/thibault-delattre).
+A reusable, automatically updated GitHub profile activity card. Personal
+accounts, introduction, repository exclusions, and accent color are all
+configuration—nothing personal is embedded in the renderer.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./generated/activity-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./generated/activity-light.svg">
-  <img alt="Thibault Delattre's automatically updated GitHub activity" src="./generated/activity-light.svg" width="100%">
+  <img alt="Automatically updated GitHub activity" src="./generated/activity-light.svg" width="100%">
 </picture>
 
 ## What it tracks
@@ -46,25 +47,34 @@ The workflow runs every two hours at minute 17, can be launched manually, and
 also runs when generator code or configuration changes. If GitHub's API is
 unavailable, generation fails before replacing the last valid cards.
 
+## Reuse this tracker
+
+1. Fork the repository or create a new repository from it.
+2. Edit `config/profile.json` with your introduction, account names, exclusions,
+   and accent color.
+3. In **Settings → Actions → General → Workflow permissions**, allow read and
+   write access so the workflow can commit generated cards.
+4. Run **Update profile activity** once from the Actions tab.
+5. Add the profile integration snippet below to your profile README.
+
 ## Profile integration
 
-Place this in the `README.md` of the
-[`thibault-delattre/thibault-delattre`](https://github.com/thibault-delattre/thibault-delattre)
-profile repository:
+Place this in the `README.md` of your `YOUR_USERNAME/YOUR_USERNAME` profile
+repository and replace each `YOUR_USERNAME` placeholder:
 
 ```html
 <picture>
   <source
     media="(prefers-color-scheme: dark)"
-    srcset="https://raw.githubusercontent.com/thibault-delattre/profile-activity-tracker/main/generated/activity-dark.svg"
+    srcset="https://raw.githubusercontent.com/YOUR_USERNAME/profile-activity-tracker/main/generated/activity-dark.svg"
   />
   <source
     media="(prefers-color-scheme: light)"
-    srcset="https://raw.githubusercontent.com/thibault-delattre/profile-activity-tracker/main/generated/activity-light.svg"
+    srcset="https://raw.githubusercontent.com/YOUR_USERNAME/profile-activity-tracker/main/generated/activity-light.svg"
   />
   <img
-    alt="Thibault Delattre's automatically updated GitHub activity"
-    src="https://raw.githubusercontent.com/thibault-delattre/profile-activity-tracker/main/generated/activity-light.svg"
+    alt="Automatically updated GitHub activity"
+    src="https://raw.githubusercontent.com/YOUR_USERNAME/profile-activity-tracker/main/generated/activity-light.svg"
     width="100%"
   />
 </picture>
@@ -76,20 +86,22 @@ Edit [`config/profile.json`](./config/profile.json):
 
 ```json
 {
-  "username": "thibault-delattre",
-  "additionalUsernames": ["t000132"],
-  "excludedRepositories": ["thibault-delattre"],
+  "username": "your-github-username",
+  "introduction": "I build reliable software and thoughtful products.",
+  "additionalUsernames": ["your-other-account"],
+  "excludedRepositories": ["your-github-username"],
   "brand": {
     "accent": "#2f81f7"
   }
 }
 ```
 
-`username` is the primary profile. `additionalUsernames` adds other accounts to
-the same honest combined view. Contribution totals are summed, while active
-days are merged by calendar date, so using two accounts on one day still counts
-as one active day. Only public data and anonymized private contributions that
-each account has chosen to share are available to the tracker.
+`username` is the primary profile and `introduction` is the centered text above
+the glass panel. Use an empty `additionalUsernames` array for one account, or
+add other accounts to the same honest combined view. Contribution totals are
+summed, while active days are merged by calendar date, so using two accounts on
+one day still counts as one active day. Only public data and anonymized private
+contributions that each account has chosen to share are available.
 
 Languages are ordered using the bytes reported by GitHub for eligible
 repositories; this ordering is not a measure of proficiency. Add generated,

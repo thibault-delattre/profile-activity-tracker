@@ -3,7 +3,8 @@ import test from "node:test";
 import { buildMetrics, flattenDays } from "../src/metrics.js";
 
 const config = {
-  username: "thibault-delattre",
+  username: "example-user",
+  introduction: "I build reliable software and thoughtful products.",
   excludedRepositories: ["profile"],
   brand: {
     accent: "#2f81f7",

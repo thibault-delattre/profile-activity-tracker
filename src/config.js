@@ -7,6 +7,7 @@ const HEX_COLOR_PATTERN = /^#[0-9A-Fa-f]{6}$/;
 /**
  * @typedef {object} TrackerConfig
  * @property {string} username
+ * @property {string} introduction
  * @property {string[]} additionalUsernames
  * @property {string[]} excludedRepositories
  * @property {{accent: string}} brand
@@ -44,6 +45,14 @@ export function validateConfig(value) {
     !USERNAME_PATTERN.test(config.username)
   ) {
     throw new Error("username must be a valid GitHub username.");
+  }
+
+  if (
+    typeof config.introduction !== "string" ||
+    config.introduction.trim().length < 1 ||
+    config.introduction.trim().length > 140
+  ) {
+    throw new Error("introduction must contain between 1 and 140 characters.");
   }
 
   if (
@@ -98,6 +107,7 @@ export function validateConfig(value) {
 
   return /** @type {TrackerConfig} */ ({
     username: config.username,
+    introduction: config.introduction.trim(),
     additionalUsernames: normalizedAdditional,
     excludedRepositories: [...new Set(config.excludedRepositories)],
     brand: {
