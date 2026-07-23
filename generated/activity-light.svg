@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="471" viewBox="0 0 900 471" role="img" aria-labelledby="title desc">
   <title id="title">Combined GitHub activity for @thibault-delattre</title>
-  <desc id="desc">My name is Thibault Delattre. I&apos;m a second year master&apos;s student at Efrei University in Paris. I enjoy building thoughtful software at the intersection of full stack engineering and AI. At AXA, I contribute to Secure GPT, the company&apos;s internal LLM, while independently developing Reawon, an ecosystem that currently includes Reafile and Polywon. My goal is to keep expanding these products and my AI expertise, and eventually continue my career in Asia. Combined across 2 GitHub accounts. 27 contributions this week, 187 this month, 1112 this year, 4306 total.</desc>
+  <desc id="desc">My name is Thibault Delattre. I&apos;m a second year master&apos;s student at Efrei University in Paris. I enjoy building thoughtful software at the intersection of full stack engineering and AI. At AXA, I contribute to Secure GPT, the company&apos;s internal LLM, while independently developing Reawon, an ecosystem that currently includes Reafile and Polywon. My goal is to keep expanding these products and my AI expertise, and eventually continue my career in Asia. Combined across 2 GitHub accounts. 29 contributions this week, 189 this month, 1114 this year, 4308 total.</desc>
   <defs>
     <clipPath id="glass-clip">
       <rect x="16" y="130" width="868" height="210" rx="18"/>
@@ -79,7 +79,7 @@
     <rect x="184" y="190" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.5"/>
     <text x="275" y="210" text-anchor="middle" class="period" fill="#59636e">THIS WEEK</text><text x="435" y="210" text-anchor="middle" class="period" fill="#59636e">THIS MONTH</text><text x="595" y="210" text-anchor="middle" class="period" fill="#59636e">THIS YEAR</text><text x="760" y="210" text-anchor="middle" class="period" fill="#59636e">ALL TIME</text>
     <text x="44" y="248" class="row-label" fill="#59636e">CONTRIBUTIONS</text>
-    <text x="275" y="253" text-anchor="middle" class="value" fill="#1f2328">27</text><text x="435" y="253" text-anchor="middle" class="value" fill="#1f2328">187</text><text x="595" y="253" text-anchor="middle" class="value" fill="#1f2328">1,112</text><text x="760" y="253" text-anchor="middle" class="value" fill="#1f2328">4,306</text>
+    <text x="275" y="253" text-anchor="middle" class="value" fill="#1f2328">29</text><text x="435" y="253" text-anchor="middle" class="value" fill="#1f2328">189</text><text x="595" y="253" text-anchor="middle" class="value" fill="#1f2328">1,114</text><text x="760" y="253" text-anchor="middle" class="value" fill="#1f2328">4,308</text>
     <line x1="184" y1="268" x2="856" y2="268" stroke="#d8dee4" stroke-opacity="0.84"/>
     <text x="44" y="301" class="row-label" fill="#59636e">ACTIVE DAYS</text>
     <text x="275" y="306" text-anchor="middle" class="value" fill="#1f2328">2</text><text x="435" y="306" text-anchor="middle" class="value" fill="#1f2328">13</text><text x="595" y="306" text-anchor="middle" class="value" fill="#1f2328">102</text><text x="760" y="306" text-anchor="middle" class="value" fill="#1f2328">364</text>
