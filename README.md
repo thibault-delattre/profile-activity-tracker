@@ -41,9 +41,9 @@ Pure, escaped SVG + transparent JSON summary
 Commit only generated files that changed
 ```
 
-The workflow runs daily at 05:17 UTC, can be launched manually, and also runs
-when generator code or configuration changes. If GitHub's API is unavailable,
-generation fails before replacing the last valid cards.
+The workflow runs every two hours at minute 17, can be launched manually, and
+also runs when generator code or configuration changes. If GitHub's API is
+unavailable, generation fails before replacing the last valid cards.
 
 ## Profile integration
 
