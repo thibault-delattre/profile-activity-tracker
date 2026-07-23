@@ -25,8 +25,9 @@ layered-glass panel, native blue-white-red outline animation, a left-aligned
 introduction, a word-spaced justified profile summary, and a left-aligned
 favorite-language legend with embedded brand icons below the statistics. Static
 clipped lighting, soft shadows, and inner
-edge highlights create depth, while a staged line-by-line fade introduces the
-content and respects reduced-motion preferences. There is no public server,
+edge highlights create depth, while overlapping line-by-line fades introduce
+the content with a smooth ease-in-out curve and respect reduced-motion
+preferences. There is no public server,
 tracking script or analytics service, and the generated SVG has no runtime
 dependency or external asset request.
 

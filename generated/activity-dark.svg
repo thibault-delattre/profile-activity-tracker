@@ -68,7 +68,8 @@ On the side I build Reawon, an independent product ecosystem: Reafile, a browser
     .language { font-size: 12px; font-weight: 600; }
     .reveal {
       opacity: 0;
-      animation: fade-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: fade-in 950ms cubic-bezier(0.4, 0, 0.2, 1) both;
+      will-change: opacity;
     }
     @keyframes fade-in {
       from { opacity: 0; }
@@ -80,10 +81,10 @@ On the side I build Reawon, an independent product ecosystem: Reafile, a browser
   </style>
   <rect width="900" height="590" fill="#0d1117"/>
   <text x="32" y="38" class="introduction reveal" style="animation-delay:0ms" fill="#f0f6fc">My name is Thibault Delattre</text>
-  <text x="32" y="65" class="about" fill="#8b949e"><tspan x="32" dy="0" class="reveal" style="animation-delay:110ms" font-size="14px" word-spacing="2.9px">I&apos;m a full-stack engineer moving toward applied AI, currently finishing my MSc at EFREI Paris and preparing to apply to a</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:220ms" font-size="14px" word-spacing="0px">graduate engineering program in South Korea.</tspan><tspan x="32" dy="33" class="reveal" style="animation-delay:330ms" font-size="14px" word-spacing="1.3px">At AXA, I work on Secure GPT, the company&apos;s internal LLM. Before that I built automated test infrastructure at JCDecaux for</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:440ms" font-size="14px" word-spacing="0.3px">digital billboard systems running in 70+ countries, and shipped web features at Dassault Systèmes. I also spent three months as a</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:550ms" font-size="14px" word-spacing="4.3px">research intern at NIT Akita College in Japan, training a computer-vision model to detect manufacturing defects on film</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:660ms" font-size="14px" word-spacing="0px">capacitors. It was my first experience working in a lab environment.</tspan><tspan x="32" dy="33" class="reveal" style="animation-delay:770ms" font-size="14px" word-spacing="3.7px">On the side I build Reawon, an independent product ecosystem: Reafile, a browser-based AI file editor, and Polywon, an</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:880ms" font-size="14px" word-spacing="0px">AI-powered language learning app.</tspan></text>
+  <text x="32" y="65" class="about" fill="#8b949e"><tspan x="32" dy="0" class="reveal" style="animation-delay:90ms" font-size="14px" word-spacing="2.9px">I&apos;m a full-stack engineer moving toward applied AI, currently finishing my MSc at EFREI Paris and preparing to apply to a</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:180ms" font-size="14px" word-spacing="0px">graduate engineering program in South Korea.</tspan><tspan x="32" dy="33" class="reveal" style="animation-delay:270ms" font-size="14px" word-spacing="1.3px">At AXA, I work on Secure GPT, the company&apos;s internal LLM. Before that I built automated test infrastructure at JCDecaux for</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:360ms" font-size="14px" word-spacing="0.3px">digital billboard systems running in 70+ countries, and shipped web features at Dassault Systèmes. I also spent three months as a</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:450ms" font-size="14px" word-spacing="4.3px">research intern at NIT Akita College in Japan, training a computer-vision model to detect manufacturing defects on film</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:540ms" font-size="14px" word-spacing="0px">capacitors. It was my first experience working in a lab environment.</tspan><tspan x="32" dy="33" class="reveal" style="animation-delay:630ms" font-size="14px" word-spacing="3.7px">On the side I build Reawon, an independent product ecosystem: Reafile, a browser-based AI file editor, and Polywon, an</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:720ms" font-size="14px" word-spacing="0px">AI-powered language learning app.</tspan></text>
 
   <g class="glass-panel">
-    <g class="reveal" style="animation-delay:1090ms">
+    <g class="reveal" style="animation-delay:950ms">
       <rect x="16" y="272" width="868" height="210" rx="18" fill="#111820" opacity="0.74" filter="url(#panel-shadow)"/>
       <rect x="16" y="272" width="868" height="210" rx="18" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
@@ -94,27 +95,27 @@ On the side I build Reawon, an independent product ecosystem: Reafile, a browser
       <path d="M 40 273.5 H 764" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
       <rect x="17.25" y="273.25" width="865.5" height="207.5" rx="17" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
     </g>
-    <g class="reveal" style="animation-delay:1250ms">
+    <g class="reveal" style="animation-delay:1080ms">
       <text x="44" y="305" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">COMBINED GITHUB ACTIVITY</text>
       <line x1="44" y1="320" x2="856" y2="320" stroke="#30363d" stroke-opacity="0.82"/>
     </g>
-    <g class="reveal" style="animation-delay:1360ms">
+    <g class="reveal" style="animation-delay:1170ms">
       <rect x="184" y="332" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.09"/>
       <text x="275" y="352" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="435" y="352" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="595" y="352" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="352" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
     </g>
-    <g class="reveal" style="animation-delay:1470ms">
+    <g class="reveal" style="animation-delay:1260ms">
       <text x="44" y="390" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
       <text x="275" y="395" text-anchor="middle" class="value" fill="#f0f6fc">31</text><text x="435" y="395" text-anchor="middle" class="value" fill="#f0f6fc">191</text><text x="595" y="395" text-anchor="middle" class="value" fill="#f0f6fc">1,116</text><text x="760" y="395" text-anchor="middle" class="value" fill="#f0f6fc">4,309</text>
     </g>
-    <g class="reveal" style="animation-delay:1580ms">
+    <g class="reveal" style="animation-delay:1350ms">
       <line x1="184" y1="410" x2="856" y2="410" stroke="#30363d" stroke-opacity="0.84"/>
       <text x="44" y="443" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
       <text x="275" y="448" text-anchor="middle" class="value" fill="#f0f6fc">2</text><text x="435" y="448" text-anchor="middle" class="value" fill="#f0f6fc">13</text><text x="595" y="448" text-anchor="middle" class="value" fill="#f0f6fc">102</text><text x="760" y="448" text-anchor="middle" class="value" fill="#f0f6fc">364</text>
     </g>
   </g>
 
-  <text x="32" y="519" class="eyebrow reveal" style="animation-delay:1760ms" fill="#8b949e">FAVORITE LANGUAGES</text>
-  <g class="reveal" style="animation-delay:1870ms">
+  <text x="32" y="519" class="eyebrow reveal" style="animation-delay:1500ms" fill="#8b949e">FAVORITE LANGUAGES</text>
+  <g class="reveal" style="animation-delay:1590ms">
     <g>
         <svg x="32" y="538" width="18" height="18" viewBox="0 0 24 24" role="img" aria-label="TypeScript logo">
           <title>TypeScript logo</title>

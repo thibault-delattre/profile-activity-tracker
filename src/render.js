@@ -98,15 +98,15 @@ export function renderCard(metrics, config, mode) {
   ];
   const columnCenters = [275, 435, 595, 760];
   const isCombined = Number(metrics.sourceCount) > 1;
-  const revealStep = 110;
+  const revealStep = 90;
   const aboutRevealStart = revealStep;
   const panelRevealDelay =
-    aboutRevealStart + aboutLayout.lines.length * revealStep + 100;
-  const activityRevealDelay = panelRevealDelay + 160;
+    aboutRevealStart + aboutLayout.lines.length * revealStep + 140;
+  const activityRevealDelay = panelRevealDelay + 130;
   const periodsRevealDelay = activityRevealDelay + revealStep;
   const contributionsRevealDelay = periodsRevealDelay + revealStep;
   const activeDaysRevealDelay = contributionsRevealDelay + revealStep;
-  const languagesRevealDelay = activeDaysRevealDelay + 180;
+  const languagesRevealDelay = activeDaysRevealDelay + 150;
   const languageItemsRevealDelay = languagesRevealDelay + revealStep;
 
   const title = `${isCombined ? "Combined GitHub activity" : "GitHub activity"} for @${metrics.username}`;
@@ -187,7 +187,8 @@ export function renderCard(metrics, config, mode) {
     .language { font-size: 12px; font-weight: 600; }
     .reveal {
       opacity: 0;
-      animation: fade-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: fade-in 950ms cubic-bezier(0.4, 0, 0.2, 1) both;
+      will-change: opacity;
     }
     @keyframes fade-in {
       from { opacity: 0; }
