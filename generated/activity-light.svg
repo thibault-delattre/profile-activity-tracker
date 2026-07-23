@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="413" viewBox="0 0 900 413" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @thibault-delattre</title>
-  <desc id="desc">My name is Thibault Delattre. I&apos;m a second-year master&apos;s student at Efrei University in Paris. 19 contributions this week, 179 this month, 1089 this year, 4273 total.</desc>
+  <desc id="desc">My name is Thibault Delattre. I&apos;m a second-year master&apos;s student at Efrei University in Paris. 21 contributions this week, 181 this month, 1091 this year, 4275 total.</desc>
   <defs>
     <clipPath id="glass-clip">
       <rect x="16" y="72" width="868" height="210" rx="18"/>
@@ -23,7 +23,7 @@
     <linearGradient id="glass-fill" x1="16" y1="72" x2="884" y2="282" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.72"/>
       <stop offset="48%" stop-color="#eef3f8" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.6799999999999999"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.68"/>
     </linearGradient>
     <linearGradient id="glass-highlight" x1="40" y1="76" x2="804" y2="172" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.72"/>
@@ -68,7 +68,7 @@
   <rect x="184" y="132" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.5"/>
   <text x="275" y="152" text-anchor="middle" class="period" fill="#59636e">THIS WEEK</text><text x="435" y="152" text-anchor="middle" class="period" fill="#59636e">THIS MONTH</text><text x="595" y="152" text-anchor="middle" class="period" fill="#59636e">THIS YEAR</text><text x="760" y="152" text-anchor="middle" class="period" fill="#59636e">ALL TIME</text>
   <text x="44" y="190" class="row-label" fill="#59636e">CONTRIBUTIONS</text>
-  <text x="275" y="195" text-anchor="middle" class="value" fill="#1f2328">19</text><text x="435" y="195" text-anchor="middle" class="value" fill="#1f2328">179</text><text x="595" y="195" text-anchor="middle" class="value" fill="#1f2328">1,089</text><text x="760" y="195" text-anchor="middle" class="value" fill="#1f2328">4,273</text>
+  <text x="275" y="195" text-anchor="middle" class="value" fill="#1f2328">21</text><text x="435" y="195" text-anchor="middle" class="value" fill="#1f2328">181</text><text x="595" y="195" text-anchor="middle" class="value" fill="#1f2328">1,091</text><text x="760" y="195" text-anchor="middle" class="value" fill="#1f2328">4,275</text>
   <line x1="184" y1="210" x2="856" y2="210" stroke="#d8dee4" stroke-opacity="0.84"/>
   <text x="44" y="243" class="row-label" fill="#59636e">ACTIVE DAYS</text>
   <text x="275" y="248" text-anchor="middle" class="value" fill="#1f2328">2</text><text x="435" y="248" text-anchor="middle" class="value" fill="#1f2328">13</text><text x="595" y="248" text-anchor="middle" class="value" fill="#1f2328">100</text><text x="760" y="248" text-anchor="middle" class="value" fill="#1f2328">359</text>
