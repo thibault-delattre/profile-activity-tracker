@@ -1,11 +1,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { layoutLanguageItems, renderCard } from "../src/render.js";
+import {
+  layoutLanguageItems,
+  renderCard,
+  wrapText,
+} from "../src/render.js";
 
 const config = {
   username: "example-user",
   introduction:
     "I design and build reliable software, thoughtful products, and maintainable developer experiences.",
+  about:
+    "I enjoy turning complex engineering problems into useful software. My goal is to keep learning and build products with a clear purpose.",
   excludedRepositories: [],
   brand: {
     accent: "#2f81f7",
@@ -44,6 +50,11 @@ test("renderCard creates a self-contained, escaped activity table", () => {
     svg,
     /I design and build reliable software, thoughtful products, and maintainable developer experiences\./,
   );
+  assert.match(svg, /I enjoy turning complex engineering problems/);
+  assert.match(
+    svg,
+    /<tspan x="32"[^>]*textLength="836" lengthAdjust="spacing"/,
+  );
   assert.match(svg, /FAVORITE LANGUAGES/);
   assert.match(svg, /textLength="836"/);
   assert.match(svg, /lengthAdjust="spacing"/);
@@ -73,6 +84,16 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.doesNotMatch(svg, /<foreignObject/i);
   assert.doesNotMatch(svg, /javascript:/i);
   assert.doesNotMatch(svg, /(?:href|src)=["']https?:\/\//i);
+});
+
+test("wrapText keeps prose intact and wraps only at word boundaries", () => {
+  const text =
+    "I enjoy building thoughtful products and learning from difficult engineering problems.";
+  const lines = wrapText(text, 32);
+
+  assert.ok(lines.length > 1);
+  assert.equal(lines.join(" "), text);
+  assert.ok(lines.every((line) => line.length <= 32));
 });
 
 test("renderCard renders distinct light and dark palettes", () => {

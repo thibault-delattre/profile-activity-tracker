@@ -1,7 +1,7 @@
 # Profile Activity Tracker
 
 A reusable, automatically updated GitHub profile activity card. Personal
-accounts, introduction, repository exclusions, and accent color are all
+accounts, introduction, about paragraph, repository exclusions, and accent color are all
 configuration—nothing personal is embedded in the renderer.
 
 <picture>
@@ -22,7 +22,7 @@ contribution calendar:
 
 It is generated as self-contained light and dark SVG files with a smooth
 layered-glass panel, native blue-white-red outline animation, a proportionally
-fitted single-line introduction, and a favorite-language legend below the
+fitted single-line introduction, a fully justified profile summary, and a favorite-language legend below the
 statistics. Static clipped lighting, soft shadows, and inner edge highlights
 create depth without distracting continuous effects. There is no public server,
 tracking script, analytics service, or runtime dependency.
@@ -52,8 +52,8 @@ unavailable, generation fails before replacing the last valid cards.
 ## Reuse this tracker
 
 1. Fork the repository or create a new repository from it.
-2. Edit `config/profile.json` with your introduction, account names, exclusions,
-   and accent color.
+2. Edit `config/profile.json` with your introduction, profile summary, account
+   names, exclusions, and accent color.
 3. In **Settings → Actions → General → Workflow permissions**, allow read and
    write access so the workflow can commit generated cards.
 4. Run **Update profile activity** once from the Actions tab.
@@ -90,6 +90,7 @@ Edit [`config/profile.json`](./config/profile.json):
 {
   "username": "your-github-username",
   "introduction": "I build reliable software and thoughtful products.",
+  "about": "I enjoy solving meaningful engineering problems. My goal is to keep learning and turn useful ideas into polished products.",
   "additionalUsernames": ["your-other-account"],
   "excludedRepositories": ["your-github-username"],
   "brand": {
@@ -98,8 +99,9 @@ Edit [`config/profile.json`](./config/profile.json):
 }
 ```
 
-`username` is the primary profile and `introduction` is the centered text above
-the glass panel. Use an empty `additionalUsernames` array for one account, or
+`username` is the primary profile, `introduction` is the fitted single line
+above the glass panel, and `about` is the automatically wrapped and justified
+paragraph below it. Use an empty `additionalUsernames` array for one account, or
 add other accounts to the same honest combined view. Contribution totals are
 summed, while active days are merged by calendar date, so using two accounts on
 one day still counts as one active day. Only public data and anonymized private

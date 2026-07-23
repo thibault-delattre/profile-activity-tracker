@@ -8,6 +8,7 @@ const HEX_COLOR_PATTERN = /^#[0-9A-Fa-f]{6}$/;
  * @typedef {object} TrackerConfig
  * @property {string} username
  * @property {string} introduction
+ * @property {string} about
  * @property {string[]} additionalUsernames
  * @property {string[]} excludedRepositories
  * @property {{accent: string}} brand
@@ -53,6 +54,14 @@ export function validateConfig(value) {
     config.introduction.trim().length > 140
   ) {
     throw new Error("introduction must contain between 1 and 140 characters.");
+  }
+
+  if (
+    typeof config.about !== "string" ||
+    config.about.trim().length < 1 ||
+    config.about.trim().length > 600
+  ) {
+    throw new Error("about must contain between 1 and 600 characters.");
   }
 
   if (
@@ -108,6 +117,7 @@ export function validateConfig(value) {
   return /** @type {TrackerConfig} */ ({
     username: config.username,
     introduction: config.introduction.trim(),
+    about: config.about.trim(),
     additionalUsernames: normalizedAdditional,
     excludedRepositories: [...new Set(config.excludedRepositories)],
     brand: {

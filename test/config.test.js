@@ -5,6 +5,7 @@ import { validateConfig } from "../src/config.js";
 const validConfig = {
   username: "example-user",
   introduction: "I build reliable software and thoughtful products.",
+  about: "I care about useful products and want to keep learning.",
   additionalUsernames: ["example-work"],
   excludedRepositories: ["profile"],
   brand: {
@@ -19,6 +20,10 @@ test("validateConfig accepts and normalizes a valid configuration", () => {
   assert.equal(
     config.introduction,
     "I build reliable software and thoughtful products.",
+  );
+  assert.equal(
+    config.about,
+    "I care about useful products and want to keep learning.",
   );
   assert.deepEqual(config.additionalUsernames, ["example-work"]);
   assert.equal(config.brand.accent, "#2f81f7");
@@ -47,6 +52,13 @@ test("validateConfig rejects an empty introduction", () => {
   assert.throws(
     () => validateConfig({ ...validConfig, introduction: " " }),
     /introduction must contain/,
+  );
+});
+
+test("validateConfig rejects an empty about paragraph", () => {
+  assert.throws(
+    () => validateConfig({ ...validConfig, about: " " }),
+    /about must contain/,
   );
 });
 

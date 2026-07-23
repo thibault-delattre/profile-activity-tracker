@@ -6,6 +6,7 @@
   "required": [
     "username",
     "introduction",
+    "about",
     "additionalUsernames",
     "excludedRepositories",
     "brand"
@@ -22,6 +23,11 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 140
+    },
+    "about": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 600
     },
     "additionalUsernames": {
       "type": "array",

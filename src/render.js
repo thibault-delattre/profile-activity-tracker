@@ -1,7 +1,6 @@
 const WIDTH = 900;
 const PANEL = {
   x: 16,
-  y: 72,
   width: 868,
   height: 210,
   radius: 18,
@@ -48,13 +47,21 @@ const THEMES = {
 export function renderCard(metrics, config, mode) {
   const theme = THEMES[mode];
   const accent = safeColor(config.brand.accent, "#2f81f7");
+  const introduction = config.introduction;
+  const introductionLayout = layoutIntroduction(introduction);
+  const aboutLines = wrapText(config.about, 124);
+  const panel = {
+    ...PANEL,
+    y: 76 + aboutLines.length * 18,
+  };
+  const verticalOffset = panel.y - 72;
   const languageLayout = layoutLanguageItems(
     metrics.languages,
     32,
     868,
-    342,
+    342 + verticalOffset,
   );
-  const height = Math.max(390, languageLayout.bottom + 24);
+  const height = Math.max(390 + verticalOffset, languageLayout.bottom + 24);
   const periods = [
     { label: "THIS WEEK", values: metrics.activity.week },
     { label: "THIS MONTH", values: metrics.activity.month },
@@ -63,11 +70,9 @@ export function renderCard(metrics, config, mode) {
   ];
   const columnCenters = [275, 435, 595, 760];
   const isCombined = Number(metrics.sourceCount) > 1;
-  const introduction = config.introduction;
-  const introductionLayout = layoutIntroduction(introduction);
 
   const title = `${isCombined ? "Combined GitHub activity" : "GitHub activity"} for @${metrics.username}`;
-  const description = `${introduction} ${
+  const description = `${introduction} ${config.about} ${
     isCombined
       ? `Combined across ${metrics.sourceCount} GitHub accounts. `
       : ""
@@ -83,9 +88,9 @@ export function renderCard(metrics, config, mode) {
   <desc id="desc">${escapeXml(description)}</desc>
   <defs>
     <clipPath id="glass-clip">
-      <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL.radius}"/>
+      <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}"/>
     </clipPath>
-    <linearGradient id="animated-border" x1="${PANEL.x}" y1="${PANEL.y}" x2="${PANEL.x + PANEL.width}" y2="${PANEL.y + PANEL.height}" gradientUnits="userSpaceOnUse">
+    <linearGradient id="animated-border" x1="${panel.x}" y1="${panel.y}" x2="${panel.x + panel.width}" y2="${panel.y + panel.height}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#58a6ff"/>
       <stop offset="25%" stop-color="#f7fbff"/>
       <stop offset="50%" stop-color="#ff7b72"/>
@@ -94,13 +99,13 @@ export function renderCard(metrics, config, mode) {
       <animateTransform
         attributeName="gradientTransform"
         type="rotate"
-        from="0 ${WIDTH / 2} ${PANEL.y + PANEL.height / 2}"
-        to="360 ${WIDTH / 2} ${PANEL.y + PANEL.height / 2}"
+        from="0 ${WIDTH / 2} ${panel.y + panel.height / 2}"
+        to="360 ${WIDTH / 2} ${panel.y + panel.height / 2}"
         dur="6s"
         repeatCount="indefinite"
       />
     </linearGradient>
-    <linearGradient id="glass-fill" x1="0" y1="${PANEL.y}" x2="0" y2="${PANEL.y + PANEL.height}" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glass-fill" x1="0" y1="${panel.y}" x2="0" y2="${panel.y + panel.height}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassStartOpacity}"/>
       <stop offset="48%" stop-color="${theme.glassEnd}" stop-opacity="${theme.glassMiddleOpacity}"/>
       <stop offset="100%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassEndOpacity}"/>
@@ -115,12 +120,12 @@ export function renderCard(metrics, config, mode) {
       <stop offset="52%" stop-color="#ff7b72" stop-opacity="0.025"/>
       <stop offset="100%" stop-color="#ff7b72" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="glass-highlight" x1="${PANEL.x + 24}" y1="${PANEL.y + 4}" x2="${PANEL.x + PANEL.width - 80}" y2="${PANEL.y + 100}" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glass-highlight" x1="${panel.x + 24}" y1="${panel.y + 4}" x2="${panel.x + panel.width - 80}" y2="${panel.y + 100}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="${theme.highlightOpacity}"/>
       <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="period-fill" x1="184" y1="132" x2="856" y2="164" gradientUnits="userSpaceOnUse">
+    <linearGradient id="period-fill" x1="184" y1="${132 + verticalOffset}" x2="856" y2="${164 + verticalOffset}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="${theme.surface}" stop-opacity="0.84"/>
       <stop offset="50%" stop-color="${theme.surface}" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="${theme.surface}" stop-opacity="0.76"/>
@@ -133,6 +138,7 @@ export function renderCard(metrics, config, mode) {
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .introduction { font-size: ${introductionLayout.fontSize}px; font-weight: 500; }
+    .about { font-size: 13px; font-weight: 400; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
     .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
     .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
@@ -141,49 +147,84 @@ export function renderCard(metrics, config, mode) {
   </style>
   <rect width="${WIDTH}" height="${height}" fill="${theme.background}"/>
   <text x="${WIDTH / 2}" y="38" text-anchor="middle" textLength="${introductionLayout.textLength}" lengthAdjust="spacing" class="introduction" fill="${theme.primary}">${escapeXml(introduction)}</text>
+  <text x="32" y="64" class="about" fill="${theme.secondary}">${aboutLines
+    .map(
+      (line, index) =>
+        `<tspan x="32" dy="${index === 0 ? 0 : 18}" textLength="836" lengthAdjust="spacing">${escapeXml(line)}</tspan>`,
+    )
+    .join("")}</text>
 
   <g class="glass-panel">
-    <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL.radius}" fill="${theme.glassEnd}" opacity="0.74" filter="url(#panel-shadow)"/>
-    <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL.radius}" fill="url(#glass-fill)"/>
+    <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="${theme.glassEnd}" opacity="0.74" filter="url(#panel-shadow)"/>
+    <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="url(#glass-fill)"/>
     <g clip-path="url(#glass-clip)" pointer-events="none">
-      <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" fill="url(#ambient-blue)"/>
-      <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" fill="url(#ambient-red)"/>
+      <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#ambient-blue)"/>
+      <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#ambient-red)"/>
     </g>
-    <rect x="${PANEL.x + 3}" y="${PANEL.y + 3}" width="${PANEL.width - 6}" height="${PANEL.height - 6}" rx="${PANEL.radius - 3}" fill="none" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.36 : 0.12}"/>
-    <path d="M ${PANEL.x + 24} ${PANEL.y + 1.5} H ${PANEL.x + PANEL.width - 120}" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="${panel.x + 3}" y="${panel.y + 3}" width="${panel.width - 6}" height="${panel.height - 6}" rx="${panel.radius - 3}" fill="none" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.36 : 0.12}"/>
+    <path d="M ${panel.x + 24} ${panel.y + 1.5} H ${panel.x + panel.width - 120}" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
 
-    <text x="${WIDTH / 2}" y="105" text-anchor="middle" class="eyebrow" fill="${accent}">${isCombined ? "COMBINED GITHUB ACTIVITY" : "GITHUB ACTIVITY"}</text>
-    <line x1="44" y1="120" x2="856" y2="120" stroke="${theme.line}" stroke-opacity="0.82"/>
-    <rect x="184" y="132" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.5 : 0.09}"/>
+    <text x="${WIDTH / 2}" y="${105 + verticalOffset}" text-anchor="middle" class="eyebrow" fill="${accent}">${isCombined ? "COMBINED GITHUB ACTIVITY" : "GITHUB ACTIVITY"}</text>
+    <line x1="44" y1="${120 + verticalOffset}" x2="856" y2="${120 + verticalOffset}" stroke="${theme.line}" stroke-opacity="0.82"/>
+    <rect x="184" y="${132 + verticalOffset}" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.5 : 0.09}"/>
     ${periods
       .map(
         (period, index) =>
-          `<text x="${columnCenters[index]}" y="152" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
+          `<text x="${columnCenters[index]}" y="${152 + verticalOffset}" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
       )
       .join("")}
-    <text x="44" y="190" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
+    <text x="44" y="${190 + verticalOffset}" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
     ${periods
       .map(
         (period, index) =>
-          `<text x="${columnCenters[index]}" y="195" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
+          `<text x="${columnCenters[index]}" y="${195 + verticalOffset}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
       )
       .join("")}
-    <line x1="184" y1="210" x2="856" y2="210" stroke="${theme.line}" stroke-opacity="0.84"/>
-    <text x="44" y="243" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
+    <line x1="184" y1="${210 + verticalOffset}" x2="856" y2="${210 + verticalOffset}" stroke="${theme.line}" stroke-opacity="0.84"/>
+    <text x="44" y="${243 + verticalOffset}" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
     ${periods
       .map(
         (period, index) =>
-          `<text x="${columnCenters[index]}" y="248" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
+          `<text x="${columnCenters[index]}" y="${248 + verticalOffset}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
       )
       .join("")}
-    <rect x="${PANEL.x + 1.25}" y="${PANEL.y + 1.25}" width="${PANEL.width - 2.5}" height="${PANEL.height - 2.5}" rx="${PANEL.radius - 1}" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
+    <rect x="${panel.x + 1.25}" y="${panel.y + 1.25}" width="${panel.width - 2.5}" height="${panel.height - 2.5}" rx="${panel.radius - 1}" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
   </g>
 
-  <line x1="32" y1="315" x2="340" y2="315" stroke="${theme.line}"/>
-  <text x="${WIDTH / 2}" y="319" text-anchor="middle" class="eyebrow" fill="${theme.secondary}">FAVORITE LANGUAGES</text>
-  <line x1="560" y1="315" x2="868" y2="315" stroke="${theme.line}"/>
+  <line x1="32" y1="${315 + verticalOffset}" x2="340" y2="${315 + verticalOffset}" stroke="${theme.line}"/>
+  <text x="${WIDTH / 2}" y="${319 + verticalOffset}" text-anchor="middle" class="eyebrow" fill="${theme.secondary}">FAVORITE LANGUAGES</text>
+  <line x1="560" y1="${315 + verticalOffset}" x2="868" y2="${315 + verticalOffset}" stroke="${theme.line}"/>
   ${renderLanguageItems(languageLayout.items, theme)}
 </svg>`;
+}
+
+/**
+ * Wrap prose at word boundaries for SVG, where automatic text wrapping is not
+ * available. The character limit is conservative for the configured font.
+ *
+ * @param {string} value
+ * @param {number} maximumCharacters
+ */
+export function wrapText(value, maximumCharacters) {
+  const words = String(value).trim().split(/\s+/);
+  const lines = [];
+  let line = "";
+
+  for (const word of words) {
+    const candidate = line ? `${line} ${word}` : word;
+    if (line && candidate.length > maximumCharacters) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
+  }
+
+  if (line) {
+    lines.push(line);
+  }
+
+  return lines;
 }
 
 /**
