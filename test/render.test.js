@@ -43,11 +43,17 @@ test("renderCard creates a self-contained, escaped activity table", () => {
     svg,
     /I build reliable software and thoughtful products\./,
   );
-  assert.match(svg, /LANGUAGES I USE/);
+  assert.match(svg, /FAVORITE LANGUAGES/);
+  assert.match(svg, /textLength="836"/);
+  assert.match(svg, /lengthAdjust="spacingAndGlyphs"/);
+  assert.doesNotMatch(svg, /UPDATED /);
   assert.doesNotMatch(svg, />COMMITS</);
   assert.match(svg, /linearGradient id="animated-border"/);
   assert.match(svg, /linearGradient id="glass-fill"/);
   assert.match(svg, /filter id="liquid-blur"/);
+  assert.match(svg, /linearGradient id="liquid-sheen"/);
+  assert.match(svg, /<feDisplacementMap/);
+  assert.match(svg, /svg:hover \.glass-panel/);
   assert.match(svg, /clipPath id="glass-clip"/);
   assert.match(svg, /#58a6ff/);
   assert.match(svg, /#f7fbff/);
