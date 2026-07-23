@@ -22,7 +22,7 @@ contribution calendar:
 
 It is generated as self-contained light and dark SVG files with a smooth
 layered-glass panel, native blue-white-red outline animation, a proportionally
-fitted single-line introduction, a fully justified profile summary, and a favorite-language legend below the
+fitted single-line introduction, a proportionally fitted profile summary, and a favorite-language legend below the
 statistics. Static clipped lighting, soft shadows, and inner edge highlights
 create depth without distracting continuous effects. There is no public server,
 tracking script, analytics service, or runtime dependency.
@@ -99,9 +99,10 @@ Edit [`config/profile.json`](./config/profile.json):
 }
 ```
 
-`username` is the primary profile, `introduction` is the fitted single line
-above the glass panel, and `about` is the automatically wrapped and justified
-paragraph below it. Use an empty `additionalUsernames` array for one account, or
+`username` is the primary profile, `introduction` is the left-aligned title
+above the glass panel, and `about` is the automatically wrapped and
+proportionally fitted paragraph below it. Use an empty `additionalUsernames`
+array for one account, or
 add other accounts to the same honest combined view. Contribution totals are
 summed, while active days are merged by calendar date, so using two accounts on
 one day still counts as one active day. Only public data and anonymized private

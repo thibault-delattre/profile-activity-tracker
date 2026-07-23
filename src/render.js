@@ -48,11 +48,10 @@ export function renderCard(metrics, config, mode) {
   const theme = THEMES[mode];
   const accent = safeColor(config.brand.accent, "#2f81f7");
   const introduction = config.introduction;
-  const introductionLayout = layoutIntroduction(introduction);
-  const aboutLines = wrapText(config.about, 124);
+  const aboutLayout = layoutAbout(config.about);
   const panel = {
     ...PANEL,
-    y: 76 + aboutLines.length * 18,
+    y: 80 + aboutLayout.height,
   };
   const verticalOffset = panel.y - 72;
   const languageLayout = layoutLanguageItems(
@@ -137,8 +136,8 @@ export function renderCard(metrics, config, mode) {
   </defs>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-    .introduction { font-size: ${introductionLayout.fontSize}px; font-weight: 500; }
-    .about { font-size: 13px; font-weight: 400; }
+    .introduction { font-size: 22px; font-weight: 600; }
+    .about { font-weight: 400; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
     .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
     .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
@@ -146,11 +145,11 @@ export function renderCard(metrics, config, mode) {
     .language { font-size: 12px; font-weight: 600; }
   </style>
   <rect width="${WIDTH}" height="${height}" fill="${theme.background}"/>
-  <text x="${WIDTH / 2}" y="38" text-anchor="middle" textLength="${introductionLayout.textLength}" lengthAdjust="spacing" class="introduction" fill="${theme.primary}">${escapeXml(introduction)}</text>
-  <text x="32" y="64" class="about" fill="${theme.secondary}">${aboutLines
+  <text x="32" y="38" class="introduction" fill="${theme.primary}">${escapeXml(introduction)}</text>
+  <text x="${WIDTH / 2}" y="65" text-anchor="middle" class="about" fill="${theme.secondary}">${aboutLayout.lines
     .map(
       (line, index) =>
-        `<tspan x="32" dy="${index === 0 ? 0 : 18}" textLength="836" lengthAdjust="spacing">${escapeXml(line)}</tspan>`,
+        `<tspan x="${WIDTH / 2}" dy="${index === 0 ? 0 : line.dy}" font-size="${line.fontSize}px">${escapeXml(line.text)}</tspan>`,
     )
     .join("")}</text>
 
@@ -228,6 +227,86 @@ export function wrapText(value, maximumCharacters) {
 }
 
 /**
+ * Keep glyph shapes and natural letter spacing intact while sizing each
+ * balanced line to use as much of the available width as possible.
+ *
+ * @param {string} value
+ */
+export function layoutAbout(value) {
+  const maximumWidth = 836;
+  const lineHeight = 21;
+  const paragraphGap = 12;
+  const paragraphs = String(value).trim().split(/\n\s*\n/);
+  const lines = paragraphs.flatMap((paragraph, paragraphIndex) =>
+    wrapText(paragraph, 124).map((text, lineIndex) => ({
+      text,
+      dy:
+        paragraphIndex > 0 && lineIndex === 0
+          ? lineHeight + paragraphGap
+          : lineHeight,
+      fontSize: formatSvgDecimal(
+        Math.max(
+          13,
+          Math.min(
+            16,
+            maximumWidth /
+              Math.max(estimateTextWidth(text), 1),
+          ),
+        ),
+      ),
+    })),
+  );
+
+  return {
+    lines,
+    lineHeight,
+    paragraphGap,
+    height:
+      lines.length * lineHeight +
+      Math.max(paragraphs.length - 1, 0) * paragraphGap,
+  };
+}
+
+/**
+ * Approximate proportional system-font metrics without introducing a font or
+ * canvas dependency. The correction factor leaves a small safety margin for
+ * platform differences between macOS, Windows, and Linux.
+ *
+ * @param {string} value
+ */
+function estimateTextWidth(value) {
+  let width = 0;
+
+  for (const character of value) {
+    if (character === " ") {
+      width += 0.278;
+    } else if (/[ilj]/.test(character)) {
+      width += 0.222;
+    } else if (/[ftr]/.test(character)) {
+      width += 0.3;
+    } else if (character === "m") {
+      width += 0.833;
+    } else if (character === "w") {
+      width += 0.722;
+    } else if (character === "I") {
+      width += 0.278;
+    } else if (character === "M") {
+      width += 0.833;
+    } else if (character === "W") {
+      width += 0.944;
+    } else if (/[A-Z]/.test(character)) {
+      width += 0.667;
+    } else if (/[a-z0-9]/.test(character)) {
+      width += 0.52;
+    } else {
+      width += 0.278;
+    }
+  }
+
+  return width * 1.07;
+}
+
+/**
  * @param {Array<{name: string, color: string | null}>} languages
  * @param {number} startX
  * @param {number} maximumX
@@ -300,33 +379,6 @@ function formatNumber(value) {
     notation: value >= 10_000 ? "compact" : "standard",
     maximumFractionDigits: 1,
   }).format(value);
-}
-
-/**
- * Fit the configured introduction proportionally. Spacing-only adjustment
- * reaches the target width without stretching the glyph shapes.
- *
- * @param {string} introduction
- */
-function layoutIntroduction(introduction) {
-  const maximumWidth = 836;
-  const estimatedGlyphRatio = 0.43;
-  const fontSize = Math.max(
-    13,
-    Math.min(
-      22,
-      maximumWidth / Math.max(introduction.length * estimatedGlyphRatio, 1),
-    ),
-  );
-  const textLength = Math.min(
-    maximumWidth,
-    introduction.length * fontSize * estimatedGlyphRatio,
-  );
-
-  return {
-    fontSize: formatSvgDecimal(fontSize),
-    textLength: formatSvgDecimal(textLength),
-  };
 }
 
 /**

@@ -1,11 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="471" viewBox="0 0 900 471" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="613" viewBox="0 0 900 613" role="img" aria-labelledby="title desc">
   <title id="title">Combined GitHub activity for @thibault-delattre</title>
-  <desc id="desc">My name is Thibault Delattre. I&apos;m a second year master&apos;s student at Efrei University in Paris. I enjoy building thoughtful software at the intersection of full stack engineering and AI. At AXA, I contribute to Secure GPT, the company&apos;s internal LLM, while independently developing Reawon, an ecosystem that currently includes Reafile and Polywon. My goal is to keep expanding these products and my AI expertise, and eventually continue my career in Asia. Combined across 2 GitHub accounts. 29 contributions this week, 189 this month, 1114 this year, 4308 total.</desc>
+  <desc id="desc">My name is Thibault Delattre I&apos;m a full-stack engineer moving toward applied AI, currently finishing my MSc at EFREI Paris and preparing to apply to a graduate engineering program in South Korea.
+
+At AXA, I work on Secure GPT, the company&apos;s internal LLM. Before that I built automated test infrastructure at JCDecaux for digital billboard systems running in 70+ countries, and shipped web features at Dassault Systèmes. I also spent three months as a research intern at NIT Akita College in Japan, training a computer-vision model to detect manufacturing defects on film capacitors. It was my first experience working in a lab environment.
+
+On the side I build Reawon, an independent product ecosystem: Reafile, a browser-based AI file editor, and Polywon, an AI-powered language learning app. Combined across 2 GitHub accounts. 29 contributions this week, 189 this month, 1114 this year, 4308 total.</desc>
   <defs>
     <clipPath id="glass-clip">
-      <rect x="16" y="130" width="868" height="210" rx="18"/>
+      <rect x="16" y="272" width="868" height="210" rx="18"/>
     </clipPath>
-    <linearGradient id="animated-border" x1="16" y1="130" x2="884" y2="340" gradientUnits="userSpaceOnUse">
+    <linearGradient id="animated-border" x1="16" y1="272" x2="884" y2="482" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#58a6ff"/>
       <stop offset="25%" stop-color="#f7fbff"/>
       <stop offset="50%" stop-color="#ff7b72"/>
@@ -14,13 +18,13 @@
       <animateTransform
         attributeName="gradientTransform"
         type="rotate"
-        from="0 450 235"
-        to="360 450 235"
+        from="0 450 377"
+        to="360 450 377"
         dur="6s"
         repeatCount="indefinite"
       />
     </linearGradient>
-    <linearGradient id="glass-fill" x1="0" y1="130" x2="0" y2="340" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glass-fill" x1="0" y1="272" x2="0" y2="482" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#263140" stop-opacity="0.78"/>
       <stop offset="48%" stop-color="#111820" stop-opacity="0.66"/>
       <stop offset="100%" stop-color="#263140" stop-opacity="0.74"/>
@@ -35,12 +39,12 @@
       <stop offset="52%" stop-color="#ff7b72" stop-opacity="0.025"/>
       <stop offset="100%" stop-color="#ff7b72" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="glass-highlight" x1="40" y1="134" x2="804" y2="230" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glass-highlight" x1="40" y1="276" x2="804" y2="372" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34"/>
       <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="period-fill" x1="184" y1="190" x2="856" y2="222" gradientUnits="userSpaceOnUse">
+    <linearGradient id="period-fill" x1="184" y1="332" x2="856" y2="364" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#161b22" stop-opacity="0.84"/>
       <stop offset="50%" stop-color="#161b22" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#161b22" stop-opacity="0.76"/>
@@ -52,84 +56,84 @@
   </defs>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-    .introduction { font-size: 20.7px; font-weight: 500; }
-    .about { font-size: 13px; font-weight: 400; }
+    .introduction { font-size: 22px; font-weight: 600; }
+    .about { font-weight: 400; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
     .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
     .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
     .value { font-size: 29px; font-weight: 650; }
     .language { font-size: 12px; font-weight: 600; }
   </style>
-  <rect width="900" height="471" fill="#0d1117"/>
-  <text x="450" y="38" text-anchor="middle" textLength="836" lengthAdjust="spacing" class="introduction" fill="#f0f6fc">My name is Thibault Delattre. I&apos;m a second year master&apos;s student at Efrei University in Paris.</text>
-  <text x="32" y="64" class="about" fill="#8b949e"><tspan x="32" dy="0" textLength="836" lengthAdjust="spacing">I enjoy building thoughtful software at the intersection of full stack engineering and AI. At AXA, I contribute to Secure</tspan><tspan x="32" dy="18" textLength="836" lengthAdjust="spacing">GPT, the company&apos;s internal LLM, while independently developing Reawon, an ecosystem that currently includes Reafile and</tspan><tspan x="32" dy="18" textLength="836" lengthAdjust="spacing">Polywon. My goal is to keep expanding these products and my AI expertise, and eventually continue my career in Asia.</tspan></text>
+  <rect width="900" height="613" fill="#0d1117"/>
+  <text x="32" y="38" class="introduction" fill="#f0f6fc">My name is Thibault Delattre</text>
+  <text x="450" y="65" text-anchor="middle" class="about" fill="#8b949e"><tspan x="450" dy="0" font-size="15px">I&apos;m a full-stack engineer moving toward applied AI, currently finishing my MSc at EFREI Paris and preparing to apply to a</tspan><tspan x="450" dy="21" font-size="16px">graduate engineering program in South Korea.</tspan><tspan x="450" dy="33" font-size="14.4px">At AXA, I work on Secure GPT, the company&apos;s internal LLM. Before that I built automated test infrastructure at JCDecaux for</tspan><tspan x="450" dy="21" font-size="14.7px">digital billboard systems running in 70+ countries, and shipped web features at Dassault Systèmes. I also spent three months</tspan><tspan x="450" dy="21" font-size="14.7px">as a research intern at NIT Akita College in Japan, training a computer-vision model to detect manufacturing defects on film</tspan><tspan x="450" dy="21" font-size="16px">capacitors. It was my first experience working in a lab environment.</tspan><tspan x="450" dy="33" font-size="15.2px">On the side I build Reawon, an independent product ecosystem: Reafile, a browser-based AI file editor, and Polywon, an</tspan><tspan x="450" dy="21" font-size="16px">AI-powered language learning app.</tspan></text>
 
   <g class="glass-panel">
-    <rect x="16" y="130" width="868" height="210" rx="18" fill="#111820" opacity="0.74" filter="url(#panel-shadow)"/>
-    <rect x="16" y="130" width="868" height="210" rx="18" fill="url(#glass-fill)"/>
+    <rect x="16" y="272" width="868" height="210" rx="18" fill="#111820" opacity="0.74" filter="url(#panel-shadow)"/>
+    <rect x="16" y="272" width="868" height="210" rx="18" fill="url(#glass-fill)"/>
     <g clip-path="url(#glass-clip)" pointer-events="none">
-      <rect x="16" y="130" width="868" height="210" fill="url(#ambient-blue)"/>
-      <rect x="16" y="130" width="868" height="210" fill="url(#ambient-red)"/>
+      <rect x="16" y="272" width="868" height="210" fill="url(#ambient-blue)"/>
+      <rect x="16" y="272" width="868" height="210" fill="url(#ambient-red)"/>
     </g>
-    <rect x="19" y="133" width="862" height="204" rx="15" fill="none" stroke="#ffffff" stroke-opacity="0.12"/>
-    <path d="M 40 131.5 H 764" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="19" y="275" width="862" height="204" rx="15" fill="none" stroke="#ffffff" stroke-opacity="0.12"/>
+    <path d="M 40 273.5 H 764" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
 
-    <text x="450" y="163" text-anchor="middle" class="eyebrow" fill="#2f81f7">COMBINED GITHUB ACTIVITY</text>
-    <line x1="44" y1="178" x2="856" y2="178" stroke="#30363d" stroke-opacity="0.82"/>
-    <rect x="184" y="190" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.09"/>
-    <text x="275" y="210" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="435" y="210" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="595" y="210" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="210" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
-    <text x="44" y="248" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
-    <text x="275" y="253" text-anchor="middle" class="value" fill="#f0f6fc">29</text><text x="435" y="253" text-anchor="middle" class="value" fill="#f0f6fc">189</text><text x="595" y="253" text-anchor="middle" class="value" fill="#f0f6fc">1,114</text><text x="760" y="253" text-anchor="middle" class="value" fill="#f0f6fc">4,308</text>
-    <line x1="184" y1="268" x2="856" y2="268" stroke="#30363d" stroke-opacity="0.84"/>
-    <text x="44" y="301" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
-    <text x="275" y="306" text-anchor="middle" class="value" fill="#f0f6fc">2</text><text x="435" y="306" text-anchor="middle" class="value" fill="#f0f6fc">13</text><text x="595" y="306" text-anchor="middle" class="value" fill="#f0f6fc">102</text><text x="760" y="306" text-anchor="middle" class="value" fill="#f0f6fc">364</text>
-    <rect x="17.25" y="131.25" width="865.5" height="207.5" rx="17" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
+    <text x="450" y="305" text-anchor="middle" class="eyebrow" fill="#2f81f7">COMBINED GITHUB ACTIVITY</text>
+    <line x1="44" y1="320" x2="856" y2="320" stroke="#30363d" stroke-opacity="0.82"/>
+    <rect x="184" y="332" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.09"/>
+    <text x="275" y="352" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="435" y="352" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="595" y="352" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="352" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
+    <text x="44" y="390" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
+    <text x="275" y="395" text-anchor="middle" class="value" fill="#f0f6fc">29</text><text x="435" y="395" text-anchor="middle" class="value" fill="#f0f6fc">189</text><text x="595" y="395" text-anchor="middle" class="value" fill="#f0f6fc">1,114</text><text x="760" y="395" text-anchor="middle" class="value" fill="#f0f6fc">4,308</text>
+    <line x1="184" y1="410" x2="856" y2="410" stroke="#30363d" stroke-opacity="0.84"/>
+    <text x="44" y="443" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
+    <text x="275" y="448" text-anchor="middle" class="value" fill="#f0f6fc">2</text><text x="435" y="448" text-anchor="middle" class="value" fill="#f0f6fc">13</text><text x="595" y="448" text-anchor="middle" class="value" fill="#f0f6fc">102</text><text x="760" y="448" text-anchor="middle" class="value" fill="#f0f6fc">364</text>
+    <rect x="17.25" y="273.25" width="865.5" height="207.5" rx="17" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
   </g>
 
-  <line x1="32" y1="373" x2="340" y2="373" stroke="#30363d"/>
-  <text x="450" y="377" text-anchor="middle" class="eyebrow" fill="#8b949e">FAVORITE LANGUAGES</text>
-  <line x1="560" y1="373" x2="868" y2="373" stroke="#30363d"/>
+  <line x1="32" y1="515" x2="340" y2="515" stroke="#30363d"/>
+  <text x="450" y="519" text-anchor="middle" class="eyebrow" fill="#8b949e">FAVORITE LANGUAGES</text>
+  <line x1="560" y1="515" x2="868" y2="515" stroke="#30363d"/>
   <g>
-        <circle cx="36" cy="405" r="4" fill="#f1e05a"/>
-        <text x="48" y="409" class="language" fill="#f0f6fc">JavaScript</text>
+        <circle cx="36" cy="547" r="4" fill="#f1e05a"/>
+        <text x="48" y="551" class="language" fill="#f0f6fc">JavaScript</text>
       </g><g>
-        <circle cx="150" cy="405" r="4" fill="#3178c6"/>
-        <text x="162" y="409" class="language" fill="#f0f6fc">TypeScript</text>
+        <circle cx="150" cy="547" r="4" fill="#3178c6"/>
+        <text x="162" y="551" class="language" fill="#f0f6fc">TypeScript</text>
       </g><g>
-        <circle cx="264" cy="405" r="4" fill="#4F5D95"/>
-        <text x="276" y="409" class="language" fill="#f0f6fc">PHP</text>
+        <circle cx="264" cy="547" r="4" fill="#4F5D95"/>
+        <text x="276" y="551" class="language" fill="#f0f6fc">PHP</text>
       </g><g>
-        <circle cx="329" cy="405" r="4" fill="#663399"/>
-        <text x="341" y="409" class="language" fill="#f0f6fc">CSS</text>
+        <circle cx="329" cy="547" r="4" fill="#663399"/>
+        <text x="341" y="551" class="language" fill="#f0f6fc">CSS</text>
       </g><g>
-        <circle cx="394" cy="405" r="4" fill="#41b883"/>
-        <text x="406" y="409" class="language" fill="#f0f6fc">Vue</text>
+        <circle cx="394" cy="547" r="4" fill="#41b883"/>
+        <text x="406" y="551" class="language" fill="#f0f6fc">Vue</text>
       </g><g>
-        <circle cx="459" cy="405" r="4" fill="#e34c26"/>
-        <text x="471" y="409" class="language" fill="#f0f6fc">HTML</text>
+        <circle cx="459" cy="547" r="4" fill="#e34c26"/>
+        <text x="471" y="551" class="language" fill="#f0f6fc">HTML</text>
       </g><g>
-        <circle cx="531" cy="405" r="4" fill="#00ADD8"/>
-        <text x="543" y="409" class="language" fill="#f0f6fc">Go</text>
+        <circle cx="531" cy="547" r="4" fill="#00ADD8"/>
+        <text x="543" y="551" class="language" fill="#f0f6fc">Go</text>
       </g><g>
-        <circle cx="589" cy="405" r="4" fill="#c6538c"/>
-        <text x="601" y="409" class="language" fill="#f0f6fc">SCSS</text>
+        <circle cx="589" cy="547" r="4" fill="#c6538c"/>
+        <text x="601" y="551" class="language" fill="#f0f6fc">SCSS</text>
       </g><g>
-        <circle cx="661" cy="405" r="4" fill="#3572A5"/>
-        <text x="673" y="409" class="language" fill="#f0f6fc">Python</text>
+        <circle cx="661" cy="547" r="4" fill="#3572A5"/>
+        <text x="673" y="551" class="language" fill="#f0f6fc">Python</text>
       </g><g>
-        <circle cx="747" cy="405" r="4" fill="#c1d026"/>
-        <text x="759" y="409" class="language" fill="#f0f6fc">Twig</text>
+        <circle cx="747" cy="547" r="4" fill="#c1d026"/>
+        <text x="759" y="551" class="language" fill="#f0f6fc">Twig</text>
       </g><g>
-        <circle cx="819" cy="405" r="4" fill="#89e051"/>
-        <text x="831" y="409" class="language" fill="#f0f6fc">Shell</text>
+        <circle cx="819" cy="547" r="4" fill="#89e051"/>
+        <text x="831" y="551" class="language" fill="#f0f6fc">Shell</text>
       </g><g>
-        <circle cx="327.5" cy="434" r="4" fill="#384d54"/>
-        <text x="339.5" y="438" class="language" fill="#f0f6fc">Dockerfile</text>
+        <circle cx="327.5" cy="576" r="4" fill="#384d54"/>
+        <text x="339.5" y="580" class="language" fill="#f0f6fc">Dockerfile</text>
       </g><g>
-        <circle cx="441.5" cy="434" r="4" fill="#a91e50"/>
-        <text x="453.5" y="438" class="language" fill="#f0f6fc">EJS</text>
+        <circle cx="441.5" cy="576" r="4" fill="#a91e50"/>
+        <text x="453.5" y="580" class="language" fill="#f0f6fc">EJS</text>
       </g><g>
-        <circle cx="506.5" cy="434" r="4" fill="#3B2F63"/>
-        <text x="518.5" y="438" class="language" fill="#f0f6fc">Procfile</text>
+        <circle cx="506.5" cy="576" r="4" fill="#3B2F63"/>
+        <text x="518.5" y="580" class="language" fill="#f0f6fc">Procfile</text>
       </g>
 </svg>

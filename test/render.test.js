@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  layoutAbout,
   layoutLanguageItems,
   renderCard,
   wrapText,
@@ -53,11 +54,13 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /I enjoy turning complex engineering problems/);
   assert.match(
     svg,
-    /<tspan x="32"[^>]*textLength="836" lengthAdjust="spacing"/,
+    /<tspan x="450"[^>]*font-size="[^"]+px"/,
   );
+  assert.doesNotMatch(svg, /<tspan[^>]*textLength=/);
   assert.match(svg, /FAVORITE LANGUAGES/);
-  assert.match(svg, /textLength="836"/);
-  assert.match(svg, /lengthAdjust="spacing"/);
+  assert.match(svg, /<text x="32" y="38" class="introduction"/);
+  assert.doesNotMatch(svg, /textLength=/);
+  assert.doesNotMatch(svg, /lengthAdjust=/);
   assert.doesNotMatch(svg, /UPDATED /);
   assert.doesNotMatch(svg, />COMMITS</);
   assert.match(svg, /linearGradient id="animated-border"/);
@@ -94,6 +97,29 @@ test("wrapText keeps prose intact and wraps only at word boundaries", () => {
   assert.ok(lines.length > 1);
   assert.equal(lines.join(" "), text);
   assert.ok(lines.every((line) => line.length <= 32));
+});
+
+test("layoutAbout fits balanced lines by font size without stretching text", () => {
+  const text =
+    "I enjoy building thoughtful software and useful products.\n\nI want to deepen my engineering skills and create tools with a clear purpose.";
+  const layout = layoutAbout(text);
+
+  assert.equal(
+    layout.lines.map((line) => line.text).join(" "),
+    text.replace(/\n+/g, " "),
+  );
+  assert.ok(
+    layout.lines.every(
+      (line) => Number(line.fontSize) >= 13 && Number(line.fontSize) <= 16,
+    ),
+  );
+  assert.equal(layout.lineHeight, 21);
+  assert.equal(layout.paragraphGap, 12);
+  assert.ok(layout.lines.some((line) => line.dy === 33));
+  assert.equal(
+    layout.height,
+    layout.lines.length * layout.lineHeight + layout.paragraphGap,
+  );
 });
 
 test("renderCard renders distinct light and dark palettes", () => {

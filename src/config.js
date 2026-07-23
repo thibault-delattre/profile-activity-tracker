@@ -59,9 +59,9 @@ export function validateConfig(value) {
   if (
     typeof config.about !== "string" ||
     config.about.trim().length < 1 ||
-    config.about.trim().length > 600
+    config.about.trim().length > 1200
   ) {
-    throw new Error("about must contain between 1 and 600 characters.");
+    throw new Error("about must contain between 1 and 1200 characters.");
   }
 
   if (

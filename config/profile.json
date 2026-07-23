@@ -1,8 +1,8 @@
 {
   "$schema": "./profile.schema.json",
   "username": "thibault-delattre",
-  "introduction": "My name is Thibault Delattre. I'm a second year master's student at Efrei University in Paris.",
-  "about": "I enjoy building thoughtful software at the intersection of full stack engineering and AI. At AXA, I contribute to Secure GPT, the company's internal LLM, while independently developing Reawon, an ecosystem that currently includes Reafile and Polywon. My goal is to keep expanding these products and my AI expertise, and eventually continue my career in Asia.",
+  "introduction": "My name is Thibault Delattre",
+  "about": "I'm a full-stack engineer moving toward applied AI, currently finishing my MSc at EFREI Paris and preparing to apply to a graduate engineering program in South Korea.\n\nAt AXA, I work on Secure GPT, the company's internal LLM. Before that I built automated test infrastructure at JCDecaux for digital billboard systems running in 70+ countries, and shipped web features at Dassault Systèmes. I also spent three months as a research intern at NIT Akita College in Japan, training a computer-vision model to detect manufacturing defects on film capacitors. It was my first experience working in a lab environment.\n\nOn the side I build Reawon, an independent product ecosystem: Reafile, a browser-based AI file editor, and Polywon, an AI-powered language learning app.",
   "additionalUsernames": [
     "t000132"
   ],
