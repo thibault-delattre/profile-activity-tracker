@@ -58,7 +58,16 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   );
   assert.doesNotMatch(svg, /<tspan[^>]*textLength=/);
   assert.match(svg, /FAVORITE LANGUAGES/);
-  assert.match(svg, /<text x="32" y="38" class="introduction"/);
+  assert.match(svg, /<text x="32" y="38" class="introduction reveal"/);
+  assert.match(
+    svg,
+    /<text x="44"[^>]*class="eyebrow" fill="#ffffff"[^>]*>COMBINED GITHUB ACTIVITY<\/text>/,
+  );
+  assert.doesNotMatch(svg, /<line x1="32"/);
+  assert.doesNotMatch(svg, /<line x1="560"/);
+  assert.match(svg, /@keyframes fade-in/);
+  assert.match(svg, /animation-delay:\d+ms/);
+  assert.match(svg, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(svg, /textLength=/);
   assert.doesNotMatch(svg, /lengthAdjust=/);
   assert.doesNotMatch(svg, /UPDATED /);

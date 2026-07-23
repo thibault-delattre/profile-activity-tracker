@@ -23,8 +23,9 @@ contribution calendar:
 It is generated as self-contained light and dark SVG files with a smooth
 layered-glass panel, native blue-white-red outline animation, a left-aligned
 introduction, a word-spaced justified profile summary, and a favorite-language
-legend below the statistics. Static clipped lighting, soft shadows, and inner edge highlights
-create depth without distracting continuous effects. There is no public server,
+legend below the statistics. Static clipped lighting, soft shadows, and inner
+edge highlights create depth, while a staged line-by-line fade introduces the
+content and respects reduced-motion preferences. There is no public server,
 tracking script, analytics service, or runtime dependency.
 
 ## How it works

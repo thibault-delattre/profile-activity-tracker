@@ -46,7 +46,6 @@ const THEMES = {
  */
 export function renderCard(metrics, config, mode) {
   const theme = THEMES[mode];
-  const accent = safeColor(config.brand.accent, "#2f81f7");
   const introduction = config.introduction;
   const aboutLayout = layoutAbout(config.about);
   const panel = {
@@ -69,6 +68,16 @@ export function renderCard(metrics, config, mode) {
   ];
   const columnCenters = [275, 435, 595, 760];
   const isCombined = Number(metrics.sourceCount) > 1;
+  const revealStep = 110;
+  const aboutRevealStart = revealStep;
+  const panelRevealDelay =
+    aboutRevealStart + aboutLayout.lines.length * revealStep + 100;
+  const activityRevealDelay = panelRevealDelay + 160;
+  const periodsRevealDelay = activityRevealDelay + revealStep;
+  const contributionsRevealDelay = periodsRevealDelay + revealStep;
+  const activeDaysRevealDelay = contributionsRevealDelay + revealStep;
+  const languagesRevealDelay = activeDaysRevealDelay + 180;
+  const languageItemsRevealDelay = languagesRevealDelay + revealStep;
 
   const title = `${isCombined ? "Combined GitHub activity" : "GitHub activity"} for @${metrics.username}`;
   const description = `${introduction} ${config.about} ${
@@ -133,6 +142,9 @@ export function renderCard(metrics, config, mode) {
       <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="${theme.shadow}" flood-opacity="0.15"/>
       <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="${theme.shadow}" flood-opacity="0.08"/>
     </filter>
+    <filter id="activity-title-shadow" x="-8%" y="-45%" width="116%" height="190%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#000000" flood-opacity="${mode === "light" ? 0.42 : 0.55}"/>
+    </filter>
   </defs>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
@@ -143,57 +155,77 @@ export function renderCard(metrics, config, mode) {
     .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
     .value { font-size: 29px; font-weight: 650; }
     .language { font-size: 12px; font-weight: 600; }
+    .reveal {
+      opacity: 0;
+      animation: fade-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; animation: none; }
+    }
   </style>
   <rect width="${WIDTH}" height="${height}" fill="${theme.background}"/>
-  <text x="32" y="38" class="introduction" fill="${theme.primary}">${escapeXml(introduction)}</text>
+  <text x="32" y="38" class="introduction reveal" style="animation-delay:0ms" fill="${theme.primary}">${escapeXml(introduction)}</text>
   <text x="32" y="65" class="about" fill="${theme.secondary}">${aboutLayout.lines
     .map(
       (line, index) =>
-        `<tspan x="32" dy="${index === 0 ? 0 : line.dy}" font-size="${aboutLayout.fontSize}px" word-spacing="${line.wordSpacing}px">${escapeXml(line.text)}</tspan>`,
+        `<tspan x="32" dy="${index === 0 ? 0 : line.dy}" class="reveal" style="animation-delay:${aboutRevealStart + index * revealStep}ms" font-size="${aboutLayout.fontSize}px" word-spacing="${line.wordSpacing}px">${escapeXml(line.text)}</tspan>`,
     )
     .join("")}</text>
 
   <g class="glass-panel">
-    <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="${theme.glassEnd}" opacity="0.74" filter="url(#panel-shadow)"/>
-    <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="url(#glass-fill)"/>
-    <g clip-path="url(#glass-clip)" pointer-events="none">
-      <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#ambient-blue)"/>
-      <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#ambient-red)"/>
+    <g class="reveal" style="animation-delay:${panelRevealDelay}ms">
+      <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="${theme.glassEnd}" opacity="0.74" filter="url(#panel-shadow)"/>
+      <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="url(#glass-fill)"/>
+      <g clip-path="url(#glass-clip)" pointer-events="none">
+        <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#ambient-blue)"/>
+        <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#ambient-red)"/>
+      </g>
+      <rect x="${panel.x + 3}" y="${panel.y + 3}" width="${panel.width - 6}" height="${panel.height - 6}" rx="${panel.radius - 3}" fill="none" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.36 : 0.12}"/>
+      <path d="M ${panel.x + 24} ${panel.y + 1.5} H ${panel.x + panel.width - 120}" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="${panel.x + 1.25}" y="${panel.y + 1.25}" width="${panel.width - 2.5}" height="${panel.height - 2.5}" rx="${panel.radius - 1}" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
     </g>
-    <rect x="${panel.x + 3}" y="${panel.y + 3}" width="${panel.width - 6}" height="${panel.height - 6}" rx="${panel.radius - 3}" fill="none" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.36 : 0.12}"/>
-    <path d="M ${panel.x + 24} ${panel.y + 1.5} H ${panel.x + panel.width - 120}" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
-
-    <text x="${WIDTH / 2}" y="${105 + verticalOffset}" text-anchor="middle" class="eyebrow" fill="${accent}">${isCombined ? "COMBINED GITHUB ACTIVITY" : "GITHUB ACTIVITY"}</text>
-    <line x1="44" y1="${120 + verticalOffset}" x2="856" y2="${120 + verticalOffset}" stroke="${theme.line}" stroke-opacity="0.82"/>
-    <rect x="184" y="${132 + verticalOffset}" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.5 : 0.09}"/>
-    ${periods
-      .map(
-        (period, index) =>
-          `<text x="${columnCenters[index]}" y="${152 + verticalOffset}" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
-      )
-      .join("")}
-    <text x="44" y="${190 + verticalOffset}" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
-    ${periods
-      .map(
-        (period, index) =>
-          `<text x="${columnCenters[index]}" y="${195 + verticalOffset}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
-      )
-      .join("")}
-    <line x1="184" y1="${210 + verticalOffset}" x2="856" y2="${210 + verticalOffset}" stroke="${theme.line}" stroke-opacity="0.84"/>
-    <text x="44" y="${243 + verticalOffset}" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
-    ${periods
-      .map(
-        (period, index) =>
-          `<text x="${columnCenters[index]}" y="${248 + verticalOffset}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
-      )
-      .join("")}
-    <rect x="${panel.x + 1.25}" y="${panel.y + 1.25}" width="${panel.width - 2.5}" height="${panel.height - 2.5}" rx="${panel.radius - 1}" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
+    <g class="reveal" style="animation-delay:${activityRevealDelay}ms">
+      <text x="44" y="${105 + verticalOffset}" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">${isCombined ? "COMBINED GITHUB ACTIVITY" : "GITHUB ACTIVITY"}</text>
+      <line x1="44" y1="${120 + verticalOffset}" x2="856" y2="${120 + verticalOffset}" stroke="${theme.line}" stroke-opacity="0.82"/>
+    </g>
+    <g class="reveal" style="animation-delay:${periodsRevealDelay}ms">
+      <rect x="184" y="${132 + verticalOffset}" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.5 : 0.09}"/>
+      ${periods
+        .map(
+          (period, index) =>
+            `<text x="${columnCenters[index]}" y="${152 + verticalOffset}" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
+        )
+        .join("")}
+    </g>
+    <g class="reveal" style="animation-delay:${contributionsRevealDelay}ms">
+      <text x="44" y="${190 + verticalOffset}" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
+      ${periods
+        .map(
+          (period, index) =>
+            `<text x="${columnCenters[index]}" y="${195 + verticalOffset}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
+        )
+        .join("")}
+    </g>
+    <g class="reveal" style="animation-delay:${activeDaysRevealDelay}ms">
+      <line x1="184" y1="${210 + verticalOffset}" x2="856" y2="${210 + verticalOffset}" stroke="${theme.line}" stroke-opacity="0.84"/>
+      <text x="44" y="${243 + verticalOffset}" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
+      ${periods
+        .map(
+          (period, index) =>
+            `<text x="${columnCenters[index]}" y="${248 + verticalOffset}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
+        )
+        .join("")}
+    </g>
   </g>
 
-  <line x1="32" y1="${315 + verticalOffset}" x2="340" y2="${315 + verticalOffset}" stroke="${theme.line}"/>
-  <text x="${WIDTH / 2}" y="${319 + verticalOffset}" text-anchor="middle" class="eyebrow" fill="${theme.secondary}">FAVORITE LANGUAGES</text>
-  <line x1="560" y1="${315 + verticalOffset}" x2="868" y2="${315 + verticalOffset}" stroke="${theme.line}"/>
-  ${renderLanguageItems(languageLayout.items, theme)}
+  <text x="${WIDTH / 2}" y="${319 + verticalOffset}" text-anchor="middle" class="eyebrow reveal" style="animation-delay:${languagesRevealDelay}ms" fill="${theme.secondary}">FAVORITE LANGUAGES</text>
+  <g class="reveal" style="animation-delay:${languageItemsRevealDelay}ms">
+    ${renderLanguageItems(languageLayout.items, theme)}
+  </g>
 </svg>`;
 }
 
