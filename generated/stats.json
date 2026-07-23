@@ -2,22 +2,22 @@
   "schemaVersion": 5,
   "username": "thibault-delattre",
   "sourceCount": 2,
-  "generatedAt": "2026-07-23T16:08:52.356Z",
+  "generatedAt": "2026-07-23T16:49:29.593Z",
   "activity": {
     "week": {
-      "contributions": 31,
+      "contributions": 32,
       "activeDays": 2
     },
     "month": {
-      "contributions": 191,
+      "contributions": 192,
       "activeDays": 13
     },
     "year": {
-      "contributions": 1116,
+      "contributions": 1117,
       "activeDays": 102
     },
     "total": {
-      "contributions": 4309,
+      "contributions": 4310,
       "activeDays": 364
     }
   },
@@ -31,14 +31,14 @@
     {
       "name": "JavaScript",
       "color": "#f1e05a",
-      "size": 84240,
-      "percentage": 25
+      "size": 84399,
+      "percentage": 25.1
     },
     {
       "name": "Go",
       "color": "#00ADD8",
       "size": 56369,
-      "percentage": 16.8
+      "percentage": 16.7
     },
     {
       "name": "SCSS",
@@ -55,7 +55,7 @@
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4993,
+    "remaining": 4989,
     "resetAt": "2026-07-23T17:05:46Z"
   }
 }
