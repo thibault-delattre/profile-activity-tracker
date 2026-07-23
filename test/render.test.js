@@ -4,7 +4,8 @@ import { layoutLanguageItems, renderCard } from "../src/render.js";
 
 const config = {
   username: "example-user",
-  introduction: "I build reliable software and thoughtful products.",
+  introduction:
+    "I design and build reliable software, thoughtful products, and maintainable developer experiences.",
   excludedRepositories: [],
   brand: {
     accent: "#2f81f7",
@@ -41,19 +42,20 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /CONTRIBUTIONS/);
   assert.match(
     svg,
-    /I build reliable software and thoughtful products\./,
+    /I design and build reliable software, thoughtful products, and maintainable developer experiences\./,
   );
   assert.match(svg, /FAVORITE LANGUAGES/);
   assert.match(svg, /textLength="836"/);
-  assert.match(svg, /lengthAdjust="spacingAndGlyphs"/);
+  assert.match(svg, /lengthAdjust="spacing"/);
   assert.doesNotMatch(svg, /UPDATED /);
   assert.doesNotMatch(svg, />COMMITS</);
   assert.match(svg, /linearGradient id="animated-border"/);
   assert.match(svg, /linearGradient id="glass-fill"/);
-  assert.match(svg, /filter id="liquid-blur"/);
-  assert.match(svg, /linearGradient id="liquid-sheen"/);
-  assert.match(svg, /<feDisplacementMap/);
-  assert.match(svg, /svg:hover \.glass-panel/);
+  assert.match(svg, /radialGradient id="ambient-blue"/);
+  assert.match(svg, /radialGradient id="ambient-red"/);
+  assert.doesNotMatch(svg, /liquid-sheen/);
+  assert.doesNotMatch(svg, /<feDisplacementMap/);
+  assert.doesNotMatch(svg, /svg:hover \.glass-panel/);
   assert.match(svg, /clipPath id="glass-clip"/);
   assert.match(svg, /#58a6ff/);
   assert.match(svg, /#f7fbff/);

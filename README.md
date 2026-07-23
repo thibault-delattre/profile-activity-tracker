@@ -20,12 +20,12 @@ contribution calendar:
 - active days for the same four calendar periods;
 - every language detected across owned, public, non-fork repositories.
 
-It is generated as self-contained light and dark SVG files with a refracted
-liquid-glass panel, native blue-white-red outline animation, a single-line
-full-width introduction, and a favorite-language legend below the statistics.
-Direct SVG views also receive a subtle hover lift; the animated depth and sheen
-remain visible where embedded-image hover events are unavailable. There is no
-public server, tracking script, analytics service, or runtime dependency.
+It is generated as self-contained light and dark SVG files with a smooth
+layered-glass panel, native blue-white-red outline animation, a proportionally
+fitted single-line introduction, and a favorite-language legend below the
+statistics. Static clipped lighting, soft shadows, and inner edge highlights
+create depth without distracting continuous effects. There is no public server,
+tracking script, analytics service, or runtime dependency.
 
 ## How it works
 
