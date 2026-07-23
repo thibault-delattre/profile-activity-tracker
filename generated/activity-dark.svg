@@ -1,77 +1,91 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="349" viewBox="0 0 900 349" role="img" aria-labelledby="title desc">
-  <title id="title">Thibault Delattre GitHub activity</title>
-  <desc id="desc">8 commits this week, 10 this month, 111 this year, 368 total, 17 repositories</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="319" viewBox="0 0 900 319" role="img" aria-labelledby="title desc">
+  <title id="title">GitHub activity for @thibault-delattre</title>
+  <desc id="desc">10 commits this week, 12 this month, 113 this year, 370 total</desc>
+  <defs>
+    <linearGradient id="animated-border" x1="0" y1="0" x2="900" y2="319" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#58a6ff"/>
+      <stop offset="25%" stop-color="#f7fbff"/>
+      <stop offset="50%" stop-color="#ff7b72"/>
+      <stop offset="75%" stop-color="#f7fbff"/>
+      <stop offset="100%" stop-color="#58a6ff"/>
+      <animateTransform
+        attributeName="gradientTransform"
+        type="rotate"
+        from="0 450 159.5"
+        to="360 450 159.5"
+        dur="6s"
+        repeatCount="indefinite"
+      />
+    </linearGradient>
+  </defs>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
-    .name { font-size: 24px; font-weight: 650; }
     .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
     .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
     .value { font-size: 29px; font-weight: 650; }
     .language { font-size: 11px; font-weight: 600; }
   </style>
-  <rect x="0.5" y="0.5" width="899" height="348" rx="14" fill="#0d1117" stroke="#30363d"/>
-  <text x="32" y="34" class="eyebrow" fill="#2f81f7">GITHUB ACTIVITY</text>
-  <text x="32" y="66" class="name" fill="#f0f6fc">Thibault Delattre</text>
-  <text x="868" y="34" text-anchor="end" class="eyebrow" fill="#6e7681">UPDATED JUL 23</text>
-  <text x="868" y="66" text-anchor="end" class="eyebrow" fill="#f0f6fc">17 REPOSITORIES</text>
-  <line x1="32" y1="88" x2="868" y2="88" stroke="#30363d"/>
-  <rect x="180" y="99" width="688" height="34" rx="7" fill="#161b22"/>
-  <text x="270" y="120" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="430" y="120" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="590" y="120" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="120" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
-  <text x="32" y="158" class="row-label" fill="#8b949e">COMMITS</text>
-  <text x="270" y="163" text-anchor="middle" class="value" fill="#f0f6fc">8</text><text x="430" y="163" text-anchor="middle" class="value" fill="#f0f6fc">10</text><text x="590" y="163" text-anchor="middle" class="value" fill="#f0f6fc">111</text><text x="760" y="163" text-anchor="middle" class="value" fill="#f0f6fc">368</text>
-  <line x1="180" y1="178" x2="868" y2="178" stroke="#30363d"/>
-  <text x="32" y="211" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
-  <text x="270" y="216" text-anchor="middle" class="value" fill="#f0f6fc">1</text><text x="430" y="216" text-anchor="middle" class="value" fill="#f0f6fc">2</text><text x="590" y="216" text-anchor="middle" class="value" fill="#f0f6fc">13</text><text x="760" y="216" text-anchor="middle" class="value" fill="#f0f6fc">47</text>
-  <line x1="32" y1="236" x2="868" y2="236" stroke="#30363d"/>
-  <text x="32" y="258" class="eyebrow" fill="#8b949e">LANGUAGES</text>
+  <rect x="1.25" y="1.25" width="897.5" height="316.5" rx="14" fill="#0d1117" stroke="url(#animated-border)" stroke-width="2.5"/>
+  <text x="32" y="37" class="eyebrow" fill="#2f81f7">GITHUB ACTIVITY</text>
+  <text x="868" y="37" text-anchor="end" class="eyebrow" fill="#6e7681">UPDATED JUL 23</text>
+  <line x1="32" y1="58" x2="868" y2="58" stroke="#30363d"/>
+  <rect x="180" y="70" width="688" height="34" rx="7" fill="#161b22"/>
+  <text x="270" y="91" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="430" y="91" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="590" y="91" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="91" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
+  <text x="32" y="129" class="row-label" fill="#8b949e">COMMITS</text>
+  <text x="270" y="134" text-anchor="middle" class="value" fill="#f0f6fc">10</text><text x="430" y="134" text-anchor="middle" class="value" fill="#f0f6fc">12</text><text x="590" y="134" text-anchor="middle" class="value" fill="#f0f6fc">113</text><text x="760" y="134" text-anchor="middle" class="value" fill="#f0f6fc">370</text>
+  <line x1="180" y1="149" x2="868" y2="149" stroke="#30363d"/>
+  <text x="32" y="182" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
+  <text x="270" y="187" text-anchor="middle" class="value" fill="#f0f6fc">1</text><text x="430" y="187" text-anchor="middle" class="value" fill="#f0f6fc">2</text><text x="590" y="187" text-anchor="middle" class="value" fill="#f0f6fc">13</text><text x="760" y="187" text-anchor="middle" class="value" fill="#f0f6fc">47</text>
+  <line x1="32" y1="207" x2="868" y2="207" stroke="#30363d"/>
+  <text x="32" y="228" class="eyebrow" fill="#8b949e">LANGUAGES</text>
   <g>
-        <rect x="32" y="267" width="108.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="46" cy="279.5" r="4" fill="#f1e05a"/>
-        <text x="58" y="283.5" class="language" fill="#f0f6fc">JavaScript</text>
+        <rect x="32" y="237" width="108.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="46" cy="249.5" r="4" fill="#f1e05a"/>
+        <text x="58" y="253.5" class="language" fill="#f0f6fc">JavaScript</text>
       </g><g>
-        <rect x="149" y="267" width="108.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="163" cy="279.5" r="4" fill="#3178c6"/>
-        <text x="175" y="283.5" class="language" fill="#f0f6fc">TypeScript</text>
+        <rect x="149" y="237" width="108.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="163" cy="249.5" r="4" fill="#3178c6"/>
+        <text x="175" y="253.5" class="language" fill="#f0f6fc">TypeScript</text>
       </g><g>
-        <rect x="266" y="267" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="280" cy="279.5" r="4" fill="#4F5D95"/>
-        <text x="292" y="283.5" class="language" fill="#f0f6fc">PHP</text>
+        <rect x="266" y="237" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="280" cy="249.5" r="4" fill="#4F5D95"/>
+        <text x="292" y="253.5" class="language" fill="#f0f6fc">PHP</text>
       </g><g>
-        <rect x="367" y="267" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="381" cy="279.5" r="4" fill="#663399"/>
-        <text x="393" y="283.5" class="language" fill="#f0f6fc">CSS</text>
+        <rect x="367" y="237" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="381" cy="249.5" r="4" fill="#663399"/>
+        <text x="393" y="253.5" class="language" fill="#f0f6fc">CSS</text>
       </g><g>
-        <rect x="468" y="267" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="482" cy="279.5" r="4" fill="#41b883"/>
-        <text x="494" y="283.5" class="language" fill="#f0f6fc">Vue</text>
+        <rect x="468" y="237" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="482" cy="249.5" r="4" fill="#41b883"/>
+        <text x="494" y="253.5" class="language" fill="#f0f6fc">Vue</text>
       </g><g>
-        <rect x="569" y="267" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="583" cy="279.5" r="4" fill="#3572A5"/>
-        <text x="595" y="283.5" class="language" fill="#f0f6fc">Python</text>
+        <rect x="569" y="237" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="583" cy="249.5" r="4" fill="#3572A5"/>
+        <text x="595" y="253.5" class="language" fill="#f0f6fc">Python</text>
       </g><g>
-        <rect x="670" y="267" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="684" cy="279.5" r="4" fill="#e34c26"/>
-        <text x="696" y="283.5" class="language" fill="#f0f6fc">HTML</text>
+        <rect x="670" y="237" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="684" cy="249.5" r="4" fill="#e34c26"/>
+        <text x="696" y="253.5" class="language" fill="#f0f6fc">HTML</text>
       </g><g>
-        <rect x="771" y="267" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="785" cy="279.5" r="4" fill="#c1d026"/>
-        <text x="797" y="283.5" class="language" fill="#f0f6fc">Twig</text>
+        <rect x="771" y="237" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="785" cy="249.5" r="4" fill="#c1d026"/>
+        <text x="797" y="253.5" class="language" fill="#f0f6fc">Twig</text>
       </g><g>
-        <rect x="32" y="301" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="46" cy="313.5" r="4" fill="#89e051"/>
-        <text x="58" y="317.5" class="language" fill="#f0f6fc">Shell</text>
+        <rect x="32" y="271" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="46" cy="283.5" r="4" fill="#89e051"/>
+        <text x="58" y="287.5" class="language" fill="#f0f6fc">Shell</text>
       </g><g>
-        <rect x="133" y="301" width="108.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="147" cy="313.5" r="4" fill="#384d54"/>
-        <text x="159" y="317.5" class="language" fill="#f0f6fc">Dockerfile</text>
+        <rect x="133" y="271" width="108.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="147" cy="283.5" r="4" fill="#384d54"/>
+        <text x="159" y="287.5" class="language" fill="#f0f6fc">Dockerfile</text>
       </g><g>
-        <rect x="250" y="301" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="264" cy="313.5" r="4" fill="#a91e50"/>
-        <text x="276" y="317.5" class="language" fill="#f0f6fc">EJS</text>
+        <rect x="250" y="271" width="92.0" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="264" cy="283.5" r="4" fill="#a91e50"/>
+        <text x="276" y="287.5" class="language" fill="#f0f6fc">EJS</text>
       </g><g>
-        <rect x="351" y="301" width="94.4" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
-        <circle cx="365" cy="313.5" r="4" fill="#3B2F63"/>
-        <text x="377" y="317.5" class="language" fill="#f0f6fc">Procfile</text>
+        <rect x="351" y="271" width="94.4" height="25" rx="12.5" fill="#161b22" stroke="#30363d"/>
+        <circle cx="365" cy="283.5" r="4" fill="#3B2F63"/>
+        <text x="377" y="287.5" class="language" fill="#f0f6fc">Procfile</text>
       </g>
 </svg>

@@ -1,24 +1,22 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "username": "thibault-delattre",
-  "displayName": "Thibault Delattre",
-  "generatedAt": "2026-07-23T13:05:40.617Z",
-  "repositories": 17,
+  "generatedAt": "2026-07-23T13:17:28.306Z",
   "activity": {
     "week": {
-      "commits": 8,
+      "commits": 10,
       "activeDays": 1
     },
     "month": {
-      "commits": 10,
+      "commits": 12,
       "activeDays": 2
     },
     "year": {
-      "commits": 111,
+      "commits": 113,
       "activeDays": 13
     },
     "total": {
-      "commits": 368,
+      "commits": 370,
       "activeDays": 47
     }
   },
@@ -26,7 +24,7 @@
     {
       "name": "JavaScript",
       "color": "#f1e05a",
-      "size": 423521,
+      "size": 422936,
       "percentage": 39.4
     },
     {
@@ -98,7 +96,7 @@
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4996,
+    "remaining": 4994,
     "resetAt": "2026-07-23T13:43:15Z"
   }
 }
