@@ -1,28 +1,25 @@
 const WIDTH = 900;
-const HEIGHT = 320;
 
 const THEMES = {
   light: {
     background: "#ffffff",
+    surface: "#f6f8fa",
     border: "#d0d7de",
     primary: "#1f2328",
     secondary: "#59636e",
     muted: "#818b98",
     line: "#d8dee4",
-    track: "#eaeef2",
-    positive: "#1a7f37",
-    negative: "#cf222e",
+    chip: "#f6f8fa",
   },
   dark: {
     background: "#0d1117",
+    surface: "#161b22",
     border: "#30363d",
     primary: "#f0f6fc",
     secondary: "#8b949e",
     muted: "#6e7681",
     line: "#30363d",
-    track: "#21262d",
-    positive: "#3fb950",
-    negative: "#f85149",
+    chip: "#161b22",
   },
 };
 
@@ -34,140 +31,122 @@ const THEMES = {
 export function renderCard(metrics, config, mode) {
   const theme = THEMES[mode];
   const accent = safeColor(config.brand.accent, "#2f81f7");
+  const languageLayout = layoutLanguageChips(metrics.languages, 32, 868, 267);
+  const height = Math.max(320, languageLayout.bottom + 22);
+  const periods = [
+    { label: "THIS WEEK", values: metrics.activity.week },
+    { label: "THIS MONTH", values: metrics.activity.month },
+    { label: "THIS YEAR", values: metrics.activity.year },
+    { label: "ALL TIME", values: metrics.activity.total },
+  ];
+  const columnCenters = [270, 430, 590, 760];
   const date = formatDisplayDate(metrics.generatedAt);
-  const trendColor =
-    metrics.momentumPercent >= 0 ? theme.positive : theme.negative;
-  const trendText = formatTrend(metrics.momentumPercent);
-  const sparkline = renderSparkline(
-    metrics.weeklyTotals,
-    32,
-    222,
-    470,
-    48,
-    accent,
-    theme.track,
-  );
-  const languages = renderLanguages(metrics.languages, theme, 555, 222);
-  const featured = metrics.featuredRepository?.name
-    ? `Most recently active · ${metrics.featuredRepository.name}`
-    : "Public GitHub activity";
 
-  const title = `${metrics.displayName} GitHub engineering activity`;
+  const title = `${metrics.displayName} GitHub activity`;
   const description = [
-    `${metrics.contributions} contributions across ${metrics.activeDays} active days`,
-    `${metrics.pullRequestsMerged} merged pull requests`,
-    `${metrics.reviews} code reviews`,
-    `during the last ${metrics.periodDays} days`,
+    `${metrics.activity.week.commits} commits this week`,
+    `${metrics.activity.month.commits} this month`,
+    `${metrics.activity.year.commits} this year`,
+    `${metrics.activity.total.commits} total`,
+    `${metrics.repositories} repositories`,
   ].join(", ");
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" role="img" aria-labelledby="title desc">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${height}" viewBox="0 0 ${WIDTH} ${height}" role="img" aria-labelledby="title desc">
   <title id="title">${escapeXml(title)}</title>
   <desc id="desc">${escapeXml(description)}</desc>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
     .name { font-size: 24px; font-weight: 650; }
-    .metric-label { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
-    .metric-value { font-size: 30px; font-weight: 650; }
-    .metric-note { font-size: 11px; }
-    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
-    .footer { font-size: 11px; }
+    .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
+    .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+    .value { font-size: 29px; font-weight: 650; }
     .language { font-size: 11px; font-weight: 600; }
   </style>
-  <rect x="0.5" y="0.5" width="${WIDTH - 1}" height="${HEIGHT - 1}" rx="14" fill="${theme.background}" stroke="${theme.border}"/>
-  <text x="32" y="34" class="eyebrow" fill="${accent}">${escapeXml(config.brand.label)}</text>
+  <rect x="0.5" y="0.5" width="${WIDTH - 1}" height="${height - 1}" rx="14" fill="${theme.background}" stroke="${theme.border}"/>
+  <text x="32" y="34" class="eyebrow" fill="${accent}">GITHUB ACTIVITY</text>
   <text x="32" y="66" class="name" fill="${theme.primary}">${escapeXml(metrics.displayName)}</text>
-  <circle cx="661" cy="43" r="4" fill="${theme.positive}"/>
-  <text x="673" y="47" class="eyebrow" fill="${theme.secondary}">PUBLIC DATA · UPDATED ${date}</text>
+  <text x="868" y="34" text-anchor="end" class="eyebrow" fill="${theme.muted}">UPDATED ${date}</text>
+  <text x="868" y="66" text-anchor="end" class="eyebrow" fill="${theme.primary}">${formatNumber(metrics.repositories)} REPOSITORIES</text>
   <line x1="32" y1="88" x2="868" y2="88" stroke="${theme.line}"/>
-  ${renderMetric(32, "CONTRIBUTIONS", metrics.contributions, `LAST ${metrics.periodDays} DAYS`, theme)}
-  ${renderMetric(247, "ACTIVE DAYS", metrics.activeDays, `${metrics.longestStreak}-DAY BEST STREAK`, theme)}
-  ${renderMetric(462, "MERGED PRS", metrics.pullRequestsMerged, `${metrics.pullRequestsOpened} OPENED`, theme)}
-  ${renderMetric(677, "CODE REVIEWS", metrics.reviews, `${metrics.repositoriesContributedTo} REPOS TOUCHED`, theme)}
-  <line x1="32" y1="178" x2="868" y2="178" stroke="${theme.line}"/>
-  <text x="32" y="205" class="section-label" fill="${theme.secondary}">WEEKLY CONTRIBUTION SIGNAL</text>
-  ${sparkline}
-  <text x="555" y="205" class="section-label" fill="${theme.secondary}">LANGUAGE FOOTPRINT</text>
-  ${languages}
-  <line x1="32" y1="288" x2="868" y2="288" stroke="${theme.line}"/>
-  <text x="32" y="308" class="footer" fill="${trendColor}">Momentum ${escapeXml(trendText)} vs previous ${metrics.periodDays} days</text>
-  <text x="868" y="308" text-anchor="end" class="footer" fill="${theme.secondary}">${escapeXml(featured)}</text>
+  <rect x="180" y="99" width="688" height="34" rx="7" fill="${theme.surface}"/>
+  ${periods
+    .map(
+      (period, index) =>
+        `<text x="${columnCenters[index]}" y="120" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
+    )
+    .join("")}
+  <text x="32" y="158" class="row-label" fill="${theme.secondary}">COMMITS</text>
+  ${periods
+    .map(
+      (period, index) =>
+        `<text x="${columnCenters[index]}" y="163" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.commits)}</text>`,
+    )
+    .join("")}
+  <line x1="180" y1="178" x2="868" y2="178" stroke="${theme.line}"/>
+  <text x="32" y="211" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
+  ${periods
+    .map(
+      (period, index) =>
+        `<text x="${columnCenters[index]}" y="216" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
+    )
+    .join("")}
+  <line x1="32" y1="236" x2="868" y2="236" stroke="${theme.line}"/>
+  <text x="32" y="258" class="eyebrow" fill="${theme.secondary}">LANGUAGES</text>
+  ${renderLanguageChips(languageLayout.items, theme)}
 </svg>`;
 }
 
 /**
- * @param {number} x
- * @param {string} label
- * @param {number} value
- * @param {string} note
- * @param {typeof THEMES.light} theme
+ * @param {Array<{name: string, color: string | null}>} languages
+ * @param {number} startX
+ * @param {number} maximumX
+ * @param {number} startY
  */
-function renderMetric(x, label, value, note, theme) {
-  return `<g transform="translate(${x} 0)">
-    <text x="0" y="111" class="metric-label" fill="${theme.secondary}">${escapeXml(label)}</text>
-    <text x="0" y="148" class="metric-value" fill="${theme.primary}">${formatNumber(value)}</text>
-    <text x="0" y="165" class="metric-note" fill="${theme.muted}">${escapeXml(note)}</text>
-  </g>`;
-}
+export function layoutLanguageChips(languages, startX, maximumX, startY) {
+  const source =
+    languages.length > 0
+      ? languages
+      : [{ name: "No language data yet", color: null }];
+  const items = [];
+  let x = startX;
+  let y = startY;
 
-/**
- * @param {number[]} values
- * @param {number} x
- * @param {number} y
- * @param {number} width
- * @param {number} height
- * @param {string} color
- * @param {string} track
- */
-function renderSparkline(values, x, y, width, height, color, track) {
-  const safeValues = values.length > 1 ? values : [0, 0];
-  const maximum = Math.max(1, ...safeValues);
-  const step = width / (safeValues.length - 1);
-  const points = safeValues
-    .map((value, index) => {
-      const pointX = x + index * step;
-      const pointY = y + height - (Math.max(0, value) / maximum) * height;
-      return `${pointX.toFixed(1)},${pointY.toFixed(1)}`;
-    })
-    .join(" ");
+  for (const language of source) {
+    const width = Math.max(92, 40 + language.name.length * 6.8);
 
-  const circles = safeValues
-    .map((value, index) => {
-      const pointX = x + index * step;
-      const pointY = y + height - (Math.max(0, value) / maximum) * height;
-      return `<circle cx="${pointX.toFixed(1)}" cy="${pointY.toFixed(1)}" r="2.4" fill="${color}"/>`;
-    })
-    .join("");
+    if (x > startX && x + width > maximumX) {
+      x = startX;
+      y += 34;
+    }
 
-  return `<line x1="${x}" y1="${y + height}" x2="${x + width}" y2="${y + height}" stroke="${track}"/>
-  <polyline points="${points}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  ${circles}`;
-}
-
-/**
- * @param {Array<{name: string, percentage: number, color: string | null}>} languages
- * @param {typeof THEMES.light} theme
- * @param {number} x
- * @param {number} y
- */
-function renderLanguages(languages, theme, x, y) {
-  if (languages.length === 0) {
-    return `<text x="${x}" y="${y + 21}" class="footer" fill="${theme.muted}">No language data available yet</text>`;
+    items.push({
+      ...language,
+      x,
+      y,
+      width,
+    });
+    x += width + 9;
   }
 
-  return languages
-    .map((language, index) => {
-      const rowY = y + index * 22;
-      const percentage = Math.max(0, Math.min(100, language.percentage));
-      const color = safeColor(language.color, "#8b949e");
-      const barWidth = Math.max(2, (percentage / 100) * 112);
+  return {
+    items,
+    bottom: y + 26,
+  };
+}
 
-      return `<g transform="translate(0 ${rowY})">
-        <circle cx="${x + 4}" cy="4" r="4" fill="${color}"/>
-        <text x="${x + 16}" y="8" class="language" fill="${theme.primary}">${escapeXml(language.name)}</text>
-        <rect x="${x + 145}" y="-1" width="112" height="7" rx="3.5" fill="${theme.track}"/>
-        <rect x="${x + 145}" y="-1" width="${barWidth.toFixed(1)}" height="7" rx="3.5" fill="${color}"/>
-        <text x="${x + 313}" y="8" text-anchor="end" class="footer" fill="${theme.secondary}">${percentage}%</text>
+/**
+ * @param {Array<{name: string, color: string | null, x: number, y: number, width: number}>} items
+ * @param {typeof THEMES.light} theme
+ */
+function renderLanguageChips(items, theme) {
+  return items
+    .map((language) => {
+      const color = safeColor(language.color, theme.muted);
+      return `<g>
+        <rect x="${language.x}" y="${language.y}" width="${language.width.toFixed(1)}" height="25" rx="12.5" fill="${theme.chip}" stroke="${theme.line}"/>
+        <circle cx="${language.x + 14}" cy="${language.y + 12.5}" r="4" fill="${color}"/>
+        <text x="${language.x + 26}" y="${language.y + 16.5}" class="language" fill="${theme.primary}">${escapeXml(language.name)}</text>
       </g>`;
     })
     .join("");
@@ -184,17 +163,6 @@ function formatNumber(value) {
 }
 
 /**
- * @param {number} value
- */
-function formatTrend(value) {
-  if (value === 0) {
-    return "0%";
-  }
-
-  return `${value > 0 ? "+" : ""}${value}%`;
-}
-
-/**
  * @param {string} isoDate
  */
 function formatDisplayDate(isoDate) {
@@ -206,7 +174,6 @@ function formatDisplayDate(isoDate) {
   return new Intl.DateTimeFormat("en-US", {
     day: "2-digit",
     month: "short",
-    year: "numeric",
     timeZone: "UTC",
   })
     .format(date)

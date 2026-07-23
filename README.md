@@ -6,19 +6,17 @@ A distinctive, automatically updated GitHub activity card for
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./generated/activity-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="./generated/activity-light.svg">
-  <img alt="Thibault Delattre's GitHub engineering activity, updated daily" src="./generated/activity-light.svg" width="100%">
+  <img alt="Thibault Delattre's automatically updated GitHub activity" src="./generated/activity-light.svg" width="100%">
 </picture>
 
 ## What it tracks
 
-The card describes the most recent 90 days of public GitHub work:
+The card presents a compact view of public GitHub work:
 
-- contributions and active days;
-- merged and opened pull requests;
-- code reviews and repositories contributed to;
-- momentum compared with the preceding 90-day period;
-- weekly contribution signal;
-- language footprint across owned, public, non-fork repositories.
+- contribution commits for this week, month, year, and all time;
+- active days for the same four calendar periods;
+- total owned public repositories;
+- every language detected across owned, public, non-fork repositories.
 
 It is generated as static light and dark SVG files. There is no public server,
 tracking script, analytics service, or runtime dependency.
@@ -32,7 +30,7 @@ Scheduled GitHub Action
 GitHub GraphQL API
         │
         ▼
-Metric normalization and repository exclusions
+Calendar-period aggregation and repository exclusions
         │
         ▼
 Pure, escaped SVG + transparent JSON summary
@@ -62,7 +60,7 @@ profile repository:
     srcset="https://raw.githubusercontent.com/thibault-delattre/profile-activity-tracker/main/generated/activity-light.svg"
   />
   <img
-    alt="Thibault Delattre's GitHub engineering activity, updated daily"
+    alt="Thibault Delattre's automatically updated GitHub activity"
     src="https://raw.githubusercontent.com/thibault-delattre/profile-activity-tracker/main/generated/activity-light.svg"
     width="100%"
   />
@@ -77,20 +75,23 @@ Edit [`config/profile.json`](./config/profile.json):
 {
   "username": "thibault-delattre",
   "displayName": "Thibault Delattre",
-  "periodDays": 90,
-  "maxLanguages": 3,
   "excludedRepositories": ["thibault-delattre"],
   "brand": {
-    "label": "ENGINEERING PULSE",
     "accent": "#2f81f7"
   }
 }
 ```
 
-Language percentages represent bytes reported by GitHub for eligible
-repositories; they are not a measure of proficiency. Add generated, tutorial,
-archived, or otherwise unrepresentative repositories to
+Languages are ordered using the bytes reported by GitHub for eligible
+repositories; this ordering is not a measure of proficiency. Add generated,
+tutorial, archived, or otherwise unrepresentative repositories to
 `excludedRepositories`.
+
+Week means Monday through the current day in UTC. Month and year are calendar
+periods. All-time commits and active days are calculated by collecting every
+contribution year returned by GitHub. Commit totals follow GitHub's profile
+contribution rules, so commits that do not qualify for the contribution graph
+are not included.
 
 ## Local development
 

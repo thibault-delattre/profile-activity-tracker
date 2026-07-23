@@ -8,10 +8,8 @@ const HEX_COLOR_PATTERN = /^#[0-9A-Fa-f]{6}$/;
  * @typedef {object} TrackerConfig
  * @property {string} username
  * @property {string} displayName
- * @property {number} periodDays
- * @property {number} maxLanguages
  * @property {string[]} excludedRepositories
- * @property {{label: string, accent: string}} brand
+ * @property {{accent: string}} brand
  */
 
 /**
@@ -57,22 +55,6 @@ export function validateConfig(value) {
   }
 
   if (
-    !Number.isInteger(config.periodDays) ||
-    Number(config.periodDays) < 30 ||
-    Number(config.periodDays) > 365
-  ) {
-    throw new Error("periodDays must be an integer between 30 and 365.");
-  }
-
-  if (
-    !Number.isInteger(config.maxLanguages) ||
-    Number(config.maxLanguages) < 1 ||
-    Number(config.maxLanguages) > 5
-  ) {
-    throw new Error("maxLanguages must be an integer between 1 and 5.");
-  }
-
-  if (
     !Array.isArray(config.excludedRepositories) ||
     config.excludedRepositories.some(
       (repository) => typeof repository !== "string" || repository.length < 1,
@@ -92,14 +74,6 @@ export function validateConfig(value) {
   const brand = /** @type {Record<string, unknown>} */ (config.brand);
 
   if (
-    typeof brand.label !== "string" ||
-    brand.label.length < 1 ||
-    brand.label.length > 40
-  ) {
-    throw new Error("brand.label must contain between 1 and 40 characters.");
-  }
-
-  if (
     typeof brand.accent !== "string" ||
     !HEX_COLOR_PATTERN.test(brand.accent)
   ) {
@@ -109,11 +83,8 @@ export function validateConfig(value) {
   return /** @type {TrackerConfig} */ ({
     username: config.username,
     displayName: config.displayName.trim(),
-    periodDays: config.periodDays,
-    maxLanguages: config.maxLanguages,
     excludedRepositories: [...new Set(config.excludedRepositories)],
     brand: {
-      label: brand.label.trim(),
       accent: brand.accent.toLowerCase(),
     },
   });

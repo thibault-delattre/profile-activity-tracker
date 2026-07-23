@@ -1,7 +1,7 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { loadConfig } from "./config.js";
-import { createDateWindows } from "./dates.js";
+import { createActivityWindows } from "./dates.js";
 import { fetchGitHubActivity } from "./github.js";
 import { buildMetrics } from "./metrics.js";
 import { createPlaceholderData } from "./placeholder.js";
@@ -18,7 +18,7 @@ async function main() {
     throw new Error("--now must contain a valid ISO-8601 date.");
   }
 
-  const windows = createDateWindows(now, config.periodDays);
+  const windows = createActivityWindows(now);
   let data;
 
   if (arguments_.fixture) {
@@ -44,7 +44,8 @@ async function main() {
 
   console.log(
     `Generated ${Object.keys(outputs).length} files for @${config.username}: ` +
-      `${metrics.contributions} contributions in ${config.periodDays} days.`,
+      `${metrics.activity.total.commits} contribution commits across ` +
+      `${metrics.repositories} repositories.`,
   );
 }
 

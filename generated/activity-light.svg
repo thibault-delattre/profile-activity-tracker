@@ -1,69 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320" role="img" aria-labelledby="title desc">
-  <title id="title">Thibault Delattre GitHub engineering activity</title>
-  <desc id="desc">34 contributions across 5 active days, 0 merged pull requests, 0 code reviews, during the last 90 days</desc>
+  <title id="title">Thibault Delattre GitHub activity</title>
+  <desc id="desc">0 commits this week, 0 this month, 0 this year, 0 total, 0 repositories</desc>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
     .name { font-size: 24px; font-weight: 650; }
-    .metric-label { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
-    .metric-value { font-size: 30px; font-weight: 650; }
-    .metric-note { font-size: 11px; }
-    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
-    .footer { font-size: 11px; }
+    .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
+    .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+    .value { font-size: 29px; font-weight: 650; }
     .language { font-size: 11px; font-weight: 600; }
   </style>
   <rect x="0.5" y="0.5" width="899" height="319" rx="14" fill="#ffffff" stroke="#d0d7de"/>
-  <text x="32" y="34" class="eyebrow" fill="#2f81f7">ENGINEERING PULSE</text>
+  <text x="32" y="34" class="eyebrow" fill="#2f81f7">GITHUB ACTIVITY</text>
   <text x="32" y="66" class="name" fill="#1f2328">Thibault Delattre</text>
-  <circle cx="661" cy="43" r="4" fill="#1a7f37"/>
-  <text x="673" y="47" class="eyebrow" fill="#59636e">PUBLIC DATA · UPDATED JUL 23 2026</text>
+  <text x="868" y="34" text-anchor="end" class="eyebrow" fill="#818b98">UPDATED JUL 23</text>
+  <text x="868" y="66" text-anchor="end" class="eyebrow" fill="#1f2328">0 REPOSITORIES</text>
   <line x1="32" y1="88" x2="868" y2="88" stroke="#d8dee4"/>
-  <g transform="translate(32 0)">
-    <text x="0" y="111" class="metric-label" fill="#59636e">CONTRIBUTIONS</text>
-    <text x="0" y="148" class="metric-value" fill="#1f2328">34</text>
-    <text x="0" y="165" class="metric-note" fill="#818b98">LAST 90 DAYS</text>
-  </g>
-  <g transform="translate(247 0)">
-    <text x="0" y="111" class="metric-label" fill="#59636e">ACTIVE DAYS</text>
-    <text x="0" y="148" class="metric-value" fill="#1f2328">5</text>
-    <text x="0" y="165" class="metric-note" fill="#818b98">2-DAY BEST STREAK</text>
-  </g>
-  <g transform="translate(462 0)">
-    <text x="0" y="111" class="metric-label" fill="#59636e">MERGED PRS</text>
-    <text x="0" y="148" class="metric-value" fill="#1f2328">0</text>
-    <text x="0" y="165" class="metric-note" fill="#818b98">0 OPENED</text>
-  </g>
-  <g transform="translate(677 0)">
-    <text x="0" y="111" class="metric-label" fill="#59636e">CODE REVIEWS</text>
-    <text x="0" y="148" class="metric-value" fill="#1f2328">0</text>
-    <text x="0" y="165" class="metric-note" fill="#818b98">4 REPOS TOUCHED</text>
-  </g>
-  <line x1="32" y1="178" x2="868" y2="178" stroke="#d8dee4"/>
-  <text x="32" y="205" class="section-label" fill="#59636e">WEEKLY CONTRIBUTION SIGNAL</text>
-  <line x1="32" y1="270" x2="502" y2="270" stroke="#eaeef2"/>
-  <polyline points="32.0,270.0 68.2,270.0 104.3,270.0 140.5,270.0 176.6,270.0 212.8,222.0 248.9,270.0 285.1,270.0 321.2,265.2 357.4,270.0 393.5,270.0 429.7,265.2 465.8,270.0 502.0,246.0" fill="none" stroke="#2f81f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="32.0" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="68.2" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="104.3" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="140.5" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="176.6" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="212.8" cy="222.0" r="2.4" fill="#2f81f7"/><circle cx="248.9" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="285.1" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="321.2" cy="265.2" r="2.4" fill="#2f81f7"/><circle cx="357.4" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="393.5" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="429.7" cy="265.2" r="2.4" fill="#2f81f7"/><circle cx="465.8" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="502.0" cy="246.0" r="2.4" fill="#2f81f7"/>
-  <text x="555" y="205" class="section-label" fill="#59636e">LANGUAGE FOOTPRINT</text>
-  <g transform="translate(0 222)">
-        <circle cx="559" cy="4" r="4" fill="#f1e05a"/>
-        <text x="571" y="8" class="language" fill="#1f2328">JavaScript</text>
-        <rect x="700" y="-1" width="112" height="7" rx="3.5" fill="#eaeef2"/>
-        <rect x="700" y="-1" width="43.7" height="7" rx="3.5" fill="#f1e05a"/>
-        <text x="868" y="8" text-anchor="end" class="footer" fill="#59636e">39%</text>
-      </g><g transform="translate(0 244)">
-        <circle cx="559" cy="4" r="4" fill="#3178c6"/>
-        <text x="571" y="8" class="language" fill="#1f2328">TypeScript</text>
-        <rect x="700" y="-1" width="112" height="7" rx="3.5" fill="#eaeef2"/>
-        <rect x="700" y="-1" width="23.5" height="7" rx="3.5" fill="#3178c6"/>
-        <text x="868" y="8" text-anchor="end" class="footer" fill="#59636e">21%</text>
-      </g><g transform="translate(0 266)">
-        <circle cx="559" cy="4" r="4" fill="#4F5D95"/>
-        <text x="571" y="8" class="language" fill="#1f2328">PHP</text>
-        <rect x="700" y="-1" width="112" height="7" rx="3.5" fill="#eaeef2"/>
-        <rect x="700" y="-1" width="19.0" height="7" rx="3.5" fill="#4F5D95"/>
-        <text x="868" y="8" text-anchor="end" class="footer" fill="#59636e">17%</text>
+  <rect x="180" y="99" width="688" height="34" rx="7" fill="#f6f8fa"/>
+  <text x="270" y="120" text-anchor="middle" class="period" fill="#59636e">THIS WEEK</text><text x="430" y="120" text-anchor="middle" class="period" fill="#59636e">THIS MONTH</text><text x="590" y="120" text-anchor="middle" class="period" fill="#59636e">THIS YEAR</text><text x="760" y="120" text-anchor="middle" class="period" fill="#59636e">ALL TIME</text>
+  <text x="32" y="158" class="row-label" fill="#59636e">COMMITS</text>
+  <text x="270" y="163" text-anchor="middle" class="value" fill="#1f2328">0</text><text x="430" y="163" text-anchor="middle" class="value" fill="#1f2328">0</text><text x="590" y="163" text-anchor="middle" class="value" fill="#1f2328">0</text><text x="760" y="163" text-anchor="middle" class="value" fill="#1f2328">0</text>
+  <line x1="180" y1="178" x2="868" y2="178" stroke="#d8dee4"/>
+  <text x="32" y="211" class="row-label" fill="#59636e">ACTIVE DAYS</text>
+  <text x="270" y="216" text-anchor="middle" class="value" fill="#1f2328">0</text><text x="430" y="216" text-anchor="middle" class="value" fill="#1f2328">0</text><text x="590" y="216" text-anchor="middle" class="value" fill="#1f2328">0</text><text x="760" y="216" text-anchor="middle" class="value" fill="#1f2328">0</text>
+  <line x1="32" y1="236" x2="868" y2="236" stroke="#d8dee4"/>
+  <text x="32" y="258" class="eyebrow" fill="#59636e">LANGUAGES</text>
+  <g>
+        <rect x="32" y="267" width="176.0" height="25" rx="12.5" fill="#f6f8fa" stroke="#d8dee4"/>
+        <circle cx="46" cy="279.5" r="4" fill="#818b98"/>
+        <text x="58" y="283.5" class="language" fill="#1f2328">No language data yet</text>
       </g>
-  <line x1="32" y1="288" x2="868" y2="288" stroke="#d8dee4"/>
-  <text x="32" y="308" class="footer" fill="#cf222e">Momentum -33% vs previous 90 days</text>
-  <text x="868" y="308" text-anchor="end" class="footer" fill="#59636e">Most recently active · profile-activity-tracker</text>
 </svg>

@@ -1,23 +1,19 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createDateWindows } from "../src/dates.js";
+import { createActivityWindows } from "../src/dates.js";
 
-test("createDateWindows returns adjacent non-overlapping UTC periods", () => {
-  const windows = createDateWindows(new Date("2026-07-23T14:00:00Z"), 90);
+test("createActivityWindows returns calendar-to-date UTC periods", () => {
+  const windows = createActivityWindows(new Date("2026-07-23T14:00:00Z"));
 
-  assert.equal(windows.current.fromDate, "2026-04-25");
-  assert.equal(windows.current.toDate, "2026-07-23");
-  assert.equal(windows.previous.fromDate, "2026-01-25");
-  assert.equal(windows.previous.toDate, "2026-04-24");
-  assert.equal(
-    windows.current.from.getTime() - windows.previous.to.getTime(),
-    1,
-  );
+  assert.equal(windows.week.fromDate, "2026-07-20");
+  assert.equal(windows.week.toDate, "2026-07-23");
+  assert.equal(windows.month.fromDate, "2026-07-01");
+  assert.equal(windows.year.fromDate, "2026-01-01");
 });
 
-test("createDateWindows rejects invalid dates", () => {
+test("createActivityWindows rejects invalid dates", () => {
   assert.throws(
-    () => createDateWindows(new Date("invalid"), 90),
+    () => createActivityWindows(new Date("invalid")),
     /valid Date/,
   );
 });

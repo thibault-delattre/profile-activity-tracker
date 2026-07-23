@@ -1,5 +1,3 @@
-const DAY_IN_MS = 24 * 60 * 60 * 1000;
-
 /**
  * @typedef {object} DateWindow
  * @property {Date} from
@@ -9,36 +7,38 @@ const DAY_IN_MS = 24 * 60 * 60 * 1000;
  */
 
 /**
- * Build adjacent, non-overlapping UTC windows. The current window includes
- * today and exactly `periodDays` calendar dates.
+ * Build calendar-to-date windows in UTC. Weeks begin on Monday.
  *
  * @param {Date} now
- * @param {number} periodDays
- * @returns {{current: DateWindow, previous: DateWindow}}
+ * @returns {{week: DateWindow, month: DateWindow, year: DateWindow}}
  */
-export function createDateWindows(now, periodDays) {
+export function createActivityWindows(now) {
   if (!(now instanceof Date) || Number.isNaN(now.getTime())) {
     throw new Error("now must be a valid Date.");
-  }
-
-  if (!Number.isInteger(periodDays) || periodDays < 1) {
-    throw new Error("periodDays must be a positive integer.");
   }
 
   const todayStart = new Date(
     Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()),
   );
-  const currentFrom = new Date(
-    todayStart.getTime() - (periodDays - 1) * DAY_IN_MS,
+  const mondayOffset = (todayStart.getUTCDay() + 6) % 7;
+  const weekStart = new Date(
+    Date.UTC(
+      todayStart.getUTCFullYear(),
+      todayStart.getUTCMonth(),
+      todayStart.getUTCDate() - mondayOffset,
+    ),
   );
-  const previousTo = new Date(currentFrom.getTime() - 1);
-  const previousFrom = new Date(
-    currentFrom.getTime() - periodDays * DAY_IN_MS,
+  const monthStart = new Date(
+    Date.UTC(todayStart.getUTCFullYear(), todayStart.getUTCMonth(), 1),
+  );
+  const yearStart = new Date(
+    Date.UTC(todayStart.getUTCFullYear(), 0, 1),
   );
 
   return {
-    current: toWindow(currentFrom, now),
-    previous: toWindow(previousFrom, previousTo),
+    week: toWindow(weekStart, now),
+    month: toWindow(monthStart, now),
+    year: toWindow(yearStart, now),
   };
 }
 

@@ -5,11 +5,8 @@ import { validateConfig } from "../src/config.js";
 const validConfig = {
   username: "thibault-delattre",
   displayName: "Thibault Delattre",
-  periodDays: 90,
-  maxLanguages: 3,
   excludedRepositories: ["profile"],
   brand: {
-    label: "ENGINEERING PULSE",
     accent: "#2f81f7",
   },
 };

@@ -1,23 +1,56 @@
+import { createActivityWindows } from "./dates.js";
+
 /**
- * Produce an honest initial state. The first push-triggered workflow replaces
- * this with live GitHub data.
+ * Produce an honest initial state. A live workflow replaces this with GitHub
+ * data.
  *
  * @param {import("./config.js").TrackerConfig} config
  * @param {Date} now
  */
 export function createPlaceholderData(config, now) {
-  const days = [];
-  const start = new Date(
-    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) -
-      (config.periodDays - 1) * 86_400_000,
-  );
+  const windows = createActivityWindows(now);
+  const currentYear = now.getUTCFullYear();
 
-  for (let index = 0; index < config.periodDays; index += 1) {
-    const date = new Date(start.getTime() + index * 86_400_000);
+  return {
+    user: {
+      login: config.username,
+      name: config.displayName,
+      url: `https://github.com/${config.username}`,
+      totalRepositories: { totalCount: 0 },
+      repositories: { nodes: [] },
+      periods: {
+        week: createCollection(windows.week.from, windows.week.to),
+        month: createCollection(windows.month.from, windows.month.to),
+        year: createCollection(windows.year.from, windows.year.to),
+        yearly: {
+          [currentYear]: createCollection(
+            windows.year.from,
+            windows.year.to,
+          ),
+        },
+      },
+    },
+    rateLimit: null,
+  };
+}
+
+/**
+ * @param {Date} from
+ * @param {Date} to
+ */
+function createCollection(from, to) {
+  const days = [];
+  const cursor = new Date(from);
+  cursor.setUTCHours(0, 0, 0, 0);
+  const finalDate = new Date(to);
+  finalDate.setUTCHours(0, 0, 0, 0);
+
+  while (cursor <= finalDate) {
     days.push({
-      date: date.toISOString().slice(0, 10),
+      date: cursor.toISOString().slice(0, 10),
       contributionCount: 0,
     });
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
   }
 
   const weeks = [];
@@ -25,30 +58,8 @@ export function createPlaceholderData(config, now) {
     weeks.push({ contributionDays: days.slice(index, index + 7) });
   }
 
-  const collection = {
-    contributionCalendar: {
-      totalContributions: 0,
-      weeks,
-    },
-    totalCommitContributions: 0,
-    totalIssueContributions: 0,
-    totalPullRequestContributions: 0,
-    totalPullRequestReviewContributions: 0,
-    restrictedContributionsCount: 0,
-    commitContributionsByRepository: [],
-  };
-
   return {
-    user: {
-      login: config.username,
-      name: config.displayName,
-      url: `https://github.com/${config.username}`,
-      repositories: { nodes: [] },
-      current: collection,
-      previous: collection,
-    },
-    currentMerged: { issueCount: 0 },
-    previousMerged: { issueCount: 0 },
-    rateLimit: null,
+    totalCommitContributions: 0,
+    contributionCalendar: { weeks },
   };
 }

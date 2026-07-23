@@ -6,8 +6,6 @@
   "required": [
     "username",
     "displayName",
-    "periodDays",
-    "maxLanguages",
     "excludedRepositories",
     "brand"
   ],
@@ -24,16 +22,6 @@
       "minLength": 1,
       "maxLength": 60
     },
-    "periodDays": {
-      "type": "integer",
-      "minimum": 30,
-      "maximum": 365
-    },
-    "maxLanguages": {
-      "type": "integer",
-      "minimum": 1,
-      "maximum": 5
-    },
     "excludedRepositories": {
       "type": "array",
       "uniqueItems": true,
@@ -46,15 +34,9 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "label",
         "accent"
       ],
       "properties": {
-        "label": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 40
-        },
         "accent": {
           "type": "string",
           "pattern": "^#[0-9A-Fa-f]{6}$"

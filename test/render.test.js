@@ -1,15 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { renderCard } from "../src/render.js";
+import { layoutLanguageChips, renderCard } from "../src/render.js";
 
 const config = {
   username: "thibault-delattre",
   displayName: "Thibault & Delattre",
-  periodDays: 90,
-  maxLanguages: 3,
   excludedRepositories: [],
   brand: {
-    label: "ENGINEERING <PULSE>",
     accent: "#2f81f7",
   },
 };
@@ -17,30 +14,35 @@ const config = {
 const metrics = {
   displayName: "Thibault & Delattre",
   generatedAt: "2026-07-23T14:00:00.000Z",
-  periodDays: 90,
-  contributions: 123,
-  momentumPercent: 20,
-  activeDays: 42,
-  longestStreak: 7,
-  pullRequestsMerged: 5,
-  pullRequestsOpened: 6,
-  reviews: 9,
-  repositoriesContributedTo: 4,
-  weeklyTotals: [1, 4, 2, 8, 3],
+  repositories: 16,
+  activity: {
+    week: { commits: 3, activeDays: 2 },
+    month: { commits: 14, activeDays: 6 },
+    year: { commits: 92, activeDays: 31 },
+    total: { commits: 430, activeDays: 140 },
+  },
   languages: [
-    { name: "TypeScript", percentage: 75, color: "#3178c6" },
-    { name: "<unsafe>", percentage: 25, color: "javascript:alert(1)" },
+    { name: "TypeScript", color: "#3178c6" },
+    { name: "<unsafe>", color: "javascript:alert(1)" },
   ],
-  featuredRepository: { name: "project & work" },
 };
 
-test("renderCard creates a self-contained and escaped SVG", () => {
+test("renderCard creates a self-contained, escaped activity table", () => {
   const svg = renderCard(metrics, config, "dark");
 
   assert.match(svg, /^<svg /);
+  assert.match(svg, /GITHUB ACTIVITY/);
+  assert.match(svg, /THIS WEEK/);
+  assert.match(svg, /THIS MONTH/);
+  assert.match(svg, /THIS YEAR/);
+  assert.match(svg, /ALL TIME/);
+  assert.match(svg, /16 REPOSITORIES/);
   assert.match(svg, /Thibault &amp; Delattre/);
-  assert.match(svg, /ENGINEERING &lt;PULSE&gt;/);
   assert.match(svg, /&lt;unsafe&gt;/);
+  assert.doesNotMatch(svg, /ENGINEERING PULSE/);
+  assert.doesNotMatch(svg, /MOMENTUM/i);
+  assert.doesNotMatch(svg, /MERGED PR/i);
+  assert.doesNotMatch(svg, /CODE REVIEW/i);
   assert.doesNotMatch(svg, /<script/i);
   assert.doesNotMatch(svg, /<foreignObject/i);
   assert.doesNotMatch(svg, /javascript:/i);
@@ -54,4 +56,18 @@ test("renderCard renders distinct light and dark palettes", () => {
   assert.match(light, /fill="#ffffff"/);
   assert.match(dark, /fill="#0d1117"/);
   assert.notEqual(light, dark);
+});
+
+test("layoutLanguageChips wraps every language without truncating", () => {
+  const languages = Array.from({ length: 15 }, (_, index) => ({
+    name: `Language-${index}`,
+    color: "#123456",
+  }));
+  const layout = layoutLanguageChips(languages, 32, 868, 267);
+
+  assert.equal(layout.items.length, 15);
+  assert.ok(new Set(layout.items.map((item) => item.y)).size > 1);
+  assert.ok(
+    layout.items.every((item) => item.x + item.width <= 868),
+  );
 });
