@@ -11,9 +11,10 @@ A distinctive, automatically updated GitHub activity card for
 
 ## What it tracks
 
-The card presents a compact view of public GitHub work:
+The card presents a compact view of activity visible on GitHub's public
+contribution calendar:
 
-- contribution commits for this week, month, year, and all time;
+- GitHub contributions for this week, month, year, and all time;
 - active days for the same four calendar periods;
 - every language detected across owned, public, non-fork repositories.
 
@@ -87,10 +88,11 @@ tutorial, archived, or otherwise unrepresentative repositories to
 `excludedRepositories`.
 
 Week means Monday through the current day in UTC. Month and year are calendar
-periods. All-time commits and active days are calculated by collecting every
-contribution year returned by GitHub. Commit totals follow GitHub's profile
-contribution rules, so commits that do not qualify for the contribution graph
-are not included.
+periods. All-time contributions and active days are calculated by collecting
+every contribution year returned by GitHub. Totals follow GitHub's public
+contribution calendar and can include anonymized private activity when that
+visibility option is enabled on the profile. Contributions can include commits,
+issues, pull requests, reviews, and other activity recognized by GitHub.
 
 ## Local development
 

@@ -44,7 +44,7 @@ async function main() {
 
   console.log(
     `Generated ${Object.keys(outputs).length} files for @${config.username}: ` +
-      `${metrics.activity.total.commits} contribution commits.`,
+      `${metrics.activity.total.contributions} contributions.`,
   );
 }
 

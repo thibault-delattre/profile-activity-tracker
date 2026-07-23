@@ -42,10 +42,10 @@ export function renderCard(metrics, config, mode) {
 
   const title = `GitHub activity for @${metrics.username}`;
   const description = [
-    `${metrics.activity.week.commits} commits this week`,
-    `${metrics.activity.month.commits} this month`,
-    `${metrics.activity.year.commits} this year`,
-    `${metrics.activity.total.commits} total`,
+    `${metrics.activity.week.contributions} contributions this week`,
+    `${metrics.activity.month.contributions} this month`,
+    `${metrics.activity.year.contributions} this year`,
+    `${metrics.activity.total.contributions} total`,
   ].join(", ");
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${height}" viewBox="0 0 ${WIDTH} ${height}" role="img" aria-labelledby="title desc">
@@ -87,11 +87,11 @@ export function renderCard(metrics, config, mode) {
         `<text x="${columnCenters[index]}" y="91" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
     )
     .join("")}
-  <text x="32" y="129" class="row-label" fill="${theme.secondary}">COMMITS</text>
+  <text x="32" y="129" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
   ${periods
     .map(
       (period, index) =>
-        `<text x="${columnCenters[index]}" y="134" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.commits)}</text>`,
+        `<text x="${columnCenters[index]}" y="134" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
     )
     .join("")}
   <line x1="180" y1="149" x2="868" y2="149" stroke="${theme.line}"/>

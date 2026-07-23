@@ -57,7 +57,9 @@ function createCollection(from, to) {
   }
 
   return {
-    totalCommitContributions: 0,
-    contributionCalendar: { weeks },
+    contributionCalendar: {
+      totalContributions: 0,
+      weeks,
+    },
   };
 }

@@ -77,8 +77,8 @@ const REPOSITORY_PAGE_QUERY = `
 `;
 
 const COLLECTION_FIELDS = `
-  totalCommitContributions
   contributionCalendar {
+    totalContributions
     weeks {
       contributionDays {
         contributionCount

@@ -26,21 +26,30 @@ test("flattenDays returns ordered, valid contribution days", () => {
   );
 });
 
-test("buildMetrics creates week, month, year, and all-time totals", () => {
+test("buildMetrics creates contribution and active-day totals", () => {
   const metrics = buildMetrics(
     createPayload(),
     config,
     new Date("2026-07-23T14:00:00Z"),
   );
 
-  assert.deepEqual(metrics.activity.week, { commits: 3, activeDays: 2 });
-  assert.deepEqual(metrics.activity.month, { commits: 7, activeDays: 3 });
-  assert.deepEqual(metrics.activity.year, { commits: 20, activeDays: 4 });
+  assert.deepEqual(metrics.activity.week, {
+    contributions: 3,
+    activeDays: 2,
+  });
+  assert.deepEqual(metrics.activity.month, {
+    contributions: 7,
+    activeDays: 3,
+  });
+  assert.deepEqual(metrics.activity.year, {
+    contributions: 20,
+    activeDays: 4,
+  });
   assert.deepEqual(metrics.activity.total, {
-    commits: 45,
+    contributions: 45,
     activeDays: 6,
   });
-  assert.equal(metrics.schemaVersion, 3);
+  assert.equal(metrics.schemaVersion, 4);
   assert.equal("repositories" in metrics, false);
   assert.equal("displayName" in metrics, false);
   assert.deepEqual(
@@ -103,10 +112,10 @@ function createPayload() {
   };
 }
 
-function collection(commits, counts) {
+function collection(contributions, counts) {
   return {
-    totalCommitContributions: commits,
     contributionCalendar: {
+      totalContributions: contributions,
       weeks: [
         {
           contributionDays: counts.map((contributionCount, index) => ({

@@ -14,10 +14,10 @@ const metrics = {
   username: "thibault-delattre",
   generatedAt: "2026-07-23T14:00:00.000Z",
   activity: {
-    week: { commits: 3, activeDays: 2 },
-    month: { commits: 14, activeDays: 6 },
-    year: { commits: 92, activeDays: 31 },
-    total: { commits: 430, activeDays: 140 },
+    week: { contributions: 3, activeDays: 2 },
+    month: { contributions: 14, activeDays: 6 },
+    year: { contributions: 92, activeDays: 31 },
+    total: { contributions: 430, activeDays: 140 },
   },
   languages: [
     { name: "TypeScript", color: "#3178c6" },
@@ -34,6 +34,8 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /THIS MONTH/);
   assert.match(svg, /THIS YEAR/);
   assert.match(svg, /ALL TIME/);
+  assert.match(svg, /CONTRIBUTIONS/);
+  assert.doesNotMatch(svg, />COMMITS</);
   assert.match(svg, /linearGradient id="animated-border"/);
   assert.match(svg, /#58a6ff/);
   assert.match(svg, /#f7fbff/);

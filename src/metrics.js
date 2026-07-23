@@ -5,9 +5,9 @@
 /**
  * Convert the GraphQL payload into the rendering model.
  *
- * Commits are GitHub contribution commits: the same eligibility rules used by
- * the profile contribution graph. Active days include days with at least one
- * contribution in GitHub's contribution calendar.
+ * Contributions and active days come from GitHub's public contribution
+ * calendar. When the profile owner enables private contribution visibility,
+ * GitHub includes that activity anonymously without exposing repositories.
  *
  * @param {Record<string, any>} data
  * @param {import("./config.js").TrackerConfig} config
@@ -21,7 +21,7 @@ export function buildMetrics(data, config, generatedAt) {
   );
 
   return {
-    schemaVersion: 3,
+    schemaVersion: 4,
     username: config.username,
     generatedAt: generatedAt.toISOString(),
     activity: {
@@ -29,9 +29,12 @@ export function buildMetrics(data, config, generatedAt) {
       month: summarizeCollection(periods.month),
       year: summarizeCollection(periods.year),
       total: {
-        commits: yearly.reduce(
+        contributions: yearly.reduce(
           (total, collection) =>
-            total + Number(collection?.totalCommitContributions ?? 0),
+            total +
+            Number(
+              collection?.contributionCalendar?.totalContributions ?? 0,
+            ),
           0,
         ),
         activeDays: yearly.reduce(
@@ -54,7 +57,9 @@ export function buildMetrics(data, config, generatedAt) {
  */
 function summarizeCollection(collection) {
   return {
-    commits: Number(collection?.totalCommitContributions ?? 0),
+    contributions: Number(
+      collection?.contributionCalendar?.totalContributions ?? 0,
+    ),
     activeDays: countActiveDays(collection),
   };
 }
