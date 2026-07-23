@@ -1,30 +1,30 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "username": "thibault-delattre",
-  "generatedAt": "2026-07-23T13:17:28.306Z",
+  "generatedAt": "2026-07-23T13:34:16.912Z",
   "activity": {
     "week": {
-      "commits": 10,
-      "activeDays": 1
-    },
-    "month": {
-      "commits": 12,
+      "contributions": 18,
       "activeDays": 2
     },
-    "year": {
-      "commits": 113,
+    "month": {
+      "contributions": 178,
       "activeDays": 13
     },
+    "year": {
+      "contributions": 1088,
+      "activeDays": 100
+    },
     "total": {
-      "commits": 370,
-      "activeDays": 47
+      "contributions": 4272,
+      "activeDays": 359
     }
   },
   "languages": [
     {
       "name": "JavaScript",
       "color": "#f1e05a",
-      "size": 422936,
+      "size": 422406,
       "percentage": 39.4
     },
     {
@@ -96,7 +96,7 @@
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4994,
+    "remaining": 4992,
     "resetAt": "2026-07-23T13:43:15Z"
   }
 }

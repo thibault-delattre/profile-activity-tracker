@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="319" viewBox="0 0 900 319" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @thibault-delattre</title>
-  <desc id="desc">10 commits this week, 12 this month, 113 this year, 370 total</desc>
+  <desc id="desc">18 contributions this week, 178 this month, 1088 this year, 4272 total</desc>
   <defs>
     <linearGradient id="animated-border" x1="0" y1="0" x2="900" y2="319" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#58a6ff"/>
@@ -32,11 +32,11 @@
   <line x1="32" y1="58" x2="868" y2="58" stroke="#30363d"/>
   <rect x="180" y="70" width="688" height="34" rx="7" fill="#161b22"/>
   <text x="270" y="91" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="430" y="91" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="590" y="91" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="91" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
-  <text x="32" y="129" class="row-label" fill="#8b949e">COMMITS</text>
-  <text x="270" y="134" text-anchor="middle" class="value" fill="#f0f6fc">10</text><text x="430" y="134" text-anchor="middle" class="value" fill="#f0f6fc">12</text><text x="590" y="134" text-anchor="middle" class="value" fill="#f0f6fc">113</text><text x="760" y="134" text-anchor="middle" class="value" fill="#f0f6fc">370</text>
+  <text x="32" y="129" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
+  <text x="270" y="134" text-anchor="middle" class="value" fill="#f0f6fc">18</text><text x="430" y="134" text-anchor="middle" class="value" fill="#f0f6fc">178</text><text x="590" y="134" text-anchor="middle" class="value" fill="#f0f6fc">1,088</text><text x="760" y="134" text-anchor="middle" class="value" fill="#f0f6fc">4,272</text>
   <line x1="180" y1="149" x2="868" y2="149" stroke="#30363d"/>
   <text x="32" y="182" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
-  <text x="270" y="187" text-anchor="middle" class="value" fill="#f0f6fc">1</text><text x="430" y="187" text-anchor="middle" class="value" fill="#f0f6fc">2</text><text x="590" y="187" text-anchor="middle" class="value" fill="#f0f6fc">13</text><text x="760" y="187" text-anchor="middle" class="value" fill="#f0f6fc">47</text>
+  <text x="270" y="187" text-anchor="middle" class="value" fill="#f0f6fc">2</text><text x="430" y="187" text-anchor="middle" class="value" fill="#f0f6fc">13</text><text x="590" y="187" text-anchor="middle" class="value" fill="#f0f6fc">100</text><text x="760" y="187" text-anchor="middle" class="value" fill="#f0f6fc">359</text>
   <line x1="32" y1="207" x2="868" y2="207" stroke="#30363d"/>
   <text x="32" y="228" class="eyebrow" fill="#8b949e">LANGUAGES</text>
   <g>
