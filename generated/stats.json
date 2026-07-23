@@ -2,22 +2,22 @@
   "schemaVersion": 5,
   "username": "thibault-delattre",
   "sourceCount": 2,
-  "generatedAt": "2026-07-23T14:57:29.427Z",
+  "generatedAt": "2026-07-23T15:01:02.524Z",
   "activity": {
     "week": {
-      "contributions": 29,
+      "contributions": 31,
       "activeDays": 2
     },
     "month": {
-      "contributions": 189,
+      "contributions": 191,
       "activeDays": 13
     },
     "year": {
-      "contributions": 1114,
+      "contributions": 1116,
       "activeDays": 102
     },
     "total": {
-      "contributions": 4308,
+      "contributions": 4310,
       "activeDays": 364
     }
   },
@@ -25,44 +25,44 @@
     {
       "name": "JavaScript",
       "color": "#f1e05a",
-      "size": 463155,
-      "percentage": 33.9
+      "size": 461606,
+      "percentage": 34
     },
     {
       "name": "TypeScript",
       "color": "#3178c6",
       "size": 327284,
-      "percentage": 24
+      "percentage": 24.1
     },
     {
       "name": "PHP",
       "color": "#4F5D95",
       "size": 179482,
-      "percentage": 13.1
+      "percentage": 13.2
     },
     {
       "name": "CSS",
       "color": "#663399",
-      "size": 107408,
-      "percentage": 7.9
+      "size": 104770,
+      "percentage": 7.7
     },
     {
       "name": "Vue",
       "color": "#41b883",
       "size": 66223,
-      "percentage": 4.8
+      "percentage": 4.9
     },
     {
       "name": "HTML",
       "color": "#e34c26",
-      "size": 59827,
-      "percentage": 4.4
+      "size": 58772,
+      "percentage": 4.3
     },
     {
       "name": "Go",
       "color": "#00ADD8",
       "size": 56369,
-      "percentage": 4.1
+      "percentage": 4.2
     },
     {
       "name": "SCSS",
@@ -71,15 +71,15 @@
       "percentage": 4.1
     },
     {
-      "name": "Python",
-      "color": "#3572A5",
-      "size": 20425,
-      "percentage": 1.5
-    },
-    {
       "name": "Twig",
       "color": "#c1d026",
       "size": 18224,
+      "percentage": 1.3
+    },
+    {
+      "name": "Python",
+      "color": "#3572A5",
+      "size": 17525,
       "percentage": 1.3
     },
     {
@@ -91,25 +91,13 @@
     {
       "name": "Dockerfile",
       "color": "#384d54",
-      "size": 2720,
+      "size": 2170,
       "percentage": 0.2
-    },
-    {
-      "name": "EJS",
-      "color": "#a91e50",
-      "size": 1631,
-      "percentage": 0.1
-    },
-    {
-      "name": "Procfile",
-      "color": "#3B2F63",
-      "size": 16,
-      "percentage": 0
     }
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4997,
+    "remaining": 4993,
     "resetAt": "2026-07-23T15:57:29Z"
   }
 }
