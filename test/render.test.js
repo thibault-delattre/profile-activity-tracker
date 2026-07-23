@@ -12,6 +12,7 @@ const config = {
 
 const metrics = {
   username: "thibault-delattre",
+  sourceCount: 2,
   generatedAt: "2026-07-23T14:00:00.000Z",
   activity: {
     week: { contributions: 3, activeDays: 2 },
@@ -30,6 +31,8 @@ test("renderCard creates a self-contained, escaped activity table", () => {
 
   assert.match(svg, /^<svg /);
   assert.match(svg, /GITHUB ACTIVITY/);
+  assert.match(svg, /COMBINED GITHUB ACTIVITY/);
+  assert.match(svg, /Combined across 2 GitHub accounts/);
   assert.match(svg, /THIS WEEK/);
   assert.match(svg, /THIS MONTH/);
   assert.match(svg, /THIS YEAR/);

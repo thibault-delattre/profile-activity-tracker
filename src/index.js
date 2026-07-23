@@ -1,5 +1,6 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { mergeGitHubActivity } from "./aggregate.js";
 import { loadConfig } from "./config.js";
 import { createActivityWindows } from "./dates.js";
 import { fetchGitHubActivity } from "./github.js";
@@ -26,11 +27,19 @@ async function main() {
   } else if (arguments_.placeholder) {
     data = createPlaceholderData(config, now);
   } else {
-    data = await fetchGitHubActivity({
-      token: process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN ?? "",
-      username: config.username,
-      windows,
-    });
+    const token = process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN ?? "";
+    const usernames = [config.username, ...config.additionalUsernames];
+    data = mergeGitHubActivity(
+      await Promise.all(
+        usernames.map((username) =>
+          fetchGitHubActivity({
+            token,
+            username,
+            windows,
+          }),
+        ),
+      ),
+    );
   }
 
   const metrics = buildMetrics(data, config, now);
@@ -44,7 +53,8 @@ async function main() {
 
   console.log(
     `Generated ${Object.keys(outputs).length} files for @${config.username}: ` +
-      `${metrics.activity.total.contributions} contributions.`,
+      `${metrics.activity.total.contributions} contributions across ` +
+      `${metrics.sourceCount} account${metrics.sourceCount === 1 ? "" : "s"}.`,
   );
 }
 

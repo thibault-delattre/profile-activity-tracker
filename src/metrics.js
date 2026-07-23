@@ -21,8 +21,9 @@ export function buildMetrics(data, config, generatedAt) {
   );
 
   return {
-    schemaVersion: 4,
+    schemaVersion: 5,
     username: config.username,
+    sourceCount: 1 + (config.additionalUsernames?.length ?? 0),
     generatedAt: generatedAt.toISOString(),
     activity: {
       week: summarizeCollection(periods.week),

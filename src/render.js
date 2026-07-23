@@ -65,9 +65,14 @@ export function renderCard(metrics, config, mode) {
   ];
   const columnCenters = [275, 435, 595, 760];
   const date = formatDisplayDate(metrics.generatedAt);
+  const isCombined = Number(metrics.sourceCount) > 1;
 
-  const title = `GitHub activity for @${metrics.username}`;
-  const description = `${INTRODUCTION} ${[
+  const title = `${isCombined ? "Combined GitHub activity" : "GitHub activity"} for @${metrics.username}`;
+  const description = `${INTRODUCTION} ${
+    isCombined
+      ? `Combined across ${metrics.sourceCount} GitHub accounts. `
+      : ""
+  }${[
     `${metrics.activity.week.contributions} contributions this week`,
     `${metrics.activity.month.contributions} this month`,
     `${metrics.activity.year.contributions} this year`,
@@ -138,7 +143,7 @@ export function renderCard(metrics, config, mode) {
   <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL.radius}" fill="url(#glass-fill)"/>
   <path d="M ${PANEL.x + 24} ${PANEL.y + 1.5} H ${PANEL.x + PANEL.width - 120}" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
 
-  <text x="44" y="105" class="eyebrow" fill="${accent}">GITHUB ACTIVITY</text>
+  <text x="44" y="105" class="eyebrow" fill="${accent}">${isCombined ? "COMBINED GITHUB ACTIVITY" : "GITHUB ACTIVITY"}</text>
   <text x="856" y="105" text-anchor="end" class="eyebrow" fill="${theme.muted}">UPDATED ${date}</text>
   <line x1="44" y1="120" x2="856" y2="120" stroke="${theme.line}" stroke-opacity="0.82"/>
   <rect x="184" y="132" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.5 : 0.09}"/>

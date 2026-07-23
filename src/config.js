@@ -7,6 +7,7 @@ const HEX_COLOR_PATTERN = /^#[0-9A-Fa-f]{6}$/;
 /**
  * @typedef {object} TrackerConfig
  * @property {string} username
+ * @property {string[]} additionalUsernames
  * @property {string[]} excludedRepositories
  * @property {{accent: string}} brand
  */
@@ -46,6 +47,30 @@ export function validateConfig(value) {
   }
 
   if (
+    !Array.isArray(config.additionalUsernames) ||
+    config.additionalUsernames.some(
+      (username) =>
+        typeof username !== "string" ||
+        !USERNAME_PATTERN.test(username),
+    )
+  ) {
+    throw new Error(
+      "additionalUsernames must be an array of valid GitHub usernames.",
+    );
+  }
+
+  const normalizedPrimary = config.username.toLowerCase();
+  const normalizedAdditional = [
+    ...new Set(
+      config.additionalUsernames.map((username) => username.toLowerCase()),
+    ),
+  ];
+
+  if (normalizedAdditional.includes(normalizedPrimary)) {
+    throw new Error("additionalUsernames cannot contain the primary username.");
+  }
+
+  if (
     !Array.isArray(config.excludedRepositories) ||
     config.excludedRepositories.some(
       (repository) => typeof repository !== "string" || repository.length < 1,
@@ -73,6 +98,7 @@ export function validateConfig(value) {
 
   return /** @type {TrackerConfig} */ ({
     username: config.username,
+    additionalUsernames: normalizedAdditional,
     excludedRepositories: [...new Set(config.excludedRepositories)],
     brand: {
       accent: brand.accent.toLowerCase(),

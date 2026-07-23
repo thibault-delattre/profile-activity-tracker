@@ -49,7 +49,8 @@ test("buildMetrics creates contribution and active-day totals", () => {
     contributions: 45,
     activeDays: 6,
   });
-  assert.equal(metrics.schemaVersion, 4);
+  assert.equal(metrics.schemaVersion, 5);
+  assert.equal(metrics.sourceCount, 1);
   assert.equal("repositories" in metrics, false);
   assert.equal("displayName" in metrics, false);
   assert.deepEqual(

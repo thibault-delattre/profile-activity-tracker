@@ -14,6 +14,7 @@ A distinctive, automatically updated GitHub activity card for
 The card presents a compact view of activity visible on GitHub's public
 contribution calendar:
 
+- combined activity from the configured personal accounts;
 - GitHub contributions for this week, month, year, and all time;
 - active days for the same four calendar periods;
 - every language detected across owned, public, non-fork repositories.
@@ -76,12 +77,19 @@ Edit [`config/profile.json`](./config/profile.json):
 ```json
 {
   "username": "thibault-delattre",
+  "additionalUsernames": ["t000132"],
   "excludedRepositories": ["thibault-delattre"],
   "brand": {
     "accent": "#2f81f7"
   }
 }
 ```
+
+`username` is the primary profile. `additionalUsernames` adds other accounts to
+the same honest combined view. Contribution totals are summed, while active
+days are merged by calendar date, so using two accounts on one day still counts
+as one active day. Only public data and anonymized private contributions that
+each account has chosen to share are available to the tracker.
 
 Languages are ordered using the bytes reported by GitHub for eligible
 repositories; this ordering is not a measure of proficiency. Add generated,

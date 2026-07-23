@@ -1,6 +1,9 @@
 {
   "$schema": "./profile.schema.json",
   "username": "thibault-delattre",
+  "additionalUsernames": [
+    "t000132"
+  ],
   "excludedRepositories": [
     "thibault-delattre"
   ],
