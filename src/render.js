@@ -15,7 +15,9 @@ const THEMES = {
     surface: "#f6f8fa",
     glassStart: "#ffffff",
     glassEnd: "#eef3f8",
-    glassOpacity: 0.72,
+    glassStartOpacity: 0.72,
+    glassMiddleOpacity: 0.6,
+    glassEndOpacity: 0.68,
     highlightOpacity: 0.72,
     shadow: "#57606a",
     primary: "#1f2328",
@@ -28,7 +30,9 @@ const THEMES = {
     surface: "#161b22",
     glassStart: "#263140",
     glassEnd: "#111820",
-    glassOpacity: 0.78,
+    glassStartOpacity: 0.78,
+    glassMiddleOpacity: 0.66,
+    glassEndOpacity: 0.74,
     highlightOpacity: 0.34,
     shadow: "#000000",
     primary: "#f0f6fc",
@@ -93,9 +97,9 @@ export function renderCard(metrics, config, mode) {
       />
     </linearGradient>
     <linearGradient id="glass-fill" x1="${PANEL.x}" y1="${PANEL.y}" x2="${PANEL.x + PANEL.width}" y2="${PANEL.y + PANEL.height}" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassOpacity}"/>
-      <stop offset="48%" stop-color="${theme.glassEnd}" stop-opacity="${theme.glassOpacity - 0.12}"/>
-      <stop offset="100%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassOpacity - 0.04}"/>
+      <stop offset="0%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassStartOpacity}"/>
+      <stop offset="48%" stop-color="${theme.glassEnd}" stop-opacity="${theme.glassMiddleOpacity}"/>
+      <stop offset="100%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassEndOpacity}"/>
     </linearGradient>
     <linearGradient id="glass-highlight" x1="${PANEL.x + 24}" y1="${PANEL.y + 4}" x2="${PANEL.x + PANEL.width - 80}" y2="${PANEL.y + 100}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="${theme.highlightOpacity}"/>
