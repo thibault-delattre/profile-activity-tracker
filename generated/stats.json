@@ -2,26 +2,103 @@
   "schemaVersion": 2,
   "username": "thibault-delattre",
   "displayName": "Thibault Delattre",
-  "generatedAt": "2026-07-23T13:05:01.081Z",
-  "repositories": 0,
+  "generatedAt": "2026-07-23T13:05:40.617Z",
+  "repositories": 17,
   "activity": {
     "week": {
-      "commits": 0,
-      "activeDays": 0
+      "commits": 8,
+      "activeDays": 1
     },
     "month": {
-      "commits": 0,
-      "activeDays": 0
+      "commits": 10,
+      "activeDays": 2
     },
     "year": {
-      "commits": 0,
-      "activeDays": 0
+      "commits": 111,
+      "activeDays": 13
     },
     "total": {
-      "commits": 0,
-      "activeDays": 0
+      "commits": 368,
+      "activeDays": 47
     }
   },
-  "languages": [],
-  "rateLimit": null
+  "languages": [
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a",
+      "size": 423521,
+      "percentage": 39.4
+    },
+    {
+      "name": "TypeScript",
+      "color": "#3178c6",
+      "size": 227743,
+      "percentage": 21.2
+    },
+    {
+      "name": "PHP",
+      "color": "#4F5D95",
+      "size": 179482,
+      "percentage": 16.7
+    },
+    {
+      "name": "CSS",
+      "color": "#663399",
+      "size": 107408,
+      "percentage": 10
+    },
+    {
+      "name": "Vue",
+      "color": "#41b883",
+      "size": 66223,
+      "percentage": 6.2
+    },
+    {
+      "name": "Python",
+      "color": "#3572A5",
+      "size": 20425,
+      "percentage": 1.9
+    },
+    {
+      "name": "HTML",
+      "color": "#e34c26",
+      "size": 19304,
+      "percentage": 1.8
+    },
+    {
+      "name": "Twig",
+      "color": "#c1d026",
+      "size": 18224,
+      "percentage": 1.7
+    },
+    {
+      "name": "Shell",
+      "color": "#89e051",
+      "size": 7792,
+      "percentage": 0.7
+    },
+    {
+      "name": "Dockerfile",
+      "color": "#384d54",
+      "size": 2720,
+      "percentage": 0.3
+    },
+    {
+      "name": "EJS",
+      "color": "#a91e50",
+      "size": 1631,
+      "percentage": 0.2
+    },
+    {
+      "name": "Procfile",
+      "color": "#3B2F63",
+      "size": 16,
+      "percentage": 0
+    }
+  ],
+  "rateLimit": {
+    "cost": 1,
+    "remaining": 4996,
+    "resetAt": "2026-07-23T13:43:15Z"
+  }
 }
