@@ -2,7 +2,7 @@
   "schemaVersion": 5,
   "username": "thibault-delattre",
   "sourceCount": 2,
-  "generatedAt": "2026-07-23T13:57:28.813Z",
+  "generatedAt": "2026-07-23T14:01:35.012Z",
   "activity": {
     "week": {
       "contributions": 23,
@@ -25,20 +25,20 @@
     {
       "name": "JavaScript",
       "color": "#f1e05a",
-      "size": 450716,
-      "percentage": 33.3
+      "size": 457929,
+      "percentage": 33.6
     },
     {
       "name": "TypeScript",
       "color": "#3178c6",
       "size": 327284,
-      "percentage": 24.2
+      "percentage": 24
     },
     {
       "name": "PHP",
       "color": "#4F5D95",
       "size": 179482,
-      "percentage": 13.3
+      "percentage": 13.2
     },
     {
       "name": "CSS",
@@ -62,7 +62,7 @@
       "name": "Go",
       "color": "#00ADD8",
       "size": 56369,
-      "percentage": 4.2
+      "percentage": 4.1
     },
     {
       "name": "SCSS",
@@ -109,7 +109,7 @@
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4993,
+    "remaining": 4989,
     "resetAt": "2026-07-23T14:43:33Z"
   }
 }
