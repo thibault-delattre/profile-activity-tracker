@@ -17,9 +17,6 @@ test("fetchGitHubActivity retrieves metadata and historical periods", async () =
         data: {
           user: {
             login: "thibault-delattre",
-            name: "Thibault Delattre",
-            url: "https://github.com/thibault-delattre",
-            totalRepositories: { totalCount: 16 },
             languageRepositories: {
               nodes: [],
               pageInfo: { hasNextPage: false, endCursor: null },
@@ -62,7 +59,7 @@ test("fetchGitHubActivity retrieves metadata and historical periods", async () =
   );
   assert.match(requests[1].body.query, /year2025/);
   assert.match(requests[1].body.query, /year2026/);
-  assert.equal(result.user.totalRepositories.totalCount, 16);
+  assert.equal(result.user.login, "thibault-delattre");
   assert.deepEqual(Object.keys(result.user.periods.yearly), ["2025", "2026"]);
 });
 

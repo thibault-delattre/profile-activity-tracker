@@ -14,9 +14,7 @@ export function createPlaceholderData(config, now) {
   return {
     user: {
       login: config.username,
-      name: config.displayName,
       url: `https://github.com/${config.username}`,
-      totalRepositories: { totalCount: 0 },
       repositories: { nodes: [] },
       periods: {
         week: createCollection(windows.week.from, windows.week.to),

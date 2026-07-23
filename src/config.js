@@ -7,7 +7,6 @@ const HEX_COLOR_PATTERN = /^#[0-9A-Fa-f]{6}$/;
 /**
  * @typedef {object} TrackerConfig
  * @property {string} username
- * @property {string} displayName
  * @property {string[]} excludedRepositories
  * @property {{accent: string}} brand
  */
@@ -47,14 +46,6 @@ export function validateConfig(value) {
   }
 
   if (
-    typeof config.displayName !== "string" ||
-    config.displayName.trim().length < 1 ||
-    config.displayName.length > 60
-  ) {
-    throw new Error("displayName must contain between 1 and 60 characters.");
-  }
-
-  if (
     !Array.isArray(config.excludedRepositories) ||
     config.excludedRepositories.some(
       (repository) => typeof repository !== "string" || repository.length < 1,
@@ -82,7 +73,6 @@ export function validateConfig(value) {
 
   return /** @type {TrackerConfig} */ ({
     username: config.username,
-    displayName: config.displayName.trim(),
     excludedRepositories: [...new Set(config.excludedRepositories)],
     brand: {
       accent: brand.accent.toLowerCase(),

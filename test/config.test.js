@@ -4,7 +4,6 @@ import { validateConfig } from "../src/config.js";
 
 const validConfig = {
   username: "thibault-delattre",
-  displayName: "Thibault Delattre",
   excludedRepositories: ["profile"],
   brand: {
     accent: "#2f81f7",

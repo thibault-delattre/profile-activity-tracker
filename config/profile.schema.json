@@ -5,7 +5,6 @@
   "additionalProperties": false,
   "required": [
     "username",
-    "displayName",
     "excludedRepositories",
     "brand"
   ],
@@ -16,11 +15,6 @@
     "username": {
       "type": "string",
       "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$"
-    },
-    "displayName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 60
     },
     "excludedRepositories": {
       "type": "array",

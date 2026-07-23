@@ -4,7 +4,6 @@ import { layoutLanguageChips, renderCard } from "../src/render.js";
 
 const config = {
   username: "thibault-delattre",
-  displayName: "Thibault & Delattre",
   excludedRepositories: [],
   brand: {
     accent: "#2f81f7",
@@ -12,9 +11,8 @@ const config = {
 };
 
 const metrics = {
-  displayName: "Thibault & Delattre",
+  username: "thibault-delattre",
   generatedAt: "2026-07-23T14:00:00.000Z",
-  repositories: 16,
   activity: {
     week: { commits: 3, activeDays: 2 },
     month: { commits: 14, activeDays: 6 },
@@ -36,8 +34,14 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /THIS MONTH/);
   assert.match(svg, /THIS YEAR/);
   assert.match(svg, /ALL TIME/);
-  assert.match(svg, /16 REPOSITORIES/);
-  assert.match(svg, /Thibault &amp; Delattre/);
+  assert.match(svg, /linearGradient id="animated-border"/);
+  assert.match(svg, /#58a6ff/);
+  assert.match(svg, /#f7fbff/);
+  assert.match(svg, /#ff7b72/);
+  assert.match(svg, /<animateTransform/);
+  assert.match(svg, /repeatCount="indefinite"/);
+  assert.doesNotMatch(svg, /REPOSITORIES/);
+  assert.doesNotMatch(svg, /Thibault/);
   assert.match(svg, /&lt;unsafe&gt;/);
   assert.doesNotMatch(svg, /ENGINEERING PULSE/);
   assert.doesNotMatch(svg, /MOMENTUM/i);
@@ -63,7 +67,7 @@ test("layoutLanguageChips wraps every language without truncating", () => {
     name: `Language-${index}`,
     color: "#123456",
   }));
-  const layout = layoutLanguageChips(languages, 32, 868, 267);
+  const layout = layoutLanguageChips(languages, 32, 868, 237);
 
   assert.equal(layout.items.length, 15);
   assert.ok(new Set(layout.items.map((item) => item.y)).size > 1);

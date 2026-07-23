@@ -4,15 +4,6 @@ const METADATA_QUERY = `
   query ProfileMetadata($login: String!) {
     user(login: $login) {
       login
-      name
-      url
-      totalRepositories: repositories(
-        first: 1
-        ownerAffiliations: [OWNER]
-        privacy: PUBLIC
-      ) {
-        totalCount
-      }
       languageRepositories: repositories(
         first: 100
         ownerAffiliations: [OWNER]
@@ -176,9 +167,6 @@ export async function fetchGitHubActivity({
   return {
     user: {
       login: metadata.user.login,
-      name: metadata.user.name,
-      url: metadata.user.url,
-      totalRepositories: metadata.user.totalRepositories,
       repositories: { nodes: repositories },
       periods: {
         week: periodData.user.week,

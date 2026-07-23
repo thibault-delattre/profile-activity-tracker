@@ -4,7 +4,6 @@ import { buildMetrics, flattenDays } from "../src/metrics.js";
 
 const config = {
   username: "thibault-delattre",
-  displayName: "Thibault Delattre",
   excludedRepositories: ["profile"],
   brand: {
     accent: "#2f81f7",
@@ -41,7 +40,9 @@ test("buildMetrics creates week, month, year, and all-time totals", () => {
     commits: 45,
     activeDays: 6,
   });
-  assert.equal(metrics.repositories, 16);
+  assert.equal(metrics.schemaVersion, 3);
+  assert.equal("repositories" in metrics, false);
+  assert.equal("displayName" in metrics, false);
   assert.deepEqual(
     metrics.languages.map(({ name, percentage }) => ({ name, percentage })),
     [
@@ -54,7 +55,6 @@ test("buildMetrics creates week, month, year, and all-time totals", () => {
 function createPayload() {
   return {
     user: {
-      totalRepositories: { totalCount: 16 },
       repositories: {
         nodes: [
           {

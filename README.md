@@ -15,10 +15,10 @@ The card presents a compact view of public GitHub work:
 
 - contribution commits for this week, month, year, and all time;
 - active days for the same four calendar periods;
-- total owned public repositories;
 - every language detected across owned, public, non-fork repositories.
 
-It is generated as static light and dark SVG files. There is no public server,
+It is generated as self-contained light and dark SVG files with a native,
+continuously animated blue-white-red outline. There is no public server,
 tracking script, analytics service, or runtime dependency.
 
 ## How it works
@@ -74,7 +74,6 @@ Edit [`config/profile.json`](./config/profile.json):
 ```json
 {
   "username": "thibault-delattre",
-  "displayName": "Thibault Delattre",
   "excludedRepositories": ["thibault-delattre"],
   "brand": {
     "accent": "#2f81f7"
