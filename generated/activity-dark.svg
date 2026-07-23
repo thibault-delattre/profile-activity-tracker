@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320" role="img" aria-labelledby="title desc">
   <title id="title">Thibault Delattre GitHub engineering activity</title>
-  <desc id="desc">0 contributions across 0 active days, 0 merged pull requests, 0 code reviews, during the last 90 days</desc>
+  <desc id="desc">32 contributions across 5 active days, 0 merged pull requests, 0 code reviews, during the last 90 days</desc>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
@@ -20,13 +20,13 @@
   <line x1="32" y1="88" x2="868" y2="88" stroke="#30363d"/>
   <g transform="translate(32 0)">
     <text x="0" y="111" class="metric-label" fill="#8b949e">CONTRIBUTIONS</text>
-    <text x="0" y="148" class="metric-value" fill="#f0f6fc">0</text>
+    <text x="0" y="148" class="metric-value" fill="#f0f6fc">32</text>
     <text x="0" y="165" class="metric-note" fill="#6e7681">LAST 90 DAYS</text>
   </g>
   <g transform="translate(247 0)">
     <text x="0" y="111" class="metric-label" fill="#8b949e">ACTIVE DAYS</text>
-    <text x="0" y="148" class="metric-value" fill="#f0f6fc">0</text>
-    <text x="0" y="165" class="metric-note" fill="#6e7681">0-DAY BEST STREAK</text>
+    <text x="0" y="148" class="metric-value" fill="#f0f6fc">5</text>
+    <text x="0" y="165" class="metric-note" fill="#6e7681">2-DAY BEST STREAK</text>
   </g>
   <g transform="translate(462 0)">
     <text x="0" y="111" class="metric-label" fill="#8b949e">MERGED PRS</text>
@@ -36,16 +36,34 @@
   <g transform="translate(677 0)">
     <text x="0" y="111" class="metric-label" fill="#8b949e">CODE REVIEWS</text>
     <text x="0" y="148" class="metric-value" fill="#f0f6fc">0</text>
-    <text x="0" y="165" class="metric-note" fill="#6e7681">0 REPOS TOUCHED</text>
+    <text x="0" y="165" class="metric-note" fill="#6e7681">4 REPOS TOUCHED</text>
   </g>
   <line x1="32" y1="178" x2="868" y2="178" stroke="#30363d"/>
   <text x="32" y="205" class="section-label" fill="#8b949e">WEEKLY CONTRIBUTION SIGNAL</text>
   <line x1="32" y1="270" x2="502" y2="270" stroke="#21262d"/>
-  <polyline points="32.0,270.0 71.2,270.0 110.3,270.0 149.5,270.0 188.7,270.0 227.8,270.0 267.0,270.0 306.2,270.0 345.3,270.0 384.5,270.0 423.7,270.0 462.8,270.0 502.0,270.0" fill="none" stroke="#2f81f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="32.0" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="71.2" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="110.3" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="149.5" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="188.7" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="227.8" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="267.0" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="306.2" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="345.3" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="384.5" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="423.7" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="462.8" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="502.0" cy="270.0" r="2.4" fill="#2f81f7"/>
+  <polyline points="32.0,270.0 68.2,270.0 104.3,270.0 140.5,270.0 176.6,270.0 212.8,222.0 248.9,270.0 285.1,270.0 321.2,265.2 357.4,270.0 393.5,270.0 429.7,265.2 465.8,270.0 502.0,250.8" fill="none" stroke="#2f81f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="32.0" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="68.2" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="104.3" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="140.5" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="176.6" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="212.8" cy="222.0" r="2.4" fill="#2f81f7"/><circle cx="248.9" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="285.1" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="321.2" cy="265.2" r="2.4" fill="#2f81f7"/><circle cx="357.4" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="393.5" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="429.7" cy="265.2" r="2.4" fill="#2f81f7"/><circle cx="465.8" cy="270.0" r="2.4" fill="#2f81f7"/><circle cx="502.0" cy="250.8" r="2.4" fill="#2f81f7"/>
   <text x="555" y="205" class="section-label" fill="#8b949e">LANGUAGE FOOTPRINT</text>
-  <text x="555" y="243" class="footer" fill="#6e7681">No language data available yet</text>
+  <g transform="translate(0 222)">
+        <circle cx="559" cy="4" r="4" fill="#f1e05a"/>
+        <text x="571" y="8" class="language" fill="#f0f6fc">JavaScript</text>
+        <rect x="700" y="-1" width="112" height="7" rx="3.5" fill="#21262d"/>
+        <rect x="700" y="-1" width="41.4" height="7" rx="3.5" fill="#f1e05a"/>
+        <text x="868" y="8" text-anchor="end" class="footer" fill="#8b949e">37%</text>
+      </g><g transform="translate(0 244)">
+        <circle cx="559" cy="4" r="4" fill="#3178c6"/>
+        <text x="571" y="8" class="language" fill="#f0f6fc">TypeScript</text>
+        <rect x="700" y="-1" width="112" height="7" rx="3.5" fill="#21262d"/>
+        <rect x="700" y="-1" width="24.6" height="7" rx="3.5" fill="#3178c6"/>
+        <text x="868" y="8" text-anchor="end" class="footer" fill="#8b949e">22%</text>
+      </g><g transform="translate(0 266)">
+        <circle cx="559" cy="4" r="4" fill="#4F5D95"/>
+        <text x="571" y="8" class="language" fill="#f0f6fc">PHP</text>
+        <rect x="700" y="-1" width="112" height="7" rx="3.5" fill="#21262d"/>
+        <rect x="700" y="-1" width="19.0" height="7" rx="3.5" fill="#4F5D95"/>
+        <text x="868" y="8" text-anchor="end" class="footer" fill="#8b949e">17%</text>
+      </g>
   <line x1="32" y1="288" x2="868" y2="288" stroke="#30363d"/>
-  <text x="32" y="308" class="footer" fill="#3fb950">Momentum 0% vs previous 90 days</text>
-  <text x="868" y="308" text-anchor="end" class="footer" fill="#8b949e">Public GitHub activity</text>
+  <text x="32" y="308" class="footer" fill="#f85149">Momentum -37% vs previous 90 days</text>
+  <text x="868" y="308" text-anchor="end" class="footer" fill="#8b949e">Most recently active · profile-activity-tracker</text>
 </svg>
