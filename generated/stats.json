@@ -2,7 +2,7 @@
   "schemaVersion": 5,
   "username": "thibault-delattre",
   "sourceCount": 2,
-  "generatedAt": "2026-07-23T15:16:38.173Z",
+  "generatedAt": "2026-07-23T15:55:48.329Z",
   "activity": {
     "week": {
       "contributions": 31,
@@ -17,7 +17,7 @@
       "activeDays": 102
     },
     "total": {
-      "contributions": 4310,
+      "contributions": 4309,
       "activeDays": 364
     }
   },
@@ -25,61 +25,37 @@
     {
       "name": "TypeScript",
       "color": "#3178c6",
-      "size": 327284,
-      "percentage": 43.5
+      "size": 99541,
+      "percentage": 29.7
     },
     {
       "name": "JavaScript",
       "color": "#f1e05a",
-      "size": 204411,
-      "percentage": 27.1
+      "size": 82596,
+      "percentage": 24.7
     },
     {
       "name": "Go",
       "color": "#00ADD8",
       "size": 56369,
-      "percentage": 7.5
+      "percentage": 16.8
     },
     {
       "name": "SCSS",
       "color": "#c6538c",
       "size": 55736,
-      "percentage": 7.4
+      "percentage": 16.6
     },
     {
       "name": "HTML",
       "color": "#e34c26",
-      "size": 44109,
-      "percentage": 5.9
-    },
-    {
-      "name": "CSS",
-      "color": "#663399",
-      "size": 38431,
-      "percentage": 5.1
-    },
-    {
-      "name": "Python",
-      "color": "#3572A5",
-      "size": 17525,
-      "percentage": 2.3
-    },
-    {
-      "name": "Shell",
-      "color": "#89e051",
-      "size": 7792,
-      "percentage": 1
-    },
-    {
-      "name": "Dockerfile",
-      "color": "#384d54",
-      "size": 1304,
-      "percentage": 0.2
+      "size": 40523,
+      "percentage": 12.1
     }
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4989,
+    "remaining": 4985,
     "resetAt": "2026-07-23T15:57:29Z"
   }
 }

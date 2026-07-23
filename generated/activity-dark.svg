@@ -4,7 +4,7 @@
 
 At AXA, I work on Secure GPT, the company&apos;s internal LLM. Before that I built automated test infrastructure at JCDecaux for digital billboard systems running in 70+ countries, and shipped web features at Dassault Systèmes. I also spent three months as a research intern at NIT Akita College in Japan, training a computer-vision model to detect manufacturing defects on film capacitors. It was my first experience working in a lab environment.
 
-On the side I build Reawon, an independent product ecosystem: Reafile, a browser-based AI file editor, and Polywon, an AI-powered language learning app. Combined across 2 GitHub accounts. 31 contributions this week, 191 this month, 1116 this year, 4310 total.</desc>
+On the side I build Reawon, an independent product ecosystem: Reafile, a browser-based AI file editor, and Polywon, an AI-powered language learning app. Combined across 2 GitHub accounts. 31 contributions this week, 191 this month, 1116 this year, 4309 total.</desc>
   <defs>
     <clipPath id="glass-clip">
       <rect x="16" y="272" width="868" height="210" rx="18"/>
@@ -104,7 +104,7 @@ On the side I build Reawon, an independent product ecosystem: Reafile, a browser
     </g>
     <g class="reveal" style="animation-delay:1470ms">
       <text x="44" y="390" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
-      <text x="275" y="395" text-anchor="middle" class="value" fill="#f0f6fc">31</text><text x="435" y="395" text-anchor="middle" class="value" fill="#f0f6fc">191</text><text x="595" y="395" text-anchor="middle" class="value" fill="#f0f6fc">1,116</text><text x="760" y="395" text-anchor="middle" class="value" fill="#f0f6fc">4,310</text>
+      <text x="275" y="395" text-anchor="middle" class="value" fill="#f0f6fc">31</text><text x="435" y="395" text-anchor="middle" class="value" fill="#f0f6fc">191</text><text x="595" y="395" text-anchor="middle" class="value" fill="#f0f6fc">1,116</text><text x="760" y="395" text-anchor="middle" class="value" fill="#f0f6fc">4,309</text>
     </g>
     <g class="reveal" style="animation-delay:1580ms">
       <line x1="184" y1="410" x2="856" y2="410" stroke="#30363d" stroke-opacity="0.84"/>
@@ -116,32 +116,20 @@ On the side I build Reawon, an independent product ecosystem: Reafile, a browser
   <text x="450" y="519" text-anchor="middle" class="eyebrow reveal" style="animation-delay:1760ms" fill="#8b949e">FAVORITE LANGUAGES</text>
   <g class="reveal" style="animation-delay:1870ms">
     <g>
-        <circle cx="80" cy="547" r="4" fill="#3178c6"/>
-        <text x="92" y="551" class="language" fill="#f0f6fc">TypeScript</text>
+        <circle cx="252" cy="547" r="4" fill="#3178c6"/>
+        <text x="264" y="551" class="language" fill="#f0f6fc">TypeScript</text>
       </g><g>
-        <circle cx="194" cy="547" r="4" fill="#f1e05a"/>
-        <text x="206" y="551" class="language" fill="#f0f6fc">JavaScript</text>
+        <circle cx="366" cy="547" r="4" fill="#f1e05a"/>
+        <text x="378" y="551" class="language" fill="#f0f6fc">JavaScript</text>
       </g><g>
-        <circle cx="308" cy="547" r="4" fill="#00ADD8"/>
-        <text x="320" y="551" class="language" fill="#f0f6fc">Go</text>
+        <circle cx="480" cy="547" r="4" fill="#00ADD8"/>
+        <text x="492" y="551" class="language" fill="#f0f6fc">Go</text>
       </g><g>
-        <circle cx="366" cy="547" r="4" fill="#c6538c"/>
-        <text x="378" y="551" class="language" fill="#f0f6fc">SCSS</text>
+        <circle cx="538" cy="547" r="4" fill="#c6538c"/>
+        <text x="550" y="551" class="language" fill="#f0f6fc">SCSS</text>
       </g><g>
-        <circle cx="438" cy="547" r="4" fill="#e34c26"/>
-        <text x="450" y="551" class="language" fill="#f0f6fc">HTML</text>
-      </g><g>
-        <circle cx="510" cy="547" r="4" fill="#663399"/>
-        <text x="522" y="551" class="language" fill="#f0f6fc">CSS</text>
-      </g><g>
-        <circle cx="575" cy="547" r="4" fill="#3572A5"/>
-        <text x="587" y="551" class="language" fill="#f0f6fc">Python</text>
-      </g><g>
-        <circle cx="661" cy="547" r="4" fill="#89e051"/>
-        <text x="673" y="551" class="language" fill="#f0f6fc">Shell</text>
-      </g><g>
-        <circle cx="740" cy="547" r="4" fill="#384d54"/>
-        <text x="752" y="551" class="language" fill="#f0f6fc">Dockerfile</text>
+        <circle cx="610" cy="547" r="4" fill="#e34c26"/>
+        <text x="622" y="551" class="language" fill="#f0f6fc">HTML</text>
       </g>
   </g>
 </svg>
