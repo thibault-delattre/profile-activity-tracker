@@ -22,11 +22,13 @@ contribution calendar:
 
 It is generated as self-contained light and dark SVG files with a smooth
 layered-glass panel, native blue-white-red outline animation, a left-aligned
-introduction, a word-spaced justified profile summary, and a favorite-language
-legend below the statistics. Static clipped lighting, soft shadows, and inner
+introduction, a word-spaced justified profile summary, and a left-aligned
+favorite-language legend with embedded brand icons below the statistics. Static
+clipped lighting, soft shadows, and inner
 edge highlights create depth, while a staged line-by-line fade introduces the
 content and respects reduced-motion preferences. There is no public server,
-tracking script, analytics service, or runtime dependency.
+tracking script or analytics service, and the generated SVG has no runtime
+dependency or external asset request.
 
 ## How it works
 
@@ -124,9 +126,11 @@ issues, pull requests, reviews, and other activity recognized by GitHub.
 
 ## Local development
 
-Node.js 22 or newer is required. There are no third-party packages to install.
+Node.js 22 or newer is required. Install the pinned dependencies before running
+the generator:
 
 ```sh
+npm ci
 npm test
 npm run generate:placeholder
 GH_TOKEN=your_token npm run generate
@@ -145,6 +149,10 @@ GitHub's short-lived built-in token.
 - Tests cover configuration, date windows, calculations, escaping, and themes.
 
 See [SECURITY.md](./SECURITY.md) for the token and disclosure policy.
+
+Language brand marks are provided by
+[Simple Icons](https://github.com/simple-icons/simple-icons), distributed under
+CC0. Individual marks may remain subject to their owners' trademark policies.
 
 ## License
 

@@ -58,6 +58,13 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   );
   assert.doesNotMatch(svg, /<tspan[^>]*textLength=/);
   assert.match(svg, /FAVORITE LANGUAGES/);
+  assert.match(
+    svg,
+    /<text x="32"[^>]*>FAVORITE LANGUAGES<\/text>/,
+  );
+  assert.match(svg, /aria-label="TypeScript logo"/);
+  assert.match(svg, /aria-label="&lt;unsafe&gt; code icon"/);
+  assert.match(svg, /<path d="[^"]+" fill="#3178C6"\/>/);
   assert.match(svg, /<text x="32" y="38" class="introduction reveal"/);
   assert.match(
     svg,
@@ -139,7 +146,7 @@ test("renderCard renders distinct light and dark palettes", () => {
   assert.notEqual(light, dark);
 });
 
-test("layoutLanguageItems centers and wraps every language", () => {
+test("layoutLanguageItems left-aligns and wraps every language", () => {
   const languages = Array.from({ length: 15 }, (_, index) => ({
     name: `Language-${index}`,
     color: "#123456",
@@ -149,6 +156,9 @@ test("layoutLanguageItems centers and wraps every language", () => {
   assert.equal(layout.items.length, 15);
   assert.ok(new Set(layout.items.map((item) => item.y)).size > 1);
   assert.ok(layout.items.every((item) => item.y > 282));
+  for (const y of new Set(layout.items.map((item) => item.y))) {
+    assert.equal(layout.items.find((item) => item.y === y).x, 32);
+  }
   assert.ok(
     layout.items.every((item) => item.x + item.width <= 868),
   );

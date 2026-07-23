@@ -1,3 +1,18 @@
+import {
+  siCss,
+  siDocker,
+  siEjs,
+  siGnubash,
+  siGo,
+  siHtml5,
+  siJavascript,
+  siPhp,
+  siPython,
+  siSass,
+  siTypescript,
+  siVuedotjs,
+} from "simple-icons";
+
 const WIDTH = 900;
 const PANEL = {
   x: 16,
@@ -37,6 +52,21 @@ const THEMES = {
     muted: "#6e7681",
     line: "#30363d",
   },
+};
+
+const LANGUAGE_ICONS = {
+  css: siCss,
+  dockerfile: siDocker,
+  ejs: siEjs,
+  go: siGo,
+  html: siHtml5,
+  javascript: siJavascript,
+  php: siPhp,
+  python: siPython,
+  scss: siSass,
+  shell: siGnubash,
+  typescript: siTypescript,
+  vue: siVuedotjs,
 };
 
 /**
@@ -222,7 +252,7 @@ export function renderCard(metrics, config, mode) {
     </g>
   </g>
 
-  <text x="${WIDTH / 2}" y="${319 + verticalOffset}" text-anchor="middle" class="eyebrow reveal" style="animation-delay:${languagesRevealDelay}ms" fill="${theme.secondary}">FAVORITE LANGUAGES</text>
+  <text x="32" y="${319 + verticalOffset}" class="eyebrow reveal" style="animation-delay:${languagesRevealDelay}ms" fill="${theme.secondary}">FAVORITE LANGUAGES</text>
   <g class="reveal" style="animation-delay:${languageItemsRevealDelay}ms">
     ${renderLanguageItems(languageLayout.items, theme)}
   </g>
@@ -395,8 +425,8 @@ export function layoutLanguageItems(languages, startX, maximumX, startY) {
   let y = startY;
 
   for (const language of source) {
-    const width = 18 + language.name.length * 7;
-    const nextWidth = row.length === 0 ? width : rowWidth + 26 + width;
+    const width = 24 + language.name.length * 7;
+    const nextWidth = row.length === 0 ? width : rowWidth + 22 + width;
 
     if (row.length > 0 && nextWidth > availableWidth) {
       rows.push({ items: row, width: rowWidth, y });
@@ -406,16 +436,16 @@ export function layoutLanguageItems(languages, startX, maximumX, startY) {
     }
 
     row.push({ ...language, width });
-    rowWidth = rowWidth === 0 ? width : rowWidth + 26 + width;
+    rowWidth = rowWidth === 0 ? width : rowWidth + 22 + width;
   }
 
   rows.push({ items: row, width: rowWidth, y });
 
   const items = rows.flatMap((languageRow) => {
-    let x = startX + (availableWidth - languageRow.width) / 2;
+    let x = startX;
     return languageRow.items.map((language, index) => {
       const item = { ...language, x, y: languageRow.y };
-      x += language.width + (index === languageRow.items.length - 1 ? 0 : 26);
+      x += language.width + (index === languageRow.items.length - 1 ? 0 : 22);
       return item;
     });
   });
@@ -433,10 +463,21 @@ export function layoutLanguageItems(languages, startX, maximumX, startY) {
 function renderLanguageItems(items, theme) {
   return items
     .map((language) => {
-      const color = safeColor(language.color, theme.muted);
+      const icon = LANGUAGE_ICONS[language.name.toLowerCase()];
+      const fallbackColor = safeColor(language.color, theme.muted);
+      const iconMarkup = icon
+        ? `<svg x="${language.x}" y="${language.y - 4}" width="18" height="18" viewBox="0 0 24 24" role="img" aria-label="${escapeXml(language.name)} logo">
+          <title>${escapeXml(language.name)} logo</title>
+          <path d="${icon.path}" fill="#${icon.hex}"/>
+        </svg>`
+        : `<svg x="${language.x}" y="${language.y - 4}" width="18" height="18" viewBox="0 0 18 18" role="img" aria-label="${escapeXml(language.name)} code icon">
+          <title>${escapeXml(language.name)} code icon</title>
+          <rect x="0.75" y="0.75" width="16.5" height="16.5" rx="4" fill="${fallbackColor}" fill-opacity="0.16" stroke="${fallbackColor}" stroke-opacity="0.62"/>
+          <path d="M7 5.5 3.5 9 7 12.5M11 5.5 14.5 9 11 12.5" fill="none" stroke="${fallbackColor}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
       return `<g>
-        <circle cx="${language.x + 4}" cy="${language.y + 5}" r="4" fill="${color}"/>
-        <text x="${language.x + 16}" y="${language.y + 9}" class="language" fill="${theme.primary}">${escapeXml(language.name)}</text>
+        ${iconMarkup}
+        <text x="${language.x + 24}" y="${language.y + 9}" class="language" fill="${theme.primary}">${escapeXml(language.name)}</text>
       </g>`;
     })
     .join("");
