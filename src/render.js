@@ -1,23 +1,40 @@
 const WIDTH = 900;
+const INTRODUCTION =
+  "My name is Thibault Delattre. I'm a second-year master's student at Efrei University in Paris.";
+const PANEL = {
+  x: 16,
+  y: 72,
+  width: 868,
+  height: 210,
+  radius: 18,
+};
 
 const THEMES = {
   light: {
     background: "#ffffff",
     surface: "#f6f8fa",
+    glassStart: "#ffffff",
+    glassEnd: "#eef3f8",
+    glassOpacity: 0.72,
+    highlightOpacity: 0.72,
+    shadow: "#57606a",
     primary: "#1f2328",
     secondary: "#59636e",
     muted: "#818b98",
     line: "#d8dee4",
-    chip: "#f6f8fa",
   },
   dark: {
     background: "#0d1117",
     surface: "#161b22",
+    glassStart: "#263140",
+    glassEnd: "#111820",
+    glassOpacity: 0.78,
+    highlightOpacity: 0.34,
+    shadow: "#000000",
     primary: "#f0f6fc",
     secondary: "#8b949e",
     muted: "#6e7681",
     line: "#30363d",
-    chip: "#161b22",
   },
 };
 
@@ -29,30 +46,38 @@ const THEMES = {
 export function renderCard(metrics, config, mode) {
   const theme = THEMES[mode];
   const accent = safeColor(config.brand.accent, "#2f81f7");
-  const languageLayout = layoutLanguageChips(metrics.languages, 32, 868, 237);
-  const height = Math.max(290, languageLayout.bottom + 22);
+  const languageLayout = layoutLanguageItems(
+    metrics.languages,
+    32,
+    868,
+    342,
+  );
+  const height = Math.max(390, languageLayout.bottom + 24);
   const periods = [
     { label: "THIS WEEK", values: metrics.activity.week },
     { label: "THIS MONTH", values: metrics.activity.month },
     { label: "THIS YEAR", values: metrics.activity.year },
     { label: "ALL TIME", values: metrics.activity.total },
   ];
-  const columnCenters = [270, 430, 590, 760];
+  const columnCenters = [275, 435, 595, 760];
   const date = formatDisplayDate(metrics.generatedAt);
 
   const title = `GitHub activity for @${metrics.username}`;
-  const description = [
+  const description = `${INTRODUCTION} ${[
     `${metrics.activity.week.contributions} contributions this week`,
     `${metrics.activity.month.contributions} this month`,
     `${metrics.activity.year.contributions} this year`,
     `${metrics.activity.total.contributions} total`,
-  ].join(", ");
+  ].join(", ")}.`;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${height}" viewBox="0 0 ${WIDTH} ${height}" role="img" aria-labelledby="title desc">
   <title id="title">${escapeXml(title)}</title>
   <desc id="desc">${escapeXml(description)}</desc>
   <defs>
-    <linearGradient id="animated-border" x1="0" y1="0" x2="${WIDTH}" y2="${height}" gradientUnits="userSpaceOnUse">
+    <clipPath id="glass-clip">
+      <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL.radius}"/>
+    </clipPath>
+    <linearGradient id="animated-border" x1="${PANEL.x}" y1="${PANEL.y}" x2="${PANEL.x + PANEL.width}" y2="${PANEL.y + PANEL.height}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#58a6ff"/>
       <stop offset="25%" stop-color="#f7fbff"/>
       <stop offset="50%" stop-color="#ff7b72"/>
@@ -61,50 +86,85 @@ export function renderCard(metrics, config, mode) {
       <animateTransform
         attributeName="gradientTransform"
         type="rotate"
-        from="0 ${WIDTH / 2} ${height / 2}"
-        to="360 ${WIDTH / 2} ${height / 2}"
+        from="0 ${WIDTH / 2} ${PANEL.y + PANEL.height / 2}"
+        to="360 ${WIDTH / 2} ${PANEL.y + PANEL.height / 2}"
         dur="6s"
         repeatCount="indefinite"
       />
     </linearGradient>
+    <linearGradient id="glass-fill" x1="${PANEL.x}" y1="${PANEL.y}" x2="${PANEL.x + PANEL.width}" y2="${PANEL.y + PANEL.height}" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassOpacity}"/>
+      <stop offset="48%" stop-color="${theme.glassEnd}" stop-opacity="${theme.glassOpacity - 0.12}"/>
+      <stop offset="100%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassOpacity - 0.04}"/>
+    </linearGradient>
+    <linearGradient id="glass-highlight" x1="${PANEL.x + 24}" y1="${PANEL.y + 4}" x2="${PANEL.x + PANEL.width - 80}" y2="${PANEL.y + 100}" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="${theme.highlightOpacity}"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="period-fill" x1="184" y1="132" x2="856" y2="164" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="${theme.surface}" stop-opacity="0.84"/>
+      <stop offset="50%" stop-color="${theme.surface}" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="${theme.surface}" stop-opacity="0.76"/>
+    </linearGradient>
+    <filter id="panel-shadow" x="-12%" y="-32%" width="124%" height="174%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="${theme.shadow}" flood-opacity="0.2"/>
+    </filter>
+    <filter id="liquid-blur" x="-20%" y="-80%" width="140%" height="260%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
   </defs>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    .introduction { font-size: 15px; font-weight: 500; letter-spacing: -0.1px; }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
     .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
     .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
     .value { font-size: 29px; font-weight: 650; }
-    .language { font-size: 11px; font-weight: 600; }
+    .language { font-size: 12px; font-weight: 600; }
   </style>
-  <rect x="1.25" y="1.25" width="${WIDTH - 2.5}" height="${height - 2.5}" rx="14" fill="${theme.background}" stroke="url(#animated-border)" stroke-width="2.5"/>
-  <text x="32" y="37" class="eyebrow" fill="${accent}">GITHUB ACTIVITY</text>
-  <text x="868" y="37" text-anchor="end" class="eyebrow" fill="${theme.muted}">UPDATED ${date}</text>
-  <line x1="32" y1="58" x2="868" y2="58" stroke="${theme.line}"/>
-  <rect x="180" y="70" width="688" height="34" rx="7" fill="${theme.surface}"/>
+  <rect width="${WIDTH}" height="${height}" fill="${theme.background}"/>
+  <text x="${WIDTH / 2}" y="35" text-anchor="middle" class="introduction" fill="${theme.primary}">${escapeXml(INTRODUCTION)}</text>
+
+  <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL.radius}" fill="${theme.glassEnd}" opacity="0.74" filter="url(#panel-shadow)"/>
+  <g clip-path="url(#glass-clip)" filter="url(#liquid-blur)" opacity="${mode === "light" ? 0.34 : 0.28}">
+    <path d="M -20 246 C 188 128, 322 212, 514 98 S 814 84, 948 122" fill="none" stroke="#58a6ff" stroke-width="52"/>
+    <path d="M -12 106 C 170 182, 318 82, 502 206 S 764 248, 930 178" fill="none" stroke="#ff7b72" stroke-width="44"/>
+  </g>
+  <rect x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.width}" height="${PANEL.height}" rx="${PANEL.radius}" fill="url(#glass-fill)"/>
+  <path d="M ${PANEL.x + 24} ${PANEL.y + 1.5} H ${PANEL.x + PANEL.width - 120}" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
+
+  <text x="44" y="105" class="eyebrow" fill="${accent}">GITHUB ACTIVITY</text>
+  <text x="856" y="105" text-anchor="end" class="eyebrow" fill="${theme.muted}">UPDATED ${date}</text>
+  <line x1="44" y1="120" x2="856" y2="120" stroke="${theme.line}" stroke-opacity="0.82"/>
+  <rect x="184" y="132" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.5 : 0.09}"/>
   ${periods
     .map(
       (period, index) =>
-        `<text x="${columnCenters[index]}" y="91" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
+        `<text x="${columnCenters[index]}" y="152" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
     )
     .join("")}
-  <text x="32" y="129" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
+  <text x="44" y="190" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
   ${periods
     .map(
       (period, index) =>
-        `<text x="${columnCenters[index]}" y="134" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
+        `<text x="${columnCenters[index]}" y="195" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
     )
     .join("")}
-  <line x1="180" y1="149" x2="868" y2="149" stroke="${theme.line}"/>
-  <text x="32" y="182" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
+  <line x1="184" y1="210" x2="856" y2="210" stroke="${theme.line}" stroke-opacity="0.84"/>
+  <text x="44" y="243" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
   ${periods
     .map(
       (period, index) =>
-        `<text x="${columnCenters[index]}" y="187" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
+        `<text x="${columnCenters[index]}" y="248" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
     )
     .join("")}
-  <line x1="32" y1="207" x2="868" y2="207" stroke="${theme.line}"/>
-  <text x="32" y="228" class="eyebrow" fill="${theme.secondary}">LANGUAGES</text>
-  ${renderLanguageChips(languageLayout.items, theme)}
+  <rect x="${PANEL.x + 1.25}" y="${PANEL.y + 1.25}" width="${PANEL.width - 2.5}" height="${PANEL.height - 2.5}" rx="${PANEL.radius - 1}" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
+
+  <line x1="32" y1="315" x2="356" y2="315" stroke="${theme.line}"/>
+  <text x="${WIDTH / 2}" y="319" text-anchor="middle" class="eyebrow" fill="${theme.secondary}">LANGUAGES I USE</text>
+  <line x1="544" y1="315" x2="868" y2="315" stroke="${theme.line}"/>
+  ${renderLanguageItems(languageLayout.items, theme)}
 </svg>`;
 }
 
@@ -114,35 +174,46 @@ export function renderCard(metrics, config, mode) {
  * @param {number} maximumX
  * @param {number} startY
  */
-export function layoutLanguageChips(languages, startX, maximumX, startY) {
+export function layoutLanguageItems(languages, startX, maximumX, startY) {
   const source =
     languages.length > 0
       ? languages
       : [{ name: "No language data yet", color: null }];
-  const items = [];
-  let x = startX;
+  const availableWidth = maximumX - startX;
+  const rows = [];
+  let row = [];
+  let rowWidth = 0;
   let y = startY;
 
   for (const language of source) {
-    const width = Math.max(92, 40 + language.name.length * 6.8);
+    const width = 18 + language.name.length * 7;
+    const nextWidth = row.length === 0 ? width : rowWidth + 26 + width;
 
-    if (x > startX && x + width > maximumX) {
-      x = startX;
-      y += 34;
+    if (row.length > 0 && nextWidth > availableWidth) {
+      rows.push({ items: row, width: rowWidth, y });
+      row = [];
+      rowWidth = 0;
+      y += 29;
     }
 
-    items.push({
-      ...language,
-      x,
-      y,
-      width,
-    });
-    x += width + 9;
+    row.push({ ...language, width });
+    rowWidth = rowWidth === 0 ? width : rowWidth + 26 + width;
   }
+
+  rows.push({ items: row, width: rowWidth, y });
+
+  const items = rows.flatMap((languageRow) => {
+    let x = startX + (availableWidth - languageRow.width) / 2;
+    return languageRow.items.map((language, index) => {
+      const item = { ...language, x, y: languageRow.y };
+      x += language.width + (index === languageRow.items.length - 1 ? 0 : 26);
+      return item;
+    });
+  });
 
   return {
     items,
-    bottom: y + 26,
+    bottom: y + 18,
   };
 }
 
@@ -150,14 +221,13 @@ export function layoutLanguageChips(languages, startX, maximumX, startY) {
  * @param {Array<{name: string, color: string | null, x: number, y: number, width: number}>} items
  * @param {typeof THEMES.light} theme
  */
-function renderLanguageChips(items, theme) {
+function renderLanguageItems(items, theme) {
   return items
     .map((language) => {
       const color = safeColor(language.color, theme.muted);
       return `<g>
-        <rect x="${language.x}" y="${language.y}" width="${language.width.toFixed(1)}" height="25" rx="12.5" fill="${theme.chip}" stroke="${theme.line}"/>
-        <circle cx="${language.x + 14}" cy="${language.y + 12.5}" r="4" fill="${color}"/>
-        <text x="${language.x + 26}" y="${language.y + 16.5}" class="language" fill="${theme.primary}">${escapeXml(language.name)}</text>
+        <circle cx="${language.x + 4}" cy="${language.y + 5}" r="4" fill="${color}"/>
+        <text x="${language.x + 16}" y="${language.y + 9}" class="language" fill="${theme.primary}">${escapeXml(language.name)}</text>
       </g>`;
     })
     .join("");

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { layoutLanguageChips, renderCard } from "../src/render.js";
+import { layoutLanguageItems, renderCard } from "../src/render.js";
 
 const config = {
   username: "thibault-delattre",
@@ -35,15 +35,23 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /THIS YEAR/);
   assert.match(svg, /ALL TIME/);
   assert.match(svg, /CONTRIBUTIONS/);
+  assert.match(
+    svg,
+    /My name is Thibault Delattre\. I&apos;m a second-year master&apos;s student/,
+  );
+  assert.match(svg, /LANGUAGES I USE/);
   assert.doesNotMatch(svg, />COMMITS</);
   assert.match(svg, /linearGradient id="animated-border"/);
+  assert.match(svg, /linearGradient id="glass-fill"/);
+  assert.match(svg, /filter id="liquid-blur"/);
+  assert.match(svg, /clipPath id="glass-clip"/);
   assert.match(svg, /#58a6ff/);
   assert.match(svg, /#f7fbff/);
   assert.match(svg, /#ff7b72/);
   assert.match(svg, /<animateTransform/);
   assert.match(svg, /repeatCount="indefinite"/);
   assert.doesNotMatch(svg, /REPOSITORIES/);
-  assert.doesNotMatch(svg, /Thibault/);
+  assert.doesNotMatch(svg, /rx="12\.5"/);
   assert.match(svg, /&lt;unsafe&gt;/);
   assert.doesNotMatch(svg, /ENGINEERING PULSE/);
   assert.doesNotMatch(svg, /MOMENTUM/i);
@@ -64,15 +72,16 @@ test("renderCard renders distinct light and dark palettes", () => {
   assert.notEqual(light, dark);
 });
 
-test("layoutLanguageChips wraps every language without truncating", () => {
+test("layoutLanguageItems centers and wraps every language", () => {
   const languages = Array.from({ length: 15 }, (_, index) => ({
     name: `Language-${index}`,
     color: "#123456",
   }));
-  const layout = layoutLanguageChips(languages, 32, 868, 237);
+  const layout = layoutLanguageItems(languages, 32, 868, 342);
 
   assert.equal(layout.items.length, 15);
   assert.ok(new Set(layout.items.map((item) => item.y)).size > 1);
+  assert.ok(layout.items.every((item) => item.y > 282));
   assert.ok(
     layout.items.every((item) => item.x + item.width <= 868),
   );

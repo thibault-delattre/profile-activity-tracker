@@ -18,9 +18,10 @@ contribution calendar:
 - active days for the same four calendar periods;
 - every language detected across owned, public, non-fork repositories.
 
-It is generated as self-contained light and dark SVG files with a native,
-continuously animated blue-white-red outline. There is no public server,
-tracking script, analytics service, or runtime dependency.
+It is generated as self-contained light and dark SVG files with a restrained
+liquid-glass panel, native blue-white-red outline animation, centered profile
+introduction, and a language legend positioned below the statistics. There is
+no public server, tracking script, analytics service, or runtime dependency.
 
 ## How it works
 
