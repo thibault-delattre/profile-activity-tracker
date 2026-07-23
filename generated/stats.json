@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 1,
+  "username": "thibault-delattre",
+  "displayName": "Thibault Delattre",
+  "generatedAt": "2026-07-23T12:40:16.506Z",
+  "periodDays": 90,
+  "contributions": 0,
+  "previousContributions": 0,
+  "momentumPercent": 0,
+  "activeDays": 0,
+  "longestStreak": 0,
+  "commits": 0,
+  "issues": 0,
+  "pullRequestsOpened": 0,
+  "pullRequestsMerged": 0,
+  "reviews": 0,
+  "restrictedContributions": 0,
+  "repositoriesContributedTo": 0,
+  "weeklyTotals": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "activityDays": [
+    {
+      "date": "2026-04-25",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-04-26",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-04-27",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-04-28",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-04-29",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-04-30",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-01",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-02",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-03",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-04",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-05",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-06",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-07",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-08",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-09",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-10",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-11",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-12",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-13",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-14",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-15",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-16",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-17",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-18",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-19",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-20",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-21",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-22",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-23",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-24",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-25",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-26",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-27",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-28",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-29",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-30",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-05-31",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-01",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-02",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-03",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-04",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-05",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-06",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-07",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-08",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-09",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-10",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-11",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-12",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-13",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-14",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-15",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-16",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-17",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-18",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-19",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-20",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-21",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-22",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-23",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-24",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-25",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-26",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-27",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-28",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-29",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-06-30",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-01",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-02",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-03",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-04",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-05",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-06",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-07",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-08",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-09",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-10",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-11",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-12",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-13",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-14",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-15",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-16",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-17",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-18",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-19",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-20",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-21",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-22",
+      "contributionCount": 0
+    },
+    {
+      "date": "2026-07-23",
+      "contributionCount": 0
+    }
+  ],
+  "languages": [],
+  "featuredRepository": null,
+  "rateLimit": null
+}

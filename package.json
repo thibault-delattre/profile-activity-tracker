@@ -1,0 +1,16 @@
+{
+  "name": "profile-activity-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Generate a distinctive, automatically updated GitHub profile activity card.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "generate": "node src/index.js",
+    "generate:placeholder": "node src/index.js --placeholder",
+    "test": "node --test",
+    "check": "node --check src/*.js && node --test"
+  }
+}
