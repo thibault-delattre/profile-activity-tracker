@@ -5,8 +5,26 @@ accounts, introduction, about paragraph, repository exclusions, and accent color
 configuration—nothing personal is embedded in the renderer. The included sample profile uses
 placeholder demo content so public previews stay generic.
 
-> Note: this README does not embed the live generated SVG card, so the documentation
-> remains generic even when the workflow is configured with your real profile settings.
+## Example
+
+The preview below is generated from fictional profile details and fixed sample
+statistics. It never reads or displays the configured user's activity.
+
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="./docs/activity-example-dark.svg"
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="./docs/activity-example-light.svg"
+  />
+  <img
+    alt="Generic example of the profile activity card"
+    src="./docs/activity-example-light.svg"
+    width="100%"
+  />
+</picture>
 
 
 ## What it tracks
@@ -17,16 +35,14 @@ contribution calendar:
 - combined activity from the configured personal accounts;
 - GitHub contributions for this week, month, year, and all time;
 - active days for the same four calendar periods;
-- every language detected across owned, public, non-fork repositories.
+- a JSON summary containing the detected languages from eligible repositories.
 
 It is generated as self-contained light and dark SVG files with a smooth
-layered-glass panel, native blue-white-red outline animation, a left-aligned
-introduction, a word-spaced justified profile summary, and a left-aligned
-favorite-language legend with embedded brand icons below the statistics. Static
-clipped lighting, soft shadows, and inner
-edge highlights create depth, while overlapping line-by-line fades introduce
-the content with a smooth ease-in-out curve and respect reduced-motion
-preferences. There is no public server,
+white and silver layered-glass panel, a left-aligned introduction, and a
+word-spaced justified profile summary. Continuously drifting clipped highlights,
+frosted texture, soft shadows, and inner edge lighting create depth, while
+staggered zoom-and-settle entrances introduce the content and respect
+reduced-motion preferences. There is no public server,
 tracking script or analytics service, and the generated SVG has no runtime
 dependency or external asset request.
 
@@ -48,7 +64,7 @@ Pure, escaped SVG + transparent JSON summary
 Commit only generated files that changed
 ```
 
-The workflow runs every two hours at minute 17, can be launched manually, and
+The workflow runs every 30 minutes, can be launched manually, and
 also runs when generator code or configuration changes. If GitHub's API is
 unavailable, generation fails before replacing the last valid cards.
 

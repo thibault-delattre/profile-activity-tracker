@@ -9,6 +9,7 @@
   },
   "scripts": {
     "generate": "node src/index.js",
+    "generate:example": "node src/generate-example.js",
     "generate:placeholder": "node src/index.js --placeholder",
     "test": "node --test",
     "check": "node --check src/*.js && node --test"
