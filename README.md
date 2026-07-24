@@ -5,11 +5,9 @@ accounts, introduction, about paragraph, repository exclusions, and accent color
 configuration—nothing personal is embedded in the renderer. The included sample profile uses
 placeholder demo content so public previews stay generic.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./generated/activity-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="./generated/activity-light.svg">
-  <img alt="Automatically updated GitHub activity" src="./generated/activity-light.svg" width="100%">
-</picture>
+> Note: this README does not embed the live generated SVG card, so the documentation
+> remains generic even when the workflow is configured with your real profile settings.
+
 
 ## What it tracks
 
