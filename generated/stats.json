@@ -2,14 +2,14 @@
   "schemaVersion": 5,
   "username": "thibault-delattre",
   "sourceCount": 1,
-  "generatedAt": "2026-07-24T16:54:28.806Z",
+  "generatedAt": "2026-07-24T17:26:51.980Z",
   "activity": {
     "week": {
-      "contributions": 44,
+      "contributions": 38,
       "activeDays": 3
     },
     "month": {
-      "contributions": 204,
+      "contributions": 207,
       "activeDays": 14
     },
     "year": {
@@ -31,7 +31,7 @@
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4990,
+    "remaining": 4988,
     "resetAt": "2026-07-24T17:33:10Z"
   }
 }

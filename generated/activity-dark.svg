@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="482" viewBox="0 0 900 482" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @thibault-delattre</title>
-  <desc id="desc">Thibault Delattre — full-stack engineer I build reliable, modern software with applied AI and scalable systems. My work spans secure infrastructure, automated developer tooling, and polished web experiences. 44 contributions this week, 204 this month, 1108 this year, 4291 total.</desc>
+  <desc id="desc">My name is Thibault Delattre As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital experiences. 38 contributions this week, 207 this month, 1108 this year, 4291 total.</desc>
   <defs>
     <clipPath id="glass-clip">
-      <rect x="16" y="122" width="868" height="210" rx="12"/>
+      <rect x="16" y="164" width="868" height="210" rx="12"/>
     </clipPath>
-    <linearGradient id="animated-border" x1="16" y1="122" x2="884" y2="332" gradientUnits="userSpaceOnUse">
+    <linearGradient id="animated-border" x1="16" y1="164" x2="884" y2="374" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#58a6ff"/>
       <stop offset="25%" stop-color="#f7fbff"/>
       <stop offset="50%" stop-color="#ff7b72"/>
@@ -14,13 +14,13 @@
       <animateTransform
         attributeName="gradientTransform"
         type="rotate"
-        from="0 450 227"
-        to="360 450 227"
+        from="0 450 269"
+        to="360 450 269"
         dur="6s"
         repeatCount="indefinite"
       />
     </linearGradient>
-    <linearGradient id="glass-fill" x1="0" y1="122" x2="0" y2="332" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glass-fill" x1="0" y1="164" x2="0" y2="374" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#263140" stop-opacity="0.78"/>
       <stop offset="48%" stop-color="#111820" stop-opacity="0.66"/>
       <stop offset="100%" stop-color="#263140" stop-opacity="0.74"/>
@@ -35,12 +35,12 @@
       <stop offset="52%" stop-color="#ff7b72" stop-opacity="0.025"/>
       <stop offset="100%" stop-color="#ff7b72" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="glass-highlight" x1="40" y1="126" x2="804" y2="222" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glass-highlight" x1="40" y1="168" x2="804" y2="264" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34"/>
       <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="period-fill" x1="184" y1="182" x2="856" y2="214" gradientUnits="userSpaceOnUse">
+    <linearGradient id="period-fill" x1="184" y1="224" x2="856" y2="256" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#161b22" stop-opacity="0.84"/>
       <stop offset="50%" stop-color="#161b22" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#161b22" stop-opacity="0.76"/>
@@ -75,38 +75,38 @@
       .reveal { opacity: 1; animation: none; }
     }
   </style>
-  <rect width="900" height="440" fill="#0d1117"/>
-  <text x="32" y="38" class="introduction reveal" style="animation-delay:0ms" fill="#f0f6fc">Thibault Delattre — full-stack engineer</text>
-  <text x="32" y="65" class="about" fill="#8b949e"><tspan x="32" dy="0" class="reveal" style="animation-delay:90ms" font-size="14px" word-spacing="0.1px">I build reliable, modern software with applied AI and scalable systems. My work spans secure infrastructure, automated developer</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:180ms" font-size="14px" word-spacing="0px">tooling, and polished web experiences.</tspan></text>
+  <rect width="900" height="482" fill="#0d1117"/>
+  <text x="32" y="38" class="introduction reveal" style="animation-delay:0ms" fill="#f0f6fc">My name is Thibault Delattre</text>
+  <text x="32" y="65" class="about" fill="#8b949e"><tspan x="32" dy="0" class="reveal" style="animation-delay:90ms" font-size="14px" word-spacing="2px">As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:180ms" font-size="14px" word-spacing="0.6px">solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:270ms" font-size="14px" word-spacing="2.3px">interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:360ms" font-size="14px" word-spacing="0px">experiences.</tspan></text>
 
   <g class="glass-panel">
-    <g class="reveal" style="animation-delay:410ms">
-      <rect x="16" y="122" width="868" height="210" rx="12" fill="#111820" opacity="0.74" filter="url(#panel-shadow)"/>
-      <rect x="16" y="122" width="868" height="210" rx="12" fill="url(#glass-fill)"/>
+    <g class="reveal" style="animation-delay:590ms">
+      <rect x="16" y="164" width="868" height="210" rx="12" fill="#111820" opacity="0.74" filter="url(#panel-shadow)"/>
+      <rect x="16" y="164" width="868" height="210" rx="12" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
-        <rect x="16" y="122" width="868" height="210" fill="url(#ambient-blue)"/>
-        <rect x="16" y="122" width="868" height="210" fill="url(#ambient-red)"/>
+        <rect x="16" y="164" width="868" height="210" fill="url(#ambient-blue)"/>
+        <rect x="16" y="164" width="868" height="210" fill="url(#ambient-red)"/>
       </g>
-      <rect x="19" y="125" width="862" height="204" rx="9" fill="none" stroke="#ffffff" stroke-opacity="0.12"/>
-      <path d="M 40 123.5 H 764" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
-      <rect x="17.25" y="123.25" width="865.5" height="207.5" rx="11" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
-    </g>
-    <g class="reveal" style="animation-delay:540ms">
-      <text x="44" y="155" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">GITHUB ACTIVITY</text>
-      <line x1="44" y1="170" x2="856" y2="170" stroke="#30363d" stroke-opacity="0.82"/>
-    </g>
-    <g class="reveal" style="animation-delay:630ms">
-      <rect x="184" y="182" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.09"/>
-      <text x="275" y="202" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="435" y="202" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="595" y="202" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="202" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
+      <rect x="19" y="167" width="862" height="204" rx="9" fill="none" stroke="#ffffff" stroke-opacity="0.12"/>
+      <path d="M 40 165.5 H 764" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="17.25" y="165.25" width="865.5" height="207.5" rx="11" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
     </g>
     <g class="reveal" style="animation-delay:720ms">
-      <text x="44" y="240" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
-      <text x="275" y="245" text-anchor="middle" class="value" fill="#f0f6fc">44</text><text x="435" y="245" text-anchor="middle" class="value" fill="#f0f6fc">204</text><text x="595" y="245" text-anchor="middle" class="value" fill="#f0f6fc">1,108</text><text x="760" y="245" text-anchor="middle" class="value" fill="#f0f6fc">4,291</text>
+      <text x="44" y="197" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">GITHUB ACTIVITY</text>
+      <line x1="44" y1="212" x2="856" y2="212" stroke="#30363d" stroke-opacity="0.82"/>
     </g>
     <g class="reveal" style="animation-delay:810ms">
-      <line x1="184" y1="260" x2="856" y2="260" stroke="#30363d" stroke-opacity="0.84"/>
-      <text x="44" y="293" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
-      <text x="275" y="298" text-anchor="middle" class="value" fill="#f0f6fc">3</text><text x="435" y="298" text-anchor="middle" class="value" fill="#f0f6fc">14</text><text x="595" y="298" text-anchor="middle" class="value" fill="#f0f6fc">101</text><text x="760" y="298" text-anchor="middle" class="value" fill="#f0f6fc">360</text>
+      <rect x="184" y="224" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.09"/>
+      <text x="275" y="244" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="435" y="244" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="595" y="244" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="244" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
+    </g>
+    <g class="reveal" style="animation-delay:900ms">
+      <text x="44" y="282" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
+      <text x="275" y="287" text-anchor="middle" class="value" fill="#f0f6fc">38</text><text x="435" y="287" text-anchor="middle" class="value" fill="#f0f6fc">207</text><text x="595" y="287" text-anchor="middle" class="value" fill="#f0f6fc">1,108</text><text x="760" y="287" text-anchor="middle" class="value" fill="#f0f6fc">4,291</text>
+    </g>
+    <g class="reveal" style="animation-delay:990ms">
+      <line x1="184" y1="302" x2="856" y2="302" stroke="#30363d" stroke-opacity="0.84"/>
+      <text x="44" y="335" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
+      <text x="275" y="340" text-anchor="middle" class="value" fill="#f0f6fc">3</text><text x="435" y="340" text-anchor="middle" class="value" fill="#f0f6fc">14</text><text x="595" y="340" text-anchor="middle" class="value" fill="#f0f6fc">101</text><text x="760" y="340" text-anchor="middle" class="value" fill="#f0f6fc">360</text>
     </g>
   </g>
 
