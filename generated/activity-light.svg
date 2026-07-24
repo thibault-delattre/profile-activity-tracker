@@ -1,63 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="390" viewBox="0 0 900 390" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="344" viewBox="0 0 900 344" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @thibault-delattre</title>
   <desc id="desc">My name is Thibault Delattre As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital experiences. 49 contributions this week, 209 this month, 1119 this year, 4302 total.</desc>
   <defs>
     <clipPath id="glass-clip">
-      <rect x="16" y="164" width="868" height="210" rx="12"/>
+      <rect x="16" y="164" width="868" height="164" rx="18"/>
     </clipPath>
-    <linearGradient id="animated-border" x1="16" y1="164" x2="884" y2="374" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#58a6ff"/>
-      <stop offset="25%" stop-color="#f7fbff"/>
-      <stop offset="50%" stop-color="#ff7b72"/>
-      <stop offset="75%" stop-color="#f7fbff"/>
-      <stop offset="100%" stop-color="#58a6ff"/>
-      <animateTransform
-        attributeName="gradientTransform"
-        type="rotate"
-        from="0 450 269"
-        to="360 450 269"
-        dur="6s"
-        repeatCount="indefinite"
-      />
+    <linearGradient id="glass-border" x1="16" y1="164" x2="884" y2="328" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="0.5"/>
+      <stop offset="68%" stop-color="#dfe6ee" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.96"/>
     </linearGradient>
-    <linearGradient id="glass-fill" x1="0" y1="164" x2="0" y2="374" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.72"/>
-      <stop offset="48%" stop-color="#eef3f8" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.68"/>
+    <linearGradient id="glass-fill" x1="0" y1="164" x2="0" y2="328" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.94"/>
+      <stop offset="48%" stop-color="#e8edf3" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.88"/>
     </linearGradient>
-    <radialGradient id="ambient-blue" cx="0%" cy="0%" r="105%">
-      <stop offset="0%" stop-color="#58a6ff" stop-opacity="0.16"/>
-      <stop offset="48%" stop-color="#58a6ff" stop-opacity="0.035"/>
-      <stop offset="100%" stop-color="#58a6ff" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="ambient-red" cx="100%" cy="100%" r="110%">
-      <stop offset="0%" stop-color="#ff7b72" stop-opacity="0.12"/>
-      <stop offset="52%" stop-color="#ff7b72" stop-opacity="0.025"/>
-      <stop offset="100%" stop-color="#ff7b72" stop-opacity="0"/>
+    <radialGradient id="glass-glow" cx="18%" cy="0%" r="105%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="48%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="glass-highlight" x1="40" y1="168" x2="804" y2="264" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.72"/>
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.82"/>
       <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="period-fill" x1="184" y1="224" x2="856" y2="256" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#f6f8fa" stop-opacity="0.84"/>
-      <stop offset="50%" stop-color="#f6f8fa" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#f6f8fa" stop-opacity="0.76"/>
+    <linearGradient id="period-fill" x1="184" y1="180" x2="856" y2="212" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.82"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.72"/>
     </linearGradient>
-    <filter id="panel-shadow" x="-12%" y="-32%" width="124%" height="174%">
-      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#57606a" flood-opacity="0.15"/>
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#57606a" flood-opacity="0.08"/>
+    <filter id="panel-shadow" x="-12%" y="-48%" width="124%" height="196%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#687482" flood-opacity="0.16"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#687482" flood-opacity="0.09"/>
     </filter>
-    <filter id="activity-title-shadow" x="-8%" y="-45%" width="116%" height="190%">
-      <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.42"/>
+    <filter id="liquid-texture" x="-8%" y="-28%" width="116%" height="156%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.009 0.035" numOctaves="2" seed="5" result="turbulence"/>
+      <feGaussianBlur in="turbulence" stdDeviation="2.6" result="soft-map"/>
+      <feSpecularLighting in="soft-map" surfaceScale="3" specularConstant="0.45" specularExponent="32" lighting-color="#ffffff" result="specular">
+        <fePointLight x="-120" y="-180" z="260"/>
+      </feSpecularLighting>
+      <feComposite in="specular" in2="SourceGraphic" operator="in" result="clipped-specular"/>
+      <feDisplacementMap in="SourceGraphic" in2="soft-map" scale="16" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+      <feBlend in="displaced" in2="clipped-specular" mode="screen"/>
+    </filter>
+    <filter id="soft-glow" x="-20%" y="-80%" width="140%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
     </filter>
   </defs>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .introduction { font-size: 22px; font-weight: 600; }
     .about { font-weight: 400; }
-    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
     .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
     .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
     .value { font-size: 29px; font-weight: 650; }
@@ -75,38 +70,35 @@
       .reveal { opacity: 1; animation: none; }
     }
   </style>
-  <rect width="900" height="390" fill="#ffffff"/>
+  <rect width="900" height="344" fill="#ffffff"/>
   <text x="32" y="38" class="introduction reveal" style="animation-delay:0ms" fill="#1f2328">My name is Thibault Delattre</text>
   <text x="32" y="65" class="about" fill="#59636e"><tspan x="32" dy="0" class="reveal" style="animation-delay:90ms" font-size="14px" word-spacing="2px">As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:180ms" font-size="14px" word-spacing="0.6px">solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:270ms" font-size="14px" word-spacing="2.3px">interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:360ms" font-size="14px" word-spacing="0px">experiences.</tspan></text>
 
   <g class="glass-panel">
     <g class="reveal" style="animation-delay:590ms">
-      <rect x="16" y="164" width="868" height="210" rx="12" fill="#eef3f8" opacity="0.74" filter="url(#panel-shadow)"/>
-      <rect x="16" y="164" width="868" height="210" rx="12" fill="url(#glass-fill)"/>
+      <rect x="16" y="164" width="868" height="164" rx="18" fill="#e8edf3" opacity="0.78" filter="url(#panel-shadow)"/>
+      <rect x="16" y="164" width="868" height="164" rx="18" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
-        <rect x="16" y="164" width="868" height="210" fill="url(#ambient-blue)"/>
-        <rect x="16" y="164" width="868" height="210" fill="url(#ambient-red)"/>
+        <rect x="16" y="164" width="868" height="164" fill="url(#glass-glow)"/>
+        <ellipse cx="236" cy="168" rx="310" ry="48" fill="#ffffff" opacity="0.3" filter="url(#soft-glow)"/>
+        <rect x="-4" y="144" width="908" height="204" rx="38" fill="#ffffff" fill-opacity="0.18" filter="url(#liquid-texture)"/>
       </g>
-      <rect x="19" y="167" width="862" height="204" rx="9" fill="none" stroke="#ffffff" stroke-opacity="0.36"/>
-      <path d="M 40 165.5 H 764" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
-      <rect x="17.25" y="165.25" width="865.5" height="207.5" rx="11" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
+      <rect x="19" y="167" width="862" height="158" rx="15" fill="none" stroke="#ffffff" stroke-opacity="0.66"/>
+      <path d="M 46 166 H 724" stroke="url(#glass-highlight)" stroke-width="2" stroke-linecap="round"/>
+      <rect x="17.25" y="165.25" width="865.5" height="161.5" rx="17" fill="none" stroke="url(#glass-border)" stroke-width="2.5"/>
     </g>
     <g class="reveal" style="animation-delay:720ms">
-      <text x="44" y="197" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">GITHUB ACTIVITY</text>
-      <line x1="44" y1="212" x2="856" y2="212" stroke="#d8dee4" stroke-opacity="0.82"/>
+      <rect x="184" y="180" width="672" height="32" rx="9" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.72"/>
+      <text x="275" y="200" text-anchor="middle" class="period" fill="#59636e">THIS WEEK</text><text x="435" y="200" text-anchor="middle" class="period" fill="#59636e">THIS MONTH</text><text x="595" y="200" text-anchor="middle" class="period" fill="#59636e">THIS YEAR</text><text x="760" y="200" text-anchor="middle" class="period" fill="#59636e">ALL TIME</text>
     </g>
     <g class="reveal" style="animation-delay:810ms">
-      <rect x="184" y="224" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.5"/>
-      <text x="275" y="244" text-anchor="middle" class="period" fill="#59636e">THIS WEEK</text><text x="435" y="244" text-anchor="middle" class="period" fill="#59636e">THIS MONTH</text><text x="595" y="244" text-anchor="middle" class="period" fill="#59636e">THIS YEAR</text><text x="760" y="244" text-anchor="middle" class="period" fill="#59636e">ALL TIME</text>
+      <text x="44" y="242" class="row-label" fill="#59636e">CONTRIBUTIONS</text>
+      <text x="275" y="247" text-anchor="middle" class="value" fill="#1f2328">49</text><text x="435" y="247" text-anchor="middle" class="value" fill="#1f2328">209</text><text x="595" y="247" text-anchor="middle" class="value" fill="#1f2328">1,119</text><text x="760" y="247" text-anchor="middle" class="value" fill="#1f2328">4,302</text>
     </g>
     <g class="reveal" style="animation-delay:900ms">
-      <text x="44" y="282" class="row-label" fill="#59636e">CONTRIBUTIONS</text>
-      <text x="275" y="287" text-anchor="middle" class="value" fill="#1f2328">49</text><text x="435" y="287" text-anchor="middle" class="value" fill="#1f2328">209</text><text x="595" y="287" text-anchor="middle" class="value" fill="#1f2328">1,119</text><text x="760" y="287" text-anchor="middle" class="value" fill="#1f2328">4,302</text>
-    </g>
-    <g class="reveal" style="animation-delay:990ms">
-      <line x1="184" y1="302" x2="856" y2="302" stroke="#d8dee4" stroke-opacity="0.84"/>
-      <text x="44" y="335" class="row-label" fill="#59636e">ACTIVE DAYS</text>
-      <text x="275" y="340" text-anchor="middle" class="value" fill="#1f2328">3</text><text x="435" y="340" text-anchor="middle" class="value" fill="#1f2328">14</text><text x="595" y="340" text-anchor="middle" class="value" fill="#1f2328">101</text><text x="760" y="340" text-anchor="middle" class="value" fill="#1f2328">360</text>
+      <line x1="184" y1="262" x2="856" y2="262" stroke="#cfd7e1" stroke-opacity="0.72"/>
+      <text x="44" y="301" class="row-label" fill="#59636e">ACTIVE DAYS</text>
+      <text x="275" y="306" text-anchor="middle" class="value" fill="#1f2328">3</text><text x="435" y="306" text-anchor="middle" class="value" fill="#1f2328">14</text><text x="595" y="306" text-anchor="middle" class="value" fill="#1f2328">101</text><text x="760" y="306" text-anchor="middle" class="value" fill="#1f2328">360</text>
     </g>
   </g>
 

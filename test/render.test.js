@@ -39,7 +39,7 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   const svg = renderCard(metrics, config, "dark");
 
   assert.match(svg, /^<svg /);
-  assert.match(svg, /GITHUB ACTIVITY/);
+  assert.doesNotMatch(svg, />GITHUB ACTIVITY</);
   assert.doesNotMatch(svg, /COMBINED GITHUB ACTIVITY/);
   assert.doesNotMatch(svg, /Combined across/);
   assert.match(svg, /THIS WEEK/);
@@ -62,10 +62,7 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.doesNotMatch(svg, /aria-label="&lt;unsafe&gt; code icon"/);
   assert.doesNotMatch(svg, /<path d="[^"]+" fill="#3178C6"\/>/);
   assert.match(svg, /<text x="32" y="38" class="introduction reveal"/);
-  assert.match(
-    svg,
-    /<text x="44"[^>]*class="eyebrow" fill="#ffffff"[^>]*>GITHUB ACTIVITY<\/text>/,
-  );
+  assert.doesNotMatch(svg, /class="eyebrow"/);
   assert.doesNotMatch(svg, /<line x1="32"/);
   assert.doesNotMatch(svg, /<line x1="560"/);
   assert.match(svg, /@keyframes fade-in/);
@@ -80,19 +77,19 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.doesNotMatch(svg, /lengthAdjust=/);
   assert.doesNotMatch(svg, /UPDATED /);
   assert.doesNotMatch(svg, />COMMITS</);
-  assert.match(svg, /linearGradient id="animated-border"/);
+  assert.match(svg, /linearGradient id="glass-border"/);
   assert.match(svg, /linearGradient id="glass-fill"/);
-  assert.match(svg, /radialGradient id="ambient-blue"/);
-  assert.match(svg, /radialGradient id="ambient-red"/);
-  assert.doesNotMatch(svg, /liquid-sheen/);
-  assert.doesNotMatch(svg, /<feDisplacementMap/);
+  assert.match(svg, /radialGradient id="glass-glow"/);
+  assert.match(svg, /filter id="liquid-texture"/);
+  assert.match(svg, /<feTurbulence/);
+  assert.match(svg, /<feGaussianBlur/);
+  assert.match(svg, /<feSpecularLighting/);
+  assert.match(svg, /<feDisplacementMap/);
   assert.doesNotMatch(svg, /svg:hover \.glass-panel/);
   assert.match(svg, /clipPath id="glass-clip"/);
-  assert.match(svg, /#58a6ff/);
-  assert.match(svg, /#f7fbff/);
-  assert.match(svg, /#ff7b72/);
-  assert.match(svg, /<animateTransform/);
-  assert.match(svg, /repeatCount="indefinite"/);
+  assert.doesNotMatch(svg, /#58a6ff/);
+  assert.doesNotMatch(svg, /#ff7b72/);
+  assert.doesNotMatch(svg, /<animateTransform/);
   assert.doesNotMatch(svg, /REPOSITORIES/);
   assert.doesNotMatch(svg, /rx="12\.5"/);
   assert.doesNotMatch(svg, /&lt;unsafe&gt;/);
@@ -151,9 +148,9 @@ test("renderCard leaves only a compact margin below the activity panel", () => {
   const svg = renderCard(metrics, config, "light");
   const svgHeight = Number(svg.match(/<svg[^>]* height="(\d+)"/)?.[1]);
   const panelMatch = svg.match(
-    /<rect x="16" y="(\d+)" width="868" height="210" rx="12"\/>/,
+    /<rect x="16" y="(\d+)" width="868" height="164" rx="18"\/>/,
   );
-  const panelBottom = Number(panelMatch?.[1]) + 210;
+  const panelBottom = Number(panelMatch?.[1]) + 164;
 
   assert.equal(svgHeight - panelBottom, 16);
 });

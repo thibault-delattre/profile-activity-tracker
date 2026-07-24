@@ -17,40 +17,42 @@ const WIDTH = 900;
 const PANEL = {
   x: 16,
   width: 868,
-  height: 210,
-  radius: 12,
+  height: 164,
+  radius: 18,
 };
 
 const THEMES = {
   light: {
     background: "#ffffff",
-    surface: "#f6f8fa",
+    surface: "#ffffff",
     glassStart: "#ffffff",
-    glassEnd: "#eef3f8",
-    glassStartOpacity: 0.72,
-    glassMiddleOpacity: 0.6,
-    glassEndOpacity: 0.68,
-    highlightOpacity: 0.72,
-    shadow: "#57606a",
+    glassEnd: "#e8edf3",
+    glassStartOpacity: 0.94,
+    glassMiddleOpacity: 0.7,
+    glassEndOpacity: 0.88,
+    highlightOpacity: 0.82,
+    textureOpacity: 0.18,
+    shadow: "#687482",
     primary: "#1f2328",
     secondary: "#59636e",
     muted: "#818b98",
-    line: "#d8dee4",
+    line: "#cfd7e1",
   },
   dark: {
     background: "#0d1117",
-    surface: "#161b22",
-    glassStart: "#263140",
-    glassEnd: "#111820",
-    glassStartOpacity: 0.78,
-    glassMiddleOpacity: 0.66,
-    glassEndOpacity: 0.74,
-    highlightOpacity: 0.34,
+    surface: "#ffffff",
+    glassStart: "#ffffff",
+    glassEnd: "#dce3eb",
+    glassStartOpacity: 0.12,
+    glassMiddleOpacity: 0.07,
+    glassEndOpacity: 0.1,
+    highlightOpacity: 0.52,
+    textureOpacity: 0.07,
     shadow: "#000000",
     primary: "#f0f6fc",
-    secondary: "#8b949e",
+    secondary: "#aab4c0",
     muted: "#6e7681",
-    line: "#30363d",
+    line: "#ffffff",
   },
 };
 
@@ -82,8 +84,14 @@ export function renderCard(metrics, config, mode) {
     ...PANEL,
     y: 80 + aboutLayout.height,
   };
-  const verticalOffset = panel.y - 72;
   const height = panel.y + panel.height + 16;
+  const periodBoxY = panel.y + 16;
+  const periodTextY = periodBoxY + 20;
+  const contributionsY = panel.y + 78;
+  const contributionValueY = panel.y + 83;
+  const dividerY = panel.y + 98;
+  const activeDaysY = panel.y + 137;
+  const activeDaysValueY = panel.y + 142;
   const periods = [
     { label: "THIS WEEK", values: metrics.activity.week },
     { label: "THIS MONTH", values: metrics.activity.month },
@@ -95,12 +103,9 @@ export function renderCard(metrics, config, mode) {
   const aboutRevealStart = revealStep;
   const panelRevealDelay =
     aboutRevealStart + aboutLayout.lines.length * revealStep + 140;
-  const activityRevealDelay = panelRevealDelay + 130;
-  const periodsRevealDelay = activityRevealDelay + revealStep;
+  const periodsRevealDelay = panelRevealDelay + 130;
   const contributionsRevealDelay = periodsRevealDelay + revealStep;
   const activeDaysRevealDelay = contributionsRevealDelay + revealStep;
-  const languagesRevealDelay = activeDaysRevealDelay + 150;
-  const languageItemsRevealDelay = languagesRevealDelay + revealStep;
 
   const title = `GitHub activity for @${metrics.username}`;
   const description = `${introduction} ${config.about} ${[
@@ -117,59 +122,54 @@ export function renderCard(metrics, config, mode) {
     <clipPath id="glass-clip">
       <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}"/>
     </clipPath>
-    <linearGradient id="animated-border" x1="${panel.x}" y1="${panel.y}" x2="${panel.x + panel.width}" y2="${panel.y + panel.height}" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#58a6ff"/>
-      <stop offset="25%" stop-color="#f7fbff"/>
-      <stop offset="50%" stop-color="#ff7b72"/>
-      <stop offset="75%" stop-color="#f7fbff"/>
-      <stop offset="100%" stop-color="#58a6ff"/>
-      <animateTransform
-        attributeName="gradientTransform"
-        type="rotate"
-        from="0 ${WIDTH / 2} ${panel.y + panel.height / 2}"
-        to="360 ${WIDTH / 2} ${panel.y + panel.height / 2}"
-        dur="6s"
-        repeatCount="indefinite"
-      />
+    <linearGradient id="glass-border" x1="${panel.x}" y1="${panel.y}" x2="${panel.x + panel.width}" y2="${panel.y + panel.height}" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="${mode === "light" ? 0.98 : 0.82}"/>
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="${mode === "light" ? 0.5 : 0.28}"/>
+      <stop offset="68%" stop-color="#dfe6ee" stop-opacity="${mode === "light" ? 0.8 : 0.38}"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="${mode === "light" ? 0.96 : 0.7}"/>
     </linearGradient>
     <linearGradient id="glass-fill" x1="0" y1="${panel.y}" x2="0" y2="${panel.y + panel.height}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassStartOpacity}"/>
       <stop offset="48%" stop-color="${theme.glassEnd}" stop-opacity="${theme.glassMiddleOpacity}"/>
       <stop offset="100%" stop-color="${theme.glassStart}" stop-opacity="${theme.glassEndOpacity}"/>
     </linearGradient>
-    <radialGradient id="ambient-blue" cx="0%" cy="0%" r="105%">
-      <stop offset="0%" stop-color="#58a6ff" stop-opacity="${mode === "light" ? 0.16 : 0.13}"/>
-      <stop offset="48%" stop-color="#58a6ff" stop-opacity="0.035"/>
-      <stop offset="100%" stop-color="#58a6ff" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="ambient-red" cx="100%" cy="100%" r="110%">
-      <stop offset="0%" stop-color="#ff7b72" stop-opacity="${mode === "light" ? 0.12 : 0.09}"/>
-      <stop offset="52%" stop-color="#ff7b72" stop-opacity="0.025"/>
-      <stop offset="100%" stop-color="#ff7b72" stop-opacity="0"/>
+    <radialGradient id="glass-glow" cx="18%" cy="0%" r="105%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="${mode === "light" ? 0.9 : 0.3}"/>
+      <stop offset="48%" stop-color="#ffffff" stop-opacity="${mode === "light" ? 0.2 : 0.08}"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="glass-highlight" x1="${panel.x + 24}" y1="${panel.y + 4}" x2="${panel.x + panel.width - 80}" y2="${panel.y + 100}" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="${theme.highlightOpacity}"/>
       <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="period-fill" x1="184" y1="${132 + verticalOffset}" x2="856" y2="${164 + verticalOffset}" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="${theme.surface}" stop-opacity="0.84"/>
-      <stop offset="50%" stop-color="${theme.surface}" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="${theme.surface}" stop-opacity="0.76"/>
+    <linearGradient id="period-fill" x1="184" y1="${periodBoxY}" x2="856" y2="${periodBoxY + 32}" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="${theme.surface}" stop-opacity="${mode === "light" ? 0.82 : 0.1}"/>
+      <stop offset="50%" stop-color="${theme.surface}" stop-opacity="${mode === "light" ? 0.42 : 0.055}"/>
+      <stop offset="100%" stop-color="${theme.surface}" stop-opacity="${mode === "light" ? 0.72 : 0.085}"/>
     </linearGradient>
-    <filter id="panel-shadow" x="-12%" y="-32%" width="124%" height="174%">
-      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="${theme.shadow}" flood-opacity="0.15"/>
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="${theme.shadow}" flood-opacity="0.08"/>
+    <filter id="panel-shadow" x="-12%" y="-48%" width="124%" height="196%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="${theme.shadow}" flood-opacity="${mode === "light" ? 0.16 : 0.42}"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="${theme.shadow}" flood-opacity="${mode === "light" ? 0.09 : 0.28}"/>
     </filter>
-    <filter id="activity-title-shadow" x="-8%" y="-45%" width="116%" height="190%">
-      <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#000000" flood-opacity="${mode === "light" ? 0.42 : 0.55}"/>
+    <filter id="liquid-texture" x="-8%" y="-28%" width="116%" height="156%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.009 0.035" numOctaves="2" seed="5" result="turbulence"/>
+      <feGaussianBlur in="turbulence" stdDeviation="2.6" result="soft-map"/>
+      <feSpecularLighting in="soft-map" surfaceScale="3" specularConstant="0.45" specularExponent="32" lighting-color="#ffffff" result="specular">
+        <fePointLight x="-120" y="-180" z="260"/>
+      </feSpecularLighting>
+      <feComposite in="specular" in2="SourceGraphic" operator="in" result="clipped-specular"/>
+      <feDisplacementMap in="SourceGraphic" in2="soft-map" scale="16" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+      <feBlend in="displaced" in2="clipped-specular" mode="screen"/>
+    </filter>
+    <filter id="soft-glow" x="-20%" y="-80%" width="140%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
     </filter>
   </defs>
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .introduction { font-size: 22px; font-weight: 600; }
     .about { font-weight: 400; }
-    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.4px; }
     .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
     .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
     .value { font-size: 29px; font-weight: 650; }
@@ -198,45 +198,42 @@ export function renderCard(metrics, config, mode) {
 
   <g class="glass-panel">
     <g class="reveal" style="animation-delay:${panelRevealDelay}ms">
-      <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="${theme.glassEnd}" opacity="0.74" filter="url(#panel-shadow)"/>
+      <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="${theme.glassEnd}" opacity="${mode === "light" ? 0.78 : 0.12}" filter="url(#panel-shadow)"/>
       <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
-        <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#ambient-blue)"/>
-        <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#ambient-red)"/>
+        <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#glass-glow)"/>
+        <ellipse cx="${panel.x + 220}" cy="${panel.y + 4}" rx="310" ry="48" fill="#ffffff" opacity="${mode === "light" ? 0.3 : 0.12}" filter="url(#soft-glow)"/>
+        <rect x="${panel.x - 20}" y="${panel.y - 20}" width="${panel.width + 40}" height="${panel.height + 40}" rx="${panel.radius + 20}" fill="#ffffff" fill-opacity="${theme.textureOpacity}" filter="url(#liquid-texture)"/>
       </g>
-      <rect x="${panel.x + 3}" y="${panel.y + 3}" width="${panel.width - 6}" height="${panel.height - 6}" rx="${panel.radius - 3}" fill="none" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.36 : 0.12}"/>
-      <path d="M ${panel.x + 24} ${panel.y + 1.5} H ${panel.x + panel.width - 120}" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
-      <rect x="${panel.x + 1.25}" y="${panel.y + 1.25}" width="${panel.width - 2.5}" height="${panel.height - 2.5}" rx="${panel.radius - 1}" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
-    </g>
-    <g class="reveal" style="animation-delay:${activityRevealDelay}ms">
-      <text x="44" y="${105 + verticalOffset}" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">GITHUB ACTIVITY</text>
-      <line x1="44" y1="${120 + verticalOffset}" x2="856" y2="${120 + verticalOffset}" stroke="${theme.line}" stroke-opacity="0.82"/>
+      <rect x="${panel.x + 3}" y="${panel.y + 3}" width="${panel.width - 6}" height="${panel.height - 6}" rx="${panel.radius - 3}" fill="none" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.66 : 0.2}"/>
+      <path d="M ${panel.x + 30} ${panel.y + 2} H ${panel.x + panel.width - 160}" stroke="url(#glass-highlight)" stroke-width="2" stroke-linecap="round"/>
+      <rect x="${panel.x + 1.25}" y="${panel.y + 1.25}" width="${panel.width - 2.5}" height="${panel.height - 2.5}" rx="${panel.radius - 1}" fill="none" stroke="url(#glass-border)" stroke-width="2.5"/>
     </g>
     <g class="reveal" style="animation-delay:${periodsRevealDelay}ms">
-      <rect x="184" y="${132 + verticalOffset}" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.5 : 0.09}"/>
+      <rect x="184" y="${periodBoxY}" width="672" height="32" rx="9" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.72 : 0.13}"/>
       ${periods
         .map(
           (period, index) =>
-            `<text x="${columnCenters[index]}" y="${152 + verticalOffset}" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
+            `<text x="${columnCenters[index]}" y="${periodTextY}" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
         )
         .join("")}
     </g>
     <g class="reveal" style="animation-delay:${contributionsRevealDelay}ms">
-      <text x="44" y="${190 + verticalOffset}" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
+      <text x="44" y="${contributionsY}" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
       ${periods
         .map(
           (period, index) =>
-            `<text x="${columnCenters[index]}" y="${195 + verticalOffset}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
+            `<text x="${columnCenters[index]}" y="${contributionValueY}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
         )
         .join("")}
     </g>
     <g class="reveal" style="animation-delay:${activeDaysRevealDelay}ms">
-      <line x1="184" y1="${210 + verticalOffset}" x2="856" y2="${210 + verticalOffset}" stroke="${theme.line}" stroke-opacity="0.84"/>
-      <text x="44" y="${243 + verticalOffset}" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
+      <line x1="184" y1="${dividerY}" x2="856" y2="${dividerY}" stroke="${theme.line}" stroke-opacity="${mode === "light" ? 0.72 : 0.18}"/>
+      <text x="44" y="${activeDaysY}" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
       ${periods
         .map(
           (period, index) =>
-            `<text x="${columnCenters[index]}" y="${248 + verticalOffset}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
+            `<text x="${columnCenters[index]}" y="${activeDaysValueY}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
         )
         .join("")}
     </g>
