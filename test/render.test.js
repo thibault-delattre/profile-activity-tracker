@@ -147,6 +147,17 @@ test("renderCard renders distinct light and dark palettes", () => {
   assert.notEqual(light, dark);
 });
 
+test("renderCard leaves only a compact margin below the activity panel", () => {
+  const svg = renderCard(metrics, config, "light");
+  const svgHeight = Number(svg.match(/<svg[^>]* height="(\d+)"/)?.[1]);
+  const panelMatch = svg.match(
+    /<rect x="16" y="(\d+)" width="868" height="210" rx="12"\/>/,
+  );
+  const panelBottom = Number(panelMatch?.[1]) + 210;
+
+  assert.equal(svgHeight - panelBottom, 16);
+});
+
 test("layoutLanguageItems left-aligns and wraps every language", () => {
   const languages = Array.from({ length: 15 }, (_, index) => ({
     name: `Language-${index}`,

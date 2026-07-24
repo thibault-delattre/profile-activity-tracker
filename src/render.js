@@ -83,13 +83,7 @@ export function renderCard(metrics, config, mode) {
     y: 80 + aboutLayout.height,
   };
   const verticalOffset = panel.y - 72;
-  const languageLayout = layoutLanguageItems(
-    metrics.languages,
-    32,
-    868,
-    342 + verticalOffset,
-  );
-  const height = Math.max(390 + verticalOffset, languageLayout.bottom + 24);
+  const height = panel.y + panel.height + 16;
   const periods = [
     { label: "THIS WEEK", values: metrics.activity.week },
     { label: "THIS MONTH", values: metrics.activity.month },
