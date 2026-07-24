@@ -1,8 +1,8 @@
 {
   "$schema": "./profile.schema.json",
   "username": "thibault-delattre",
-  "introduction": "GitHub activity for my current account",
-  "about": "This profile card reflects public contributions and active days for the configured GitHub account.",
+  "introduction": "Thibault Delattre — full-stack engineer",
+  "about": "I build reliable, modern software with applied AI and scalable systems. My work spans secure infrastructure, automated developer tooling, and polished web experiences.",
   "additionalUsernames": [],
   "excludedRepositories": [
     "thibault-delattre"
