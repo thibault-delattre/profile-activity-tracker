@@ -2,7 +2,8 @@
 
 A reusable, automatically updated GitHub profile activity card. Personal
 accounts, introduction, about paragraph, repository exclusions, and accent color are all
-configuration—nothing personal is embedded in the renderer.
+configuration—nothing personal is embedded in the renderer. The included sample profile uses
+placeholder demo content so public previews stay generic.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./generated/activity-dark.svg">
