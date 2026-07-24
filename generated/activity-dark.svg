@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="419" viewBox="0 0 900 419" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @thibault-delattre</title>
-  <desc id="desc">GitHub activity for my current account This profile card reflects public contributions and active days for the configured GitHub account. 38 contributions this week, 201 this month, 1108 this year, 4291 total.</desc>
+  <desc id="desc">Thibault Delattre — full-stack engineer I build reliable, modern software with applied AI and scalable systems. My work spans secure infrastructure, automated developer tooling, and polished web experiences. 38 contributions this week, 201 this month, 1108 this year, 4291 total.</desc>
   <defs>
     <clipPath id="glass-clip">
-      <rect x="16" y="101" width="868" height="210" rx="12"/>
+      <rect x="16" y="122" width="868" height="210" rx="12"/>
     </clipPath>
-    <linearGradient id="animated-border" x1="16" y1="101" x2="884" y2="311" gradientUnits="userSpaceOnUse">
+    <linearGradient id="animated-border" x1="16" y1="122" x2="884" y2="332" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#58a6ff"/>
       <stop offset="25%" stop-color="#f7fbff"/>
       <stop offset="50%" stop-color="#ff7b72"/>
@@ -14,13 +14,13 @@
       <animateTransform
         attributeName="gradientTransform"
         type="rotate"
-        from="0 450 206"
-        to="360 450 206"
+        from="0 450 227"
+        to="360 450 227"
         dur="6s"
         repeatCount="indefinite"
       />
     </linearGradient>
-    <linearGradient id="glass-fill" x1="0" y1="101" x2="0" y2="311" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glass-fill" x1="0" y1="122" x2="0" y2="332" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#263140" stop-opacity="0.78"/>
       <stop offset="48%" stop-color="#111820" stop-opacity="0.66"/>
       <stop offset="100%" stop-color="#263140" stop-opacity="0.74"/>
@@ -35,12 +35,12 @@
       <stop offset="52%" stop-color="#ff7b72" stop-opacity="0.025"/>
       <stop offset="100%" stop-color="#ff7b72" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="glass-highlight" x1="40" y1="105" x2="804" y2="201" gradientUnits="userSpaceOnUse">
+    <linearGradient id="glass-highlight" x1="40" y1="126" x2="804" y2="222" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.34"/>
       <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="period-fill" x1="184" y1="161" x2="856" y2="193" gradientUnits="userSpaceOnUse">
+    <linearGradient id="period-fill" x1="184" y1="182" x2="856" y2="214" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#161b22" stop-opacity="0.84"/>
       <stop offset="50%" stop-color="#161b22" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#161b22" stop-opacity="0.76"/>
@@ -75,38 +75,38 @@
       .reveal { opacity: 1; animation: none; }
     }
   </style>
-  <rect width="900" height="419" fill="#0d1117"/>
-  <text x="32" y="38" class="introduction reveal" style="animation-delay:0ms" fill="#f0f6fc">GitHub activity for my current account</text>
-  <text x="32" y="65" class="about" fill="#8b949e"><tspan x="32" dy="0" class="reveal" style="animation-delay:90ms" font-size="14px" word-spacing="0px">This profile card reflects public contributions and active days for the configured GitHub account.</tspan></text>
+  <rect width="900" height="440" fill="#0d1117"/>
+  <text x="32" y="38" class="introduction reveal" style="animation-delay:0ms" fill="#f0f6fc">Thibault Delattre — full-stack engineer</text>
+  <text x="32" y="65" class="about" fill="#8b949e"><tspan x="32" dy="0" class="reveal" style="animation-delay:90ms" font-size="14px" word-spacing="0.1px">I build reliable, modern software with applied AI and scalable systems. My work spans secure infrastructure, automated developer</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:180ms" font-size="14px" word-spacing="0px">tooling, and polished web experiences.</tspan></text>
 
   <g class="glass-panel">
-    <g class="reveal" style="animation-delay:320ms">
-      <rect x="16" y="101" width="868" height="210" rx="12" fill="#111820" opacity="0.74" filter="url(#panel-shadow)"/>
-      <rect x="16" y="101" width="868" height="210" rx="12" fill="url(#glass-fill)"/>
+    <g class="reveal" style="animation-delay:410ms">
+      <rect x="16" y="122" width="868" height="210" rx="12" fill="#111820" opacity="0.74" filter="url(#panel-shadow)"/>
+      <rect x="16" y="122" width="868" height="210" rx="12" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
-        <rect x="16" y="101" width="868" height="210" fill="url(#ambient-blue)"/>
-        <rect x="16" y="101" width="868" height="210" fill="url(#ambient-red)"/>
+        <rect x="16" y="122" width="868" height="210" fill="url(#ambient-blue)"/>
+        <rect x="16" y="122" width="868" height="210" fill="url(#ambient-red)"/>
       </g>
-      <rect x="19" y="104" width="862" height="204" rx="9" fill="none" stroke="#ffffff" stroke-opacity="0.12"/>
-      <path d="M 40 102.5 H 764" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
-      <rect x="17.25" y="102.25" width="865.5" height="207.5" rx="11" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
-    </g>
-    <g class="reveal" style="animation-delay:450ms">
-      <text x="44" y="134" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">GITHUB ACTIVITY</text>
-      <line x1="44" y1="149" x2="856" y2="149" stroke="#30363d" stroke-opacity="0.82"/>
+      <rect x="19" y="125" width="862" height="204" rx="9" fill="none" stroke="#ffffff" stroke-opacity="0.12"/>
+      <path d="M 40 123.5 H 764" stroke="url(#glass-highlight)" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="17.25" y="123.25" width="865.5" height="207.5" rx="11" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
     </g>
     <g class="reveal" style="animation-delay:540ms">
-      <rect x="184" y="161" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.09"/>
-      <text x="275" y="181" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="435" y="181" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="595" y="181" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="181" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
+      <text x="44" y="155" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">GITHUB ACTIVITY</text>
+      <line x1="44" y1="170" x2="856" y2="170" stroke="#30363d" stroke-opacity="0.82"/>
     </g>
     <g class="reveal" style="animation-delay:630ms">
-      <text x="44" y="219" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
-      <text x="275" y="224" text-anchor="middle" class="value" fill="#f0f6fc">38</text><text x="435" y="224" text-anchor="middle" class="value" fill="#f0f6fc">201</text><text x="595" y="224" text-anchor="middle" class="value" fill="#f0f6fc">1,108</text><text x="760" y="224" text-anchor="middle" class="value" fill="#f0f6fc">4,291</text>
+      <rect x="184" y="182" width="672" height="32" rx="6" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.09"/>
+      <text x="275" y="202" text-anchor="middle" class="period" fill="#8b949e">THIS WEEK</text><text x="435" y="202" text-anchor="middle" class="period" fill="#8b949e">THIS MONTH</text><text x="595" y="202" text-anchor="middle" class="period" fill="#8b949e">THIS YEAR</text><text x="760" y="202" text-anchor="middle" class="period" fill="#8b949e">ALL TIME</text>
     </g>
     <g class="reveal" style="animation-delay:720ms">
-      <line x1="184" y1="239" x2="856" y2="239" stroke="#30363d" stroke-opacity="0.84"/>
-      <text x="44" y="272" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
-      <text x="275" y="277" text-anchor="middle" class="value" fill="#f0f6fc">3</text><text x="435" y="277" text-anchor="middle" class="value" fill="#f0f6fc">14</text><text x="595" y="277" text-anchor="middle" class="value" fill="#f0f6fc">101</text><text x="760" y="277" text-anchor="middle" class="value" fill="#f0f6fc">360</text>
+      <text x="44" y="240" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
+      <text x="275" y="245" text-anchor="middle" class="value" fill="#f0f6fc">38</text><text x="435" y="245" text-anchor="middle" class="value" fill="#f0f6fc">201</text><text x="595" y="245" text-anchor="middle" class="value" fill="#f0f6fc">1,108</text><text x="760" y="245" text-anchor="middle" class="value" fill="#f0f6fc">4,291</text>
+    </g>
+    <g class="reveal" style="animation-delay:810ms">
+      <line x1="184" y1="260" x2="856" y2="260" stroke="#30363d" stroke-opacity="0.84"/>
+      <text x="44" y="293" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
+      <text x="275" y="298" text-anchor="middle" class="value" fill="#f0f6fc">3</text><text x="435" y="298" text-anchor="middle" class="value" fill="#f0f6fc">14</text><text x="595" y="298" text-anchor="middle" class="value" fill="#f0f6fc">101</text><text x="760" y="298" text-anchor="middle" class="value" fill="#f0f6fc">360</text>
     </g>
   </g>
 
