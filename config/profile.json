@@ -1,11 +1,11 @@
 {
   "$schema": "./profile.schema.json",
-  "username": "demo-user",
-  "introduction": "Demo profile card",
-  "about": "This is placeholder content used to demonstrate the profile activity card. Replace the values in config/profile.json with your own introduction and summary to personalize the card.",
+  "username": "thibault-delattre",
+  "introduction": "GitHub activity for my current account",
+  "about": "This profile card reflects public contributions and active days for the configured GitHub account.",
   "additionalUsernames": [],
   "excludedRepositories": [
-    "demo-user"
+    "thibault-delattre"
   ],
   "brand": {
     "accent": "#2f81f7"
