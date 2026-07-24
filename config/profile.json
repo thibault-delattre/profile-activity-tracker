@@ -1,8 +1,8 @@
 {
   "$schema": "./profile.schema.json",
   "username": "thibault-delattre",
-  "introduction": "Thibault Delattre — full-stack engineer",
-  "about": "I build reliable, modern software with applied AI and scalable systems. My work spans secure infrastructure, automated developer tooling, and polished web experiences.",
+  "introduction": "My name is Thibault Delattre",
+  "about": "As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital experiences.",
   "additionalUsernames": [],
   "excludedRepositories": [
     "thibault-delattre"
