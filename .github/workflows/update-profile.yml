@@ -54,6 +54,7 @@ jobs:
             echo "Cards are already current."
             exit 0
           fi
+          git pull --rebase --autostash origin main
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "chore: update profile activity"

@@ -64,6 +64,15 @@ unavailable, generation fails before replacing the last valid cards.
 4. Run **Update profile activity** once from the Actions tab.
 5. Add the profile integration snippet below to your profile README.
 
+## Recommended workflow
+
+- Always run `git pull --rebase origin main` before you start editing.
+- Avoid manually committing generated files unless you are intentionally
+  updating the card output.
+- If you run `npm run generate`, do it after pulling the latest remote changes.
+- Commit source/config changes first, then push; the workflow will update
+  generated files automatically when needed.
+
 ## Profile integration
 
 Place this in the `README.md` of your `YOUR_USERNAME/YOUR_USERNAME` profile
