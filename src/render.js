@@ -18,7 +18,7 @@ const PANEL = {
   x: 16,
   width: 868,
   height: 210,
-  radius: 18,
+  radius: 12,
 };
 
 const THEMES = {
@@ -97,7 +97,6 @@ export function renderCard(metrics, config, mode) {
     { label: "ALL TIME", values: metrics.activity.total },
   ];
   const columnCenters = [275, 435, 595, 760];
-  const isCombined = Number(metrics.sourceCount) > 1;
   const revealStep = 90;
   const aboutRevealStart = revealStep;
   const panelRevealDelay =
@@ -109,12 +108,8 @@ export function renderCard(metrics, config, mode) {
   const languagesRevealDelay = activeDaysRevealDelay + 150;
   const languageItemsRevealDelay = languagesRevealDelay + revealStep;
 
-  const title = `${isCombined ? "Combined GitHub activity" : "GitHub activity"} for @${metrics.username}`;
-  const description = `${introduction} ${config.about} ${
-    isCombined
-      ? `Combined across ${metrics.sourceCount} GitHub accounts. `
-      : ""
-  }${[
+  const title = `GitHub activity for @${metrics.username}`;
+  const description = `${introduction} ${config.about} ${[
     `${metrics.activity.week.contributions} contributions this week`,
     `${metrics.activity.month.contributions} this month`,
     `${metrics.activity.year.contributions} this year`,
@@ -220,7 +215,7 @@ export function renderCard(metrics, config, mode) {
       <rect x="${panel.x + 1.25}" y="${panel.y + 1.25}" width="${panel.width - 2.5}" height="${panel.height - 2.5}" rx="${panel.radius - 1}" fill="none" stroke="url(#animated-border)" stroke-width="2.5"/>
     </g>
     <g class="reveal" style="animation-delay:${activityRevealDelay}ms">
-      <text x="44" y="${105 + verticalOffset}" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">${isCombined ? "COMBINED GITHUB ACTIVITY" : "GITHUB ACTIVITY"}</text>
+      <text x="44" y="${105 + verticalOffset}" class="eyebrow" fill="#ffffff" filter="url(#activity-title-shadow)">GITHUB ACTIVITY</text>
       <line x1="44" y1="${120 + verticalOffset}" x2="856" y2="${120 + verticalOffset}" stroke="${theme.line}" stroke-opacity="0.82"/>
     </g>
     <g class="reveal" style="animation-delay:${periodsRevealDelay}ms">
@@ -253,10 +248,6 @@ export function renderCard(metrics, config, mode) {
     </g>
   </g>
 
-  <text x="32" y="${319 + verticalOffset}" class="eyebrow reveal" style="animation-delay:${languagesRevealDelay}ms" fill="${theme.secondary}">FAVORITE LANGUAGES</text>
-  <g class="reveal" style="animation-delay:${languageItemsRevealDelay}ms">
-    ${renderLanguageItems(languageLayout.items, theme)}
-  </g>
 </svg>`;
 }
 

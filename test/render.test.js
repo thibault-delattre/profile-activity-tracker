@@ -40,8 +40,8 @@ test("renderCard creates a self-contained, escaped activity table", () => {
 
   assert.match(svg, /^<svg /);
   assert.match(svg, /GITHUB ACTIVITY/);
-  assert.match(svg, /COMBINED GITHUB ACTIVITY/);
-  assert.match(svg, /Combined across 2 GitHub accounts/);
+  assert.doesNotMatch(svg, /COMBINED GITHUB ACTIVITY/);
+  assert.doesNotMatch(svg, /Combined across/);
   assert.match(svg, /THIS WEEK/);
   assert.match(svg, /THIS MONTH/);
   assert.match(svg, /THIS YEAR/);
@@ -57,18 +57,14 @@ test("renderCard creates a self-contained, escaped activity table", () => {
     /<tspan x="32"[^>]*font-size="14px" word-spacing="[^"]+px"/,
   );
   assert.doesNotMatch(svg, /<tspan[^>]*textLength=/);
-  assert.match(svg, /FAVORITE LANGUAGES/);
-  assert.match(
-    svg,
-    /<text x="32"[^>]*>FAVORITE LANGUAGES<\/text>/,
-  );
-  assert.match(svg, /aria-label="TypeScript logo"/);
-  assert.match(svg, /aria-label="&lt;unsafe&gt; code icon"/);
-  assert.match(svg, /<path d="[^"]+" fill="#3178C6"\/>/);
+  assert.doesNotMatch(svg, /FAVORITE LANGUAGES/);
+  assert.doesNotMatch(svg, /aria-label="TypeScript logo"/);
+  assert.doesNotMatch(svg, /aria-label="&lt;unsafe&gt; code icon"/);
+  assert.doesNotMatch(svg, /<path d="[^"]+" fill="#3178C6"\/>/);
   assert.match(svg, /<text x="32" y="38" class="introduction reveal"/);
   assert.match(
     svg,
-    /<text x="44"[^>]*class="eyebrow" fill="#ffffff"[^>]*>COMBINED GITHUB ACTIVITY<\/text>/,
+    /<text x="44"[^>]*class="eyebrow" fill="#ffffff"[^>]*>GITHUB ACTIVITY<\/text>/,
   );
   assert.doesNotMatch(svg, /<line x1="32"/);
   assert.doesNotMatch(svg, /<line x1="560"/);
@@ -99,7 +95,7 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /repeatCount="indefinite"/);
   assert.doesNotMatch(svg, /REPOSITORIES/);
   assert.doesNotMatch(svg, /rx="12\.5"/);
-  assert.match(svg, /&lt;unsafe&gt;/);
+  assert.doesNotMatch(svg, /&lt;unsafe&gt;/);
   assert.doesNotMatch(svg, /ENGINEERING PULSE/);
   assert.doesNotMatch(svg, /MOMENTUM/i);
   assert.doesNotMatch(svg, /MERGED PR/i);
