@@ -4,7 +4,7 @@
 
 At AXA, I work on Secure GPT, the company&apos;s internal LLM. Before that I built automated test infrastructure at JCDecaux for digital billboard systems running in 70+ countries, and shipped web features at Dassault Systèmes. I also spent three months as a research intern at NIT Akita College in Japan, training a computer-vision model to detect manufacturing defects on film capacitors. It was my first experience working in a lab environment.
 
-On the side I build Reawon, an independent product ecosystem: Reafile, a browser-based AI file editor, and Polywon, an AI-powered language learning app. Combined across 2 GitHub accounts. 32 contributions this week, 192 this month, 1117 this year, 4310 total.</desc>
+On the side I build Reawon, an independent product ecosystem: Reafile, a browser-based AI file editor, and Polywon, an AI-powered language learning app. Combined across 2 GitHub accounts. 38 contributions this week, 198 this month, 1123 this year, 4316 total.</desc>
   <defs>
     <clipPath id="glass-clip">
       <rect x="16" y="272" width="868" height="210" rx="18"/>
@@ -105,12 +105,12 @@ On the side I build Reawon, an independent product ecosystem: Reafile, a browser
     </g>
     <g class="reveal" style="animation-delay:1260ms">
       <text x="44" y="390" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
-      <text x="275" y="395" text-anchor="middle" class="value" fill="#f0f6fc">32</text><text x="435" y="395" text-anchor="middle" class="value" fill="#f0f6fc">192</text><text x="595" y="395" text-anchor="middle" class="value" fill="#f0f6fc">1,117</text><text x="760" y="395" text-anchor="middle" class="value" fill="#f0f6fc">4,310</text>
+      <text x="275" y="395" text-anchor="middle" class="value" fill="#f0f6fc">38</text><text x="435" y="395" text-anchor="middle" class="value" fill="#f0f6fc">198</text><text x="595" y="395" text-anchor="middle" class="value" fill="#f0f6fc">1,123</text><text x="760" y="395" text-anchor="middle" class="value" fill="#f0f6fc">4,316</text>
     </g>
     <g class="reveal" style="animation-delay:1350ms">
       <line x1="184" y1="410" x2="856" y2="410" stroke="#30363d" stroke-opacity="0.84"/>
       <text x="44" y="443" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
-      <text x="275" y="448" text-anchor="middle" class="value" fill="#f0f6fc">2</text><text x="435" y="448" text-anchor="middle" class="value" fill="#f0f6fc">13</text><text x="595" y="448" text-anchor="middle" class="value" fill="#f0f6fc">102</text><text x="760" y="448" text-anchor="middle" class="value" fill="#f0f6fc">364</text>
+      <text x="275" y="448" text-anchor="middle" class="value" fill="#f0f6fc">3</text><text x="435" y="448" text-anchor="middle" class="value" fill="#f0f6fc">14</text><text x="595" y="448" text-anchor="middle" class="value" fill="#f0f6fc">103</text><text x="760" y="448" text-anchor="middle" class="value" fill="#f0f6fc">365</text>
     </g>
   </g>
 
