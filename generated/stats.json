@@ -17,10 +17,21 @@
       "activeDays": 0
     },
     "total": {
-      "contributions": 0,
-      "activeDays": 0
+      "contributions": 2,
+      "activeDays": 1
     }
   },
-  "languages": [],
-  "rateLimit": null
+  "languages": [
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a",
+      "size": 32834,
+      "percentage": 100
+    }
+  ],
+  "rateLimit": {
+    "cost": 1,
+    "remaining": 4998,
+    "resetAt": "2026-07-24T17:33:10Z"
+  }
 }

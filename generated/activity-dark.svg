@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @demo-user</title>
-  <desc id="desc">Demo profile card This is placeholder content used to demonstrate the profile activity card. Replace the values in config/profile.json with your own introduction and summary to personalize the card. 0 contributions this week, 0 this month, 0 this year, 0 total.</desc>
+  <desc id="desc">Demo profile card This is placeholder content used to demonstrate the profile activity card. Replace the values in config/profile.json with your own introduction and summary to personalize the card. 0 contributions this week, 0 this month, 0 this year, 2 total.</desc>
   <defs>
     <clipPath id="glass-clip">
       <rect x="16" y="122" width="868" height="210" rx="12"/>
@@ -101,13 +101,12 @@
     </g>
     <g class="reveal" style="animation-delay:720ms">
       <text x="44" y="240" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
-      <text x="275" y="245" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="435" y="245" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="595" y="245" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="760" y="245" text-anchor="middle" class="value" fill="#f0f6fc">0</text>
+      <text x="275" y="245" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="435" y="245" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="595" y="245" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="760" y="245" text-anchor="middle" class="value" fill="#f0f6fc">2</text>
     </g>
     <g class="reveal" style="animation-delay:810ms">
       <line x1="184" y1="260" x2="856" y2="260" stroke="#30363d" stroke-opacity="0.84"/>
       <text x="44" y="293" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
-      <text x="275" y="298" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="435" y="298" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="595" y="298" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="760" y="298" text-anchor="middle" class="value" fill="#f0f6fc">0</text>
+      <text x="275" y="298" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="435" y="298" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="595" y="298" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="760" y="298" text-anchor="middle" class="value" fill="#f0f6fc">1</text>
     </g>
   </g>
-
 </svg>
