@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="419" viewBox="0 0 900 419" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @thibault-delattre</title>
-  <desc id="desc">GitHub activity for my current account This profile card reflects public contributions and active days for the configured GitHub account. 0 contributions this week, 0 this month, 0 this year, 0 total.</desc>
+  <desc id="desc">GitHub activity for my current account This profile card reflects public contributions and active days for the configured GitHub account. 38 contributions this week, 201 this month, 1108 this year, 4291 total.</desc>
   <defs>
     <clipPath id="glass-clip">
       <rect x="16" y="101" width="868" height="210" rx="12"/>
@@ -101,12 +101,12 @@
     </g>
     <g class="reveal" style="animation-delay:630ms">
       <text x="44" y="219" class="row-label" fill="#8b949e">CONTRIBUTIONS</text>
-      <text x="275" y="224" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="435" y="224" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="595" y="224" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="760" y="224" text-anchor="middle" class="value" fill="#f0f6fc">0</text>
+      <text x="275" y="224" text-anchor="middle" class="value" fill="#f0f6fc">38</text><text x="435" y="224" text-anchor="middle" class="value" fill="#f0f6fc">201</text><text x="595" y="224" text-anchor="middle" class="value" fill="#f0f6fc">1,108</text><text x="760" y="224" text-anchor="middle" class="value" fill="#f0f6fc">4,291</text>
     </g>
     <g class="reveal" style="animation-delay:720ms">
       <line x1="184" y1="239" x2="856" y2="239" stroke="#30363d" stroke-opacity="0.84"/>
       <text x="44" y="272" class="row-label" fill="#8b949e">ACTIVE DAYS</text>
-      <text x="275" y="277" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="435" y="277" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="595" y="277" text-anchor="middle" class="value" fill="#f0f6fc">0</text><text x="760" y="277" text-anchor="middle" class="value" fill="#f0f6fc">0</text>
+      <text x="275" y="277" text-anchor="middle" class="value" fill="#f0f6fc">3</text><text x="435" y="277" text-anchor="middle" class="value" fill="#f0f6fc">14</text><text x="595" y="277" text-anchor="middle" class="value" fill="#f0f6fc">101</text><text x="760" y="277" text-anchor="middle" class="value" fill="#f0f6fc">360</text>
     </g>
   </g>
 

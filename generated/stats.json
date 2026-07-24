@@ -1,37 +1,37 @@
 {
   "schemaVersion": 5,
-  "username": "demo-user",
+  "username": "thibault-delattre",
   "sourceCount": 1,
-  "generatedAt": "2026-07-24T16:45:41.424Z",
+  "generatedAt": "2026-07-24T16:49:49.288Z",
   "activity": {
     "week": {
-      "contributions": 0,
-      "activeDays": 0
+      "contributions": 38,
+      "activeDays": 3
     },
     "month": {
-      "contributions": 0,
-      "activeDays": 0
+      "contributions": 201,
+      "activeDays": 14
     },
     "year": {
-      "contributions": 0,
-      "activeDays": 0
+      "contributions": 1108,
+      "activeDays": 101
     },
     "total": {
-      "contributions": 2,
-      "activeDays": 1
+      "contributions": 4291,
+      "activeDays": 360
     }
   },
   "languages": [
     {
       "name": "JavaScript",
       "color": "#f1e05a",
-      "size": 32834,
+      "size": 60514,
       "percentage": 100
     }
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4996,
+    "remaining": 4994,
     "resetAt": "2026-07-24T17:33:10Z"
   }
 }
