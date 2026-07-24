@@ -34,7 +34,7 @@ const THEMES = {
     textureOpacity: 0.18,
     shadow: "#687482",
     primary: "#1f2328",
-    secondary: "#59636e",
+    secondary: "#46515e",
     muted: "#818b98",
     line: "#cfd7e1",
   },
@@ -49,9 +49,9 @@ const THEMES = {
     highlightOpacity: 0.52,
     textureOpacity: 0.07,
     shadow: "#000000",
-    primary: "#f0f6fc",
-    secondary: "#aab4c0",
-    muted: "#6e7681",
+    primary: "#f7f9fc",
+    secondary: "#d8e0ea",
+    muted: "#b7c0ca",
     line: "#ffffff",
   },
 };
@@ -170,21 +170,56 @@ export function renderCard(metrics, config, mode) {
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .introduction { font-size: 22px; font-weight: 600; }
     .about { font-weight: 400; }
-    .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
-    .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+    .period { font-size: 10.5px; font-weight: 750; letter-spacing: 1.1px; }
+    .row-label { font-size: 11px; font-weight: 750; letter-spacing: 1px; }
     .value { font-size: 29px; font-weight: 650; }
     .language { font-size: 12px; font-weight: 600; }
+    .liquid-blob {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: liquid-drift-one 15s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+      will-change: transform, opacity;
+    }
+    .liquid-blob.secondary {
+      animation-name: liquid-drift-two;
+      animation-duration: 19s;
+    }
+    .liquid-texture-layer {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: liquid-texture-flow 24s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+      will-change: transform;
+    }
     .reveal {
       opacity: 0;
-      animation: fade-in 950ms cubic-bezier(0.4, 0, 0.2, 1) both;
-      will-change: opacity;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: smooth-appear 1050ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      will-change: opacity, transform;
     }
-    @keyframes fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes smooth-appear {
+      0% { opacity: 0; transform: translateY(7px) scale(0.92); }
+      68% { opacity: 1; transform: translateY(-1px) scale(1.018); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes liquid-drift-one {
+      0% { transform: translate(-120px, -8px) scale(0.94); opacity: ${mode === "light" ? 0.18 : 0.08}; }
+      48% { transform: translate(170px, 18px) scale(1.08); opacity: ${mode === "light" ? 0.34 : 0.16}; }
+      100% { transform: translate(410px, -2px) scale(0.98); opacity: ${mode === "light" ? 0.22 : 0.1}; }
+    }
+    @keyframes liquid-drift-two {
+      0% { transform: translate(150px, 14px) scale(1.04); opacity: ${mode === "light" ? 0.14 : 0.07}; }
+      52% { transform: translate(-130px, -10px) scale(0.92); opacity: ${mode === "light" ? 0.28 : 0.13}; }
+      100% { transform: translate(-380px, 12px) scale(1.1); opacity: ${mode === "light" ? 0.16 : 0.08}; }
+    }
+    @keyframes liquid-texture-flow {
+      0% { transform: translate(-18px, -6px) scale(1.02); }
+      50% { transform: translate(8px, 7px) scale(1.055); }
+      100% { transform: translate(20px, -3px) scale(1.025); }
     }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; animation: none; }
+      .liquid-blob, .liquid-texture-layer { animation: none; }
     }
   </style>
   <rect width="${WIDTH}" height="${height}" fill="${theme.background}"/>
@@ -202,8 +237,9 @@ export function renderCard(metrics, config, mode) {
       <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
         <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#glass-glow)"/>
-        <ellipse cx="${panel.x + 220}" cy="${panel.y + 4}" rx="310" ry="48" fill="#ffffff" opacity="${mode === "light" ? 0.3 : 0.12}" filter="url(#soft-glow)"/>
-        <rect x="${panel.x - 20}" y="${panel.y - 20}" width="${panel.width + 40}" height="${panel.height + 40}" rx="${panel.radius + 20}" fill="#ffffff" fill-opacity="${theme.textureOpacity}" filter="url(#liquid-texture)"/>
+        <ellipse class="liquid-blob" cx="${panel.x + 160}" cy="${panel.y + 24}" rx="300" ry="58" fill="#ffffff" filter="url(#soft-glow)"/>
+        <ellipse class="liquid-blob secondary" cx="${panel.x + 700}" cy="${panel.y + 132}" rx="260" ry="64" fill="#ffffff" filter="url(#soft-glow)"/>
+        <rect class="liquid-texture-layer" x="${panel.x - 20}" y="${panel.y - 20}" width="${panel.width + 40}" height="${panel.height + 40}" rx="${panel.radius + 20}" fill="#ffffff" fill-opacity="${theme.textureOpacity}" filter="url(#liquid-texture)"/>
       </g>
       <rect x="${panel.x + 3}" y="${panel.y + 3}" width="${panel.width - 6}" height="${panel.height - 6}" rx="${panel.radius - 3}" fill="none" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.66 : 0.2}"/>
       <path d="M ${panel.x + 30} ${panel.y + 2} H ${panel.x + panel.width - 160}" stroke="url(#glass-highlight)" stroke-width="2" stroke-linecap="round"/>

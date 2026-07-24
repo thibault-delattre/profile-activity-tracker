@@ -53,26 +53,61 @@
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
     .introduction { font-size: 22px; font-weight: 600; }
     .about { font-weight: 400; }
-    .period { font-size: 10px; font-weight: 700; letter-spacing: 1.1px; }
-    .row-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+    .period { font-size: 10.5px; font-weight: 750; letter-spacing: 1.1px; }
+    .row-label { font-size: 11px; font-weight: 750; letter-spacing: 1px; }
     .value { font-size: 29px; font-weight: 650; }
     .language { font-size: 12px; font-weight: 600; }
+    .liquid-blob {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: liquid-drift-one 15s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+      will-change: transform, opacity;
+    }
+    .liquid-blob.secondary {
+      animation-name: liquid-drift-two;
+      animation-duration: 19s;
+    }
+    .liquid-texture-layer {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: liquid-texture-flow 24s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+      will-change: transform;
+    }
     .reveal {
       opacity: 0;
-      animation: fade-in 950ms cubic-bezier(0.4, 0, 0.2, 1) both;
-      will-change: opacity;
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: smooth-appear 1050ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      will-change: opacity, transform;
     }
-    @keyframes fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes smooth-appear {
+      0% { opacity: 0; transform: translateY(7px) scale(0.92); }
+      68% { opacity: 1; transform: translateY(-1px) scale(1.018); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes liquid-drift-one {
+      0% { transform: translate(-120px, -8px) scale(0.94); opacity: 0.18; }
+      48% { transform: translate(170px, 18px) scale(1.08); opacity: 0.34; }
+      100% { transform: translate(410px, -2px) scale(0.98); opacity: 0.22; }
+    }
+    @keyframes liquid-drift-two {
+      0% { transform: translate(150px, 14px) scale(1.04); opacity: 0.14; }
+      52% { transform: translate(-130px, -10px) scale(0.92); opacity: 0.28; }
+      100% { transform: translate(-380px, 12px) scale(1.1); opacity: 0.16; }
+    }
+    @keyframes liquid-texture-flow {
+      0% { transform: translate(-18px, -6px) scale(1.02); }
+      50% { transform: translate(8px, 7px) scale(1.055); }
+      100% { transform: translate(20px, -3px) scale(1.025); }
     }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; animation: none; }
+      .liquid-blob, .liquid-texture-layer { animation: none; }
     }
   </style>
   <rect width="900" height="344" fill="#ffffff"/>
   <text x="32" y="38" class="introduction reveal" style="animation-delay:0ms" fill="#1f2328">My name is Thibault Delattre</text>
-  <text x="32" y="65" class="about" fill="#59636e"><tspan x="32" dy="0" class="reveal" style="animation-delay:90ms" font-size="14px" word-spacing="2px">As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:180ms" font-size="14px" word-spacing="0.6px">solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:270ms" font-size="14px" word-spacing="2.3px">interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:360ms" font-size="14px" word-spacing="0px">experiences.</tspan></text>
+  <text x="32" y="65" class="about" fill="#46515e"><tspan x="32" dy="0" class="reveal" style="animation-delay:90ms" font-size="14px" word-spacing="2px">As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:180ms" font-size="14px" word-spacing="0.6px">solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:270ms" font-size="14px" word-spacing="2.3px">interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:360ms" font-size="14px" word-spacing="0px">experiences.</tspan></text>
 
   <g class="glass-panel">
     <g class="reveal" style="animation-delay:590ms">
@@ -80,8 +115,9 @@
       <rect x="16" y="164" width="868" height="164" rx="18" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
         <rect x="16" y="164" width="868" height="164" fill="url(#glass-glow)"/>
-        <ellipse cx="236" cy="168" rx="310" ry="48" fill="#ffffff" opacity="0.3" filter="url(#soft-glow)"/>
-        <rect x="-4" y="144" width="908" height="204" rx="38" fill="#ffffff" fill-opacity="0.18" filter="url(#liquid-texture)"/>
+        <ellipse class="liquid-blob" cx="176" cy="188" rx="300" ry="58" fill="#ffffff" filter="url(#soft-glow)"/>
+        <ellipse class="liquid-blob secondary" cx="716" cy="296" rx="260" ry="64" fill="#ffffff" filter="url(#soft-glow)"/>
+        <rect class="liquid-texture-layer" x="-4" y="144" width="908" height="204" rx="38" fill="#ffffff" fill-opacity="0.18" filter="url(#liquid-texture)"/>
       </g>
       <rect x="19" y="167" width="862" height="158" rx="15" fill="none" stroke="#ffffff" stroke-opacity="0.66"/>
       <path d="M 46 166 H 724" stroke="url(#glass-highlight)" stroke-width="2" stroke-linecap="round"/>
@@ -89,15 +125,15 @@
     </g>
     <g class="reveal" style="animation-delay:720ms">
       <rect x="184" y="180" width="672" height="32" rx="9" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.72"/>
-      <text x="275" y="200" text-anchor="middle" class="period" fill="#59636e">THIS WEEK</text><text x="435" y="200" text-anchor="middle" class="period" fill="#59636e">THIS MONTH</text><text x="595" y="200" text-anchor="middle" class="period" fill="#59636e">THIS YEAR</text><text x="760" y="200" text-anchor="middle" class="period" fill="#59636e">ALL TIME</text>
+      <text x="275" y="200" text-anchor="middle" class="period" fill="#46515e">THIS WEEK</text><text x="435" y="200" text-anchor="middle" class="period" fill="#46515e">THIS MONTH</text><text x="595" y="200" text-anchor="middle" class="period" fill="#46515e">THIS YEAR</text><text x="760" y="200" text-anchor="middle" class="period" fill="#46515e">ALL TIME</text>
     </g>
     <g class="reveal" style="animation-delay:810ms">
-      <text x="44" y="242" class="row-label" fill="#59636e">CONTRIBUTIONS</text>
+      <text x="44" y="242" class="row-label" fill="#46515e">CONTRIBUTIONS</text>
       <text x="275" y="247" text-anchor="middle" class="value" fill="#1f2328">49</text><text x="435" y="247" text-anchor="middle" class="value" fill="#1f2328">209</text><text x="595" y="247" text-anchor="middle" class="value" fill="#1f2328">1,119</text><text x="760" y="247" text-anchor="middle" class="value" fill="#1f2328">4,302</text>
     </g>
     <g class="reveal" style="animation-delay:900ms">
       <line x1="184" y1="262" x2="856" y2="262" stroke="#cfd7e1" stroke-opacity="0.72"/>
-      <text x="44" y="301" class="row-label" fill="#59636e">ACTIVE DAYS</text>
+      <text x="44" y="301" class="row-label" fill="#46515e">ACTIVE DAYS</text>
       <text x="275" y="306" text-anchor="middle" class="value" fill="#1f2328">3</text><text x="435" y="306" text-anchor="middle" class="value" fill="#1f2328">14</text><text x="595" y="306" text-anchor="middle" class="value" fill="#1f2328">101</text><text x="760" y="306" text-anchor="middle" class="value" fill="#1f2328">360</text>
     </g>
   </g>

@@ -65,12 +65,14 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.doesNotMatch(svg, /class="eyebrow"/);
   assert.doesNotMatch(svg, /<line x1="32"/);
   assert.doesNotMatch(svg, /<line x1="560"/);
-  assert.match(svg, /@keyframes fade-in/);
+  assert.match(svg, /@keyframes smooth-appear/);
   assert.match(
     svg,
-    /fade-in 950ms cubic-bezier\(0\.4, 0, 0\.2, 1\) both/,
+    /smooth-appear 1050ms cubic-bezier\(0\.16, 1, 0\.3, 1\) both/,
   );
-  assert.match(svg, /will-change: opacity/);
+  assert.match(svg, /will-change: opacity, transform/);
+  assert.match(svg, /scale\(0\.92\)/);
+  assert.match(svg, /scale\(1\.018\)/);
   assert.match(svg, /animation-delay:\d+ms/);
   assert.match(svg, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(svg, /textLength=/);
@@ -85,6 +87,13 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /<feGaussianBlur/);
   assert.match(svg, /<feSpecularLighting/);
   assert.match(svg, /<feDisplacementMap/);
+  assert.match(svg, /class="liquid-blob"/);
+  assert.match(svg, /class="liquid-blob secondary"/);
+  assert.match(svg, /@keyframes liquid-drift-one/);
+  assert.match(svg, /@keyframes liquid-drift-two/);
+  assert.match(svg, /@keyframes liquid-texture-flow/);
+  assert.match(svg, /class="liquid-texture-layer"/);
+  assert.match(svg, /infinite alternate/);
   assert.doesNotMatch(svg, /svg:hover \.glass-panel/);
   assert.match(svg, /clipPath id="glass-clip"/);
   assert.doesNotMatch(svg, /#58a6ff/);
