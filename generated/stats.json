@@ -2,22 +2,22 @@
   "schemaVersion": 5,
   "username": "thibault-delattre",
   "sourceCount": 1,
-  "generatedAt": "2026-07-27T13:31:33.863Z",
+  "generatedAt": "2026-07-27T14:29:53.404Z",
   "activity": {
     "week": {
-      "contributions": 38,
+      "contributions": 40,
       "activeDays": 1
     },
     "month": {
-      "contributions": 416,
+      "contributions": 418,
       "activeDays": 17
     },
     "year": {
-      "contributions": 1326,
+      "contributions": 1328,
       "activeDays": 104
     },
     "total": {
-      "contributions": 4509,
+      "contributions": 4511,
       "activeDays": 363
     }
   },
@@ -25,20 +25,20 @@
     {
       "name": "PLpgSQL",
       "color": "#336790",
-      "size": 1537289,
-      "percentage": 43.6
+      "size": 1570855,
+      "percentage": 43.4
     },
     {
       "name": "TypeScript",
       "color": "#3178c6",
-      "size": 1472015,
-      "percentage": 41.8
+      "size": 1482807,
+      "percentage": 40.9
     },
     {
       "name": "JavaScript",
       "color": "#f1e05a",
-      "size": 497651,
-      "percentage": 14.1
+      "size": 551691,
+      "percentage": 15.2
     },
     {
       "name": "CSS",
@@ -55,7 +55,7 @@
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4998,
+    "remaining": 4996,
     "resetAt": "2026-07-27T14:31:34Z"
   }
 }
