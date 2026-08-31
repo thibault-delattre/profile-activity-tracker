@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="344" viewBox="0 0 900 344" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @thibault-delattre</title>
-  <desc id="desc">My name is Thibault Delattre As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital experiences. 0 contributions this week, 363 this month, 1873 this year, 5056 total.</desc>
+  <desc id="desc">My name is Thibault Delattre As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital experiences. 1 contributions this week, 364 this month, 1874 this year, 5057 total.</desc>
   <defs>
     <clipPath id="glass-clip">
       <rect x="16" y="164" width="868" height="164" rx="18"/>
@@ -129,12 +129,12 @@
     </g>
     <g class="reveal" style="animation-delay:810ms">
       <text x="44" y="242" class="row-label" fill="#46515e">CONTRIBUTIONS</text>
-      <text x="275" y="247" text-anchor="middle" class="value" fill="#1f2328">0</text><text x="435" y="247" text-anchor="middle" class="value" fill="#1f2328">363</text><text x="595" y="247" text-anchor="middle" class="value" fill="#1f2328">1,873</text><text x="760" y="247" text-anchor="middle" class="value" fill="#1f2328">5,056</text>
+      <text x="275" y="247" text-anchor="middle" class="value" fill="#1f2328">1</text><text x="435" y="247" text-anchor="middle" class="value" fill="#1f2328">364</text><text x="595" y="247" text-anchor="middle" class="value" fill="#1f2328">1,874</text><text x="760" y="247" text-anchor="middle" class="value" fill="#1f2328">5,057</text>
     </g>
     <g class="reveal" style="animation-delay:900ms">
       <line x1="184" y1="262" x2="856" y2="262" stroke="#cfd7e1" stroke-opacity="0.72"/>
       <text x="44" y="301" class="row-label" fill="#46515e">ACTIVE DAYS</text>
-      <text x="275" y="306" text-anchor="middle" class="value" fill="#1f2328">0</text><text x="435" y="306" text-anchor="middle" class="value" fill="#1f2328">13</text><text x="595" y="306" text-anchor="middle" class="value" fill="#1f2328">121</text><text x="760" y="306" text-anchor="middle" class="value" fill="#1f2328">380</text>
+      <text x="275" y="306" text-anchor="middle" class="value" fill="#1f2328">1</text><text x="435" y="306" text-anchor="middle" class="value" fill="#1f2328">14</text><text x="595" y="306" text-anchor="middle" class="value" fill="#1f2328">122</text><text x="760" y="306" text-anchor="middle" class="value" fill="#1f2328">381</text>
     </g>
   </g>
 
