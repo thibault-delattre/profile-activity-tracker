@@ -12,42 +12,32 @@ export function mergeGitHubActivity(sources) {
     throw new Error("At least one GitHub activity source is required.");
   }
 
-  const validSources = sources.filter((source) => source?.user);
-  if (validSources.length === 0) {
-    throw new Error("No valid GitHub activity sources were returned.");
+  if (sources.some((source) => !source?.user)) {
+    throw new Error("A GitHub activity source is missing.");
   }
 
   const yearlyKeys = new Set(
-    validSources.flatMap((source) =>
+    sources.flatMap((source) =>
       Object.keys(source.user.periods?.yearly ?? {}),
     ),
   );
 
   return {
     user: {
-      login: validSources[0].user.login,
+      login: sources[0].user.login,
       repositories: {
-        nodes: validSources.flatMap(
+        nodes: sources.flatMap(
           (source) => source.user.repositories?.nodes ?? [],
         ),
       },
       periods: {
-        week: mergeCollections(
-          validSources.map((source) => source.user.periods?.week),
-        ),
-        month: mergeCollections(
-          validSources.map((source) => source.user.periods?.month),
-        ),
-        year: mergeCollections(
-          validSources.map((source) => source.user.periods?.year),
-        ),
         yearly: Object.fromEntries(
           [...yearlyKeys]
             .sort((left, right) => Number(left) - Number(right))
             .map((year) => [
               year,
               mergeCollections(
-                validSources.map(
+                sources.map(
                   (source) => source.user.periods?.yearly?.[year],
                 ),
               ),
@@ -56,7 +46,7 @@ export function mergeGitHubActivity(sources) {
       },
     },
     rateLimit:
-      validSources.findLast((source) => source.rateLimit)?.rateLimit ?? null,
+      sources.findLast((source) => source.rateLimit)?.rateLimit ?? null,
   };
 }
 
@@ -72,15 +62,18 @@ export function mergeCollections(collections) {
       collection?.contributionCalendar?.totalContributions ?? 0,
     );
 
+    const seen = new Set();
     for (const week of collection?.contributionCalendar?.weeks ?? []) {
       for (const day of week?.contributionDays ?? []) {
         if (
           typeof day?.date !== "string" ||
-          !Number.isFinite(day?.contributionCount)
+          !Number.isInteger(day?.contributionCount) || day.contributionCount < 0
         ) {
-          continue;
+          throw new Error("Invalid contribution day.");
         }
 
+        if (seen.has(day.date)) throw new Error(`Duplicate contribution date: ${day.date}`);
+        seen.add(day.date);
         contributionDays.set(
           day.date,
           (contributionDays.get(day.date) ?? 0) + day.contributionCount,

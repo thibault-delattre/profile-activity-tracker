@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="302" viewBox="0 0 900 302" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @sample-developer</title>
-  <desc id="desc">Hello, I&apos;m Alex — software developer I enjoy building thoughtful products, learning from challenging engineering problems, and turning useful ideas into polished digital experiences. 18 contributions this week, 72 this month, 684 this year, 2450 total.</desc>
+  <desc id="desc">Hello, I&apos;m Alex — software developer I enjoy building thoughtful products, learning from challenging engineering problems, and turning useful ideas into polished digital experiences. 18 contributions in the last 7 days, 72 in the last 30 days, 684 in the last 365 days, 2450 total. Every period is a rolling window of whole UTC days ending today, so each column contains the one before it. UTC date ranges: week: 2025-12-26 to 2026-01-01, month: 2025-12-03 to 2026-01-01, year: 2025-01-02 to 2026-01-01.</desc>
   <defs>
     <clipPath id="glass-clip">
       <rect x="16" y="122" width="868" height="164" rx="18"/>
@@ -74,16 +74,13 @@
       will-change: transform;
     }
     .reveal {
-      opacity: 0;
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: smooth-appear 1050ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      opacity: 1;
+      animation: smooth-appear 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
       will-change: opacity, transform;
     }
     @keyframes smooth-appear {
-      0% { opacity: 0; transform: translateY(7px) scale(0.92); }
-      68% { opacity: 1; transform: translateY(-1px) scale(1.018); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @keyframes liquid-drift-one {
       0% { transform: translate(-120px, -8px) scale(0.94); opacity: 0.08; }
@@ -101,16 +98,16 @@
       100% { transform: translate(20px, -3px) scale(1.025); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; animation: none; }
+      .reveal { opacity: 1; transform: none; animation: none; }
       .liquid-blob, .liquid-texture-layer { animation: none; }
     }
   </style>
   <rect width="900" height="302" fill="#0d1117"/>
   <text x="32" y="38" class="introduction reveal" style="animation-delay:0ms" fill="#f7f9fc">Hello, I&apos;m Alex — software developer</text>
-  <text x="32" y="65" class="about" fill="#d8e0ea"><tspan x="32" dy="0" class="reveal" style="animation-delay:90ms" font-size="14px" word-spacing="0.9px">I enjoy building thoughtful products, learning from challenging engineering problems, and turning useful ideas into polished digital</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:180ms" font-size="14px" word-spacing="0px">experiences.</tspan></text>
+  <text x="32" y="65" class="about" fill="#d8e0ea"><tspan x="32" dy="0" class="reveal" style="animation-delay:55ms" font-size="14px" word-spacing="0.9px">I enjoy building thoughtful products, learning from challenging engineering problems, and turning useful ideas into polished digital</tspan><tspan x="32" dy="21" class="reveal" style="animation-delay:110ms" font-size="14px" word-spacing="0px">experiences.</tspan></text>
 
   <g class="glass-panel">
-    <g class="reveal" style="animation-delay:410ms">
+    <g class="reveal" style="animation-delay:165ms">
       <rect x="16" y="122" width="868" height="164" rx="18" fill="#dce3eb" opacity="0.12" filter="url(#panel-shadow)"/>
       <rect x="16" y="122" width="868" height="164" rx="18" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
@@ -123,18 +120,18 @@
       <path d="M 46 124 H 724" stroke="url(#glass-highlight)" stroke-width="2" stroke-linecap="round"/>
       <rect x="17.25" y="123.25" width="865.5" height="161.5" rx="17" fill="none" stroke="url(#glass-border)" stroke-width="2.5"/>
     </g>
-    <g class="reveal" style="animation-delay:540ms">
-      <rect x="184" y="138" width="672" height="32" rx="9" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.13"/>
-      <text x="275" y="158" text-anchor="middle" class="period" fill="#d8e0ea">THIS WEEK</text><text x="435" y="158" text-anchor="middle" class="period" fill="#d8e0ea">THIS MONTH</text><text x="595" y="158" text-anchor="middle" class="period" fill="#d8e0ea">THIS YEAR</text><text x="760" y="158" text-anchor="middle" class="period" fill="#d8e0ea">ALL TIME</text>
+    <g>
+      <rect class="reveal" style="animation-delay:235ms" x="184" y="138" width="672" height="32" rx="9" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="0.13"/>
+      <text x="275" y="158" text-anchor="middle" class="period reveal" style="animation-delay:265ms" fill="#d8e0ea">LAST 7 DAYS</text><text x="435" y="158" text-anchor="middle" class="period reveal" style="animation-delay:310ms" fill="#d8e0ea">LAST 30 DAYS</text><text x="595" y="158" text-anchor="middle" class="period reveal" style="animation-delay:355ms" fill="#d8e0ea">LAST 365 DAYS</text><text x="760" y="158" text-anchor="middle" class="period reveal" style="animation-delay:400ms" fill="#d8e0ea">ALL TIME</text>
     </g>
-    <g class="reveal" style="animation-delay:630ms">
-      <text x="44" y="200" class="row-label" fill="#d8e0ea">CONTRIBUTIONS</text>
-      <text x="275" y="205" text-anchor="middle" class="value" fill="#f7f9fc">18</text><text x="435" y="205" text-anchor="middle" class="value" fill="#f7f9fc">72</text><text x="595" y="205" text-anchor="middle" class="value" fill="#f7f9fc">684</text><text x="760" y="205" text-anchor="middle" class="value" fill="#f7f9fc">2,450</text>
+    <g>
+      <text x="44" y="200" class="row-label reveal" style="animation-delay:385ms" fill="#d8e0ea">CONTRIBUTIONS</text>
+      <text x="275" y="205" text-anchor="middle" class="value reveal" style="animation-delay:385ms" fill="#f7f9fc">18</text><text x="435" y="205" text-anchor="middle" class="value reveal" style="animation-delay:430ms" fill="#f7f9fc">72</text><text x="595" y="205" text-anchor="middle" class="value reveal" style="animation-delay:475ms" fill="#f7f9fc">684</text><text x="760" y="205" text-anchor="middle" class="value reveal" style="animation-delay:520ms" fill="#f7f9fc">2,450</text>
     </g>
-    <g class="reveal" style="animation-delay:720ms">
-      <line x1="184" y1="220" x2="856" y2="220" stroke="#ffffff" stroke-opacity="0.18"/>
-      <text x="44" y="259" class="row-label" fill="#d8e0ea">ACTIVE DAYS</text>
-      <text x="275" y="264" text-anchor="middle" class="value" fill="#f7f9fc">5</text><text x="435" y="264" text-anchor="middle" class="value" fill="#f7f9fc">19</text><text x="595" y="264" text-anchor="middle" class="value" fill="#f7f9fc">143</text><text x="760" y="264" text-anchor="middle" class="value" fill="#f7f9fc">512</text>
+    <g>
+      <line class="reveal" style="animation-delay:535ms" x1="184" y1="220" x2="856" y2="220" stroke="#ffffff" stroke-opacity="0.18"/>
+      <text x="44" y="259" class="row-label reveal" style="animation-delay:535ms" fill="#d8e0ea">ACTIVE DAYS</text>
+      <text x="275" y="264" text-anchor="middle" class="value reveal" style="animation-delay:535ms" fill="#f7f9fc">5</text><text x="435" y="264" text-anchor="middle" class="value reveal" style="animation-delay:580ms" fill="#f7f9fc">19</text><text x="595" y="264" text-anchor="middle" class="value reveal" style="animation-delay:625ms" fill="#f7f9fc">143</text><text x="760" y="264" text-anchor="middle" class="value reveal" style="animation-delay:670ms" fill="#f7f9fc">512</text>
     </g>
   </g>
 

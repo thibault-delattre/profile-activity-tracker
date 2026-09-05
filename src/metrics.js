@@ -1,3 +1,5 @@
+import { createActivityWindows } from "./dates.js";
+
 /**
  * @typedef {{date: string, contributionCount: number}} ContributionDay
  */
@@ -5,9 +7,11 @@
 /**
  * Convert the GraphQL payload into the rendering model.
  *
- * Contributions and active days come from GitHub's public contribution
- * calendar. When the profile owner enables private contribution visibility,
- * GitHub includes that activity anonymously without exposing repositories.
+ * Every displayed period is summed from one map of daily counts, so the
+ * columns can never disagree with each other. Contributions and active days
+ * come from GitHub's public contribution calendar. When the profile owner
+ * enables private contribution visibility, GitHub includes that activity
+ * anonymously without exposing repositories.
  *
  * @param {Record<string, any>} data
  * @param {import("./config.js").TrackerConfig} config
@@ -15,35 +19,54 @@
  */
 export function buildMetrics(data, config, generatedAt) {
   const periods = data.user?.periods ?? {};
-  const yearly = Object.values(periods.yearly ?? {});
+  const windows = createActivityWindows(generatedAt);
+  const yearly = periods.yearly;
+  if (!yearly || !yearly[generatedAt.getUTCFullYear()]) {
+    throw new Error("Current-year contribution history is missing.");
+  }
+  const today = windows.year.toDate;
+  const days = new Map();
+  for (const [year, collection] of Object.entries(yearly)) {
+    if (!Array.isArray(collection?.contributionCalendar?.weeks)) {
+      throw new Error(`Contribution calendar for ${year} is missing.`);
+    }
+    for (const week of collection.contributionCalendar.weeks) {
+      for (const day of week.contributionDays) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(day.date) ||
+            !Number.isInteger(day.contributionCount) || day.contributionCount < 0) {
+          throw new Error("Invalid contribution day.");
+        }
+        // Calendars can include padding dates outside their requested year.
+        if (!day.date.startsWith(`${year}-`) || day.date > today) continue;
+        if (days.has(day.date)) throw new Error(`Duplicate contribution date: ${day.date}`);
+        days.set(day.date, day.contributionCount);
+      }
+    }
+  }
+  const summarize = (fromDate = "") => {
+    const counts = [...days].filter(([date]) => date >= fromDate).map(([, count]) => count);
+    return {
+      contributions: counts.reduce((total, count) => total + count, 0),
+      activeDays: counts.filter((count) => count > 0).length,
+    };
+  };
   const excluded = new Set(
     config.excludedRepositories.map((name) => name.toLowerCase()),
   );
 
   return {
-    schemaVersion: 5,
+    schemaVersion: 6,
     username: config.username,
     sourceCount: 1 + (config.additionalUsernames?.length ?? 0),
     generatedAt: generatedAt.toISOString(),
+    periods: Object.fromEntries(Object.entries(windows).map(([name, window]) => [
+      name, { from: window.fromDate, to: window.toDate, days: window.days },
+    ])),
     activity: {
-      week: summarizeCollection(periods.week),
-      month: summarizeCollection(periods.month),
-      year: summarizeCollection(periods.year),
-      total: {
-        contributions: yearly.reduce(
-          (total, collection) =>
-            total +
-            Number(
-              collection?.contributionCalendar?.totalContributions ?? 0,
-            ),
-          0,
-        ),
-        activeDays: yearly.reduce(
-          (total, collection) =>
-            total + countActiveDays(collection),
-          0,
-        ),
-      },
+      week: summarize(windows.week.fromDate),
+      month: summarize(windows.month.fromDate),
+      year: summarize(windows.year.fromDate),
+      total: summarize(),
     },
     languages: aggregateLanguages(
       data.user?.repositories?.nodes ?? [],
@@ -51,42 +74,6 @@ export function buildMetrics(data, config, generatedAt) {
     ),
     rateLimit: data.rateLimit ?? null,
   };
-}
-
-/**
- * @param {Record<string, any> | undefined} collection
- */
-function summarizeCollection(collection) {
-  return {
-    contributions: Number(
-      collection?.contributionCalendar?.totalContributions ?? 0,
-    ),
-    activeDays: countActiveDays(collection),
-  };
-}
-
-/**
- * @param {Record<string, any> | undefined} collection
- */
-function countActiveDays(collection) {
-  return flattenDays(collection?.contributionCalendar?.weeks).filter(
-    (day) => day.contributionCount > 0,
-  ).length;
-}
-
-/**
- * @param {Array<{contributionDays?: ContributionDay[]}> | undefined} weeks
- * @returns {ContributionDay[]}
- */
-export function flattenDays(weeks = []) {
-  return weeks
-    .flatMap((week) => week.contributionDays ?? [])
-    .filter(
-      (day) =>
-        typeof day.date === "string" &&
-        Number.isFinite(day.contributionCount),
-    )
-    .sort((left, right) => left.date.localeCompare(right.date));
 }
 
 /**

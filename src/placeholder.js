@@ -2,31 +2,32 @@ import { createActivityWindows } from "./dates.js";
 
 /**
  * Produce an honest initial state. A live workflow replaces this with GitHub
- * data.
+ * data. One calendar per year keeps the shape identical to the GraphQL
+ * payload, which the rolling 365-day window can span.
  *
  * @param {import("./config.js").TrackerConfig} config
  * @param {Date} now
  */
 export function createPlaceholderData(config, now) {
   const windows = createActivityWindows(now);
-  const currentYear = now.getUTCFullYear();
+  const firstYear = windows.year.from.getUTCFullYear();
+  const lastYear = windows.year.to.getUTCFullYear();
+  /** @type {Record<string, ReturnType<typeof createCollection>>} */
+  const yearly = {};
+
+  for (let year = firstYear; year <= lastYear; year += 1) {
+    yearly[year] = createCollection(
+      year === firstYear ? windows.year.from : new Date(Date.UTC(year, 0, 1)),
+      year === lastYear ? windows.year.to : new Date(Date.UTC(year, 11, 31)),
+    );
+  }
 
   return {
     user: {
       login: config.username,
       url: `https://github.com/${config.username}`,
       repositories: { nodes: [] },
-      periods: {
-        week: createCollection(windows.week.from, windows.week.to),
-        month: createCollection(windows.month.from, windows.month.to),
-        year: createCollection(windows.year.from, windows.year.to),
-        yearly: {
-          [currentYear]: createCollection(
-            windows.year.from,
-            windows.year.to,
-          ),
-        },
-      },
+      periods: { yearly },
     },
     rateLimit: null,
   };

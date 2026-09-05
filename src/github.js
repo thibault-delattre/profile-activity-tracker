@@ -90,8 +90,8 @@ const COLLECTION_FIELDS = `
 
 /**
  * Fetch profile metadata, every owned public repository page, and GitHub
- * contribution collections for calendar week/month/year plus every historical
- * contribution year.
+ * contribution calendars for every historical year. All displayed periods
+ * are derived from these same daily counts.
  *
  * @param {{
  *   token: string,
@@ -147,7 +147,7 @@ export async function fetchGitHubActivity({
 
   const years = normalizeYears(
     metadata.user.contributionsCollection?.contributionYears,
-    windows.year.to.getUTCFullYear(),
+    windows,
   );
   const periodRequest = buildPeriodQuery(years, windows);
   const periodData = await requestGraphQL({
@@ -164,14 +164,17 @@ export async function fetchGitHubActivity({
     throw new Error(`Contribution data for "${username}" was not found.`);
   }
 
+  for (const year of years) {
+    if (!Array.isArray(periodData.user[`year${year}`]?.contributionCalendar?.weeks)) {
+      throw new Error(`Contribution calendar for ${username} in ${year} is missing.`);
+    }
+  }
+
   return {
     user: {
       login: metadata.user.login,
       repositories: { nodes: repositories },
       periods: {
-        week: periodData.user.week,
-        month: periodData.user.month,
-        year: periodData.user.year,
         yearly: Object.fromEntries(
           years.map((year) => [
             String(year),
@@ -228,19 +231,8 @@ async function requestGraphQL({ token, query, variables, fetchImpl }) {
  * @param {ReturnType<import("./dates.js").createActivityWindows>} windows
  */
 export function buildPeriodQuery(years, windows) {
-  const declarations = [
-    "$login: String!",
-    "$weekFrom: DateTime!",
-    "$monthFrom: DateTime!",
-    "$yearFrom: DateTime!",
-    "$now: DateTime!",
-  ];
-  const variables = {
-    weekFrom: windows.week.from.toISOString(),
-    monthFrom: windows.month.from.toISOString(),
-    yearFrom: windows.year.from.toISOString(),
-    now: windows.week.to.toISOString(),
-  };
+  const declarations = ["$login: String!"];
+  const variables = {};
   const yearFields = [];
 
   for (const year of years) {
@@ -267,15 +259,6 @@ export function buildPeriodQuery(years, windows) {
     query: `
       query ActivityPeriods(${declarations.join(", ")}) {
         user(login: $login) {
-          week: contributionsCollection(from: $weekFrom, to: $now) {
-            ${COLLECTION_FIELDS}
-          }
-          month: contributionsCollection(from: $monthFrom, to: $now) {
-            ${COLLECTION_FIELDS}
-          }
-          year: contributionsCollection(from: $yearFrom, to: $now) {
-            ${COLLECTION_FIELDS}
-          }
           ${yearFields.join("\n")}
         }
         rateLimit {
@@ -290,10 +273,15 @@ export function buildPeriodQuery(years, windows) {
 }
 
 /**
+ * Every calendar year the rolling windows can touch must be requested, even
+ * when GitHub omits it from contributionYears because it holds no activity.
+ * Otherwise the 365-day window would silently start mid-history.
+ *
  * @param {unknown} values
- * @param {number} currentYear
+ * @param {ReturnType<import("./dates.js").createActivityWindows>} windows
  */
-function normalizeYears(values, currentYear) {
+function normalizeYears(values, windows) {
+  const currentYear = windows.year.to.getUTCFullYear();
   const years = Array.isArray(values)
     ? values.filter(
         (year) =>
@@ -301,9 +289,7 @@ function normalizeYears(values, currentYear) {
       )
     : [];
 
-  if (!years.includes(currentYear)) {
-    years.push(currentYear);
-  }
+  years.push(windows.year.from.getUTCFullYear(), currentYear);
 
   return [...new Set(years)].sort((left, right) => left - right);
 }

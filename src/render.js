@@ -92,28 +92,37 @@ export function renderCard(metrics, config, mode) {
   const dividerY = panel.y + 98;
   const activeDaysY = panel.y + 137;
   const activeDaysValueY = panel.y + 142;
+  const spans = metrics.periods;
   const periods = [
-    { label: "THIS WEEK", values: metrics.activity.week },
-    { label: "THIS MONTH", values: metrics.activity.month },
-    { label: "THIS YEAR", values: metrics.activity.year },
+    { label: `LAST ${spans.week.days} DAYS`, values: metrics.activity.week },
+    { label: `LAST ${spans.month.days} DAYS`, values: metrics.activity.month },
+    { label: `LAST ${spans.year.days} DAYS`, values: metrics.activity.year },
     { label: "ALL TIME", values: metrics.activity.total },
   ];
   const columnCenters = [275, 435, 595, 760];
-  const revealStep = 90;
+  const revealStep = 55;
+  // Wider than a row's own cascade (3 * columnStep) so each row finishes
+  // before the next begins and the reveal reads as one continuous sweep.
+  const columnStep = 45;
+  const rowStep = 150;
   const aboutRevealStart = revealStep;
   const panelRevealDelay =
-    aboutRevealStart + aboutLayout.lines.length * revealStep + 140;
-  const periodsRevealDelay = panelRevealDelay + 130;
-  const contributionsRevealDelay = periodsRevealDelay + revealStep;
-  const activeDaysRevealDelay = contributionsRevealDelay + revealStep;
+    Math.min(aboutRevealStart + aboutLayout.lines.length * revealStep, 280);
+  const periodsRevealDelay = panelRevealDelay + 70;
+  const contributionsRevealDelay = periodsRevealDelay + rowStep;
+  const activeDaysRevealDelay = contributionsRevealDelay + rowStep;
+  const columnDelay = (base, index) => base + index * columnStep;
 
+  const dateRanges = Object.entries(spans)
+    .map(([name, range]) => `${name}: ${range.from} to ${range.to}`)
+    .join(", ");
   const title = `GitHub activity for @${metrics.username}`;
   const description = `${introduction} ${config.about} ${[
-    `${metrics.activity.week.contributions} contributions this week`,
-    `${metrics.activity.month.contributions} this month`,
-    `${metrics.activity.year.contributions} this year`,
+    `${metrics.activity.week.contributions} contributions in the last ${spans.week.days} days`,
+    `${metrics.activity.month.contributions} in the last ${spans.month.days} days`,
+    `${metrics.activity.year.contributions} in the last ${spans.year.days} days`,
     `${metrics.activity.total.contributions} total`,
-  ].join(", ")}.`;
+  ].join(", ")}. Every period is a rolling window of whole UTC days ending today, so each column contains the one before it. UTC date ranges: ${dateRanges}.`;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${height}" viewBox="0 0 ${WIDTH} ${height}" role="img" aria-labelledby="title desc">
   <title id="title">${escapeXml(title)}</title>
@@ -191,16 +200,13 @@ export function renderCard(metrics, config, mode) {
       will-change: transform;
     }
     .reveal {
-      opacity: 0;
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: smooth-appear 1050ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      opacity: 1;
+      animation: smooth-appear 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
       will-change: opacity, transform;
     }
     @keyframes smooth-appear {
-      0% { opacity: 0; transform: translateY(7px) scale(0.92); }
-      68% { opacity: 1; transform: translateY(-1px) scale(1.018); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @keyframes liquid-drift-one {
       0% { transform: translate(-120px, -8px) scale(0.94); opacity: ${mode === "light" ? 0.18 : 0.08}; }
@@ -218,7 +224,7 @@ export function renderCard(metrics, config, mode) {
       100% { transform: translate(20px, -3px) scale(1.025); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; animation: none; }
+      .reveal { opacity: 1; transform: none; animation: none; }
       .liquid-blob, .liquid-texture-layer { animation: none; }
     }
   </style>
@@ -245,31 +251,31 @@ export function renderCard(metrics, config, mode) {
       <path d="M ${panel.x + 30} ${panel.y + 2} H ${panel.x + panel.width - 160}" stroke="url(#glass-highlight)" stroke-width="2" stroke-linecap="round"/>
       <rect x="${panel.x + 1.25}" y="${panel.y + 1.25}" width="${panel.width - 2.5}" height="${panel.height - 2.5}" rx="${panel.radius - 1}" fill="none" stroke="url(#glass-border)" stroke-width="2.5"/>
     </g>
-    <g class="reveal" style="animation-delay:${periodsRevealDelay}ms">
-      <rect x="184" y="${periodBoxY}" width="672" height="32" rx="9" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.72 : 0.13}"/>
+    <g>
+      <rect class="reveal" style="animation-delay:${periodsRevealDelay}ms" x="184" y="${periodBoxY}" width="672" height="32" rx="9" fill="url(#period-fill)" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.72 : 0.13}"/>
       ${periods
         .map(
           (period, index) =>
-            `<text x="${columnCenters[index]}" y="${periodTextY}" text-anchor="middle" class="period" fill="${theme.secondary}">${period.label}</text>`,
+            `<text x="${columnCenters[index]}" y="${periodTextY}" text-anchor="middle" class="period reveal" style="animation-delay:${columnDelay(periodsRevealDelay + 30, index)}ms" fill="${theme.secondary}">${period.label}</text>`,
         )
         .join("")}
     </g>
-    <g class="reveal" style="animation-delay:${contributionsRevealDelay}ms">
-      <text x="44" y="${contributionsY}" class="row-label" fill="${theme.secondary}">CONTRIBUTIONS</text>
+    <g>
+      <text x="44" y="${contributionsY}" class="row-label reveal" style="animation-delay:${contributionsRevealDelay}ms" fill="${theme.secondary}">CONTRIBUTIONS</text>
       ${periods
         .map(
           (period, index) =>
-            `<text x="${columnCenters[index]}" y="${contributionValueY}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
+            `<text x="${columnCenters[index]}" y="${contributionValueY}" text-anchor="middle" class="value reveal" style="animation-delay:${columnDelay(contributionsRevealDelay, index)}ms" fill="${theme.primary}">${formatNumber(period.values.contributions)}</text>`,
         )
         .join("")}
     </g>
-    <g class="reveal" style="animation-delay:${activeDaysRevealDelay}ms">
-      <line x1="184" y1="${dividerY}" x2="856" y2="${dividerY}" stroke="${theme.line}" stroke-opacity="${mode === "light" ? 0.72 : 0.18}"/>
-      <text x="44" y="${activeDaysY}" class="row-label" fill="${theme.secondary}">ACTIVE DAYS</text>
+    <g>
+      <line class="reveal" style="animation-delay:${activeDaysRevealDelay}ms" x1="184" y1="${dividerY}" x2="856" y2="${dividerY}" stroke="${theme.line}" stroke-opacity="${mode === "light" ? 0.72 : 0.18}"/>
+      <text x="44" y="${activeDaysY}" class="row-label reveal" style="animation-delay:${activeDaysRevealDelay}ms" fill="${theme.secondary}">ACTIVE DAYS</text>
       ${periods
         .map(
           (period, index) =>
-            `<text x="${columnCenters[index]}" y="${activeDaysValueY}" text-anchor="middle" class="value" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
+            `<text x="${columnCenters[index]}" y="${activeDaysValueY}" text-anchor="middle" class="value reveal" style="animation-delay:${columnDelay(activeDaysRevealDelay, index)}ms" fill="${theme.primary}">${formatNumber(period.values.activeDays)}</text>`,
         )
         .join("")}
     </g>

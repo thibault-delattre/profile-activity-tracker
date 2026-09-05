@@ -57,12 +57,7 @@ function source(login, repositoryName, yearly) {
     user: {
       login,
       repositories: { nodes: [{ name: repositoryName }] },
-      periods: {
-        week: collection(1, [["2026-07-23", 1]]),
-        month: collection(1, [["2026-07-23", 1]]),
-        year: collection(1, [["2026-07-23", 1]]),
-        yearly,
-      },
+      periods: { yearly },
     },
     rateLimit: { remaining: 4_000 },
   };

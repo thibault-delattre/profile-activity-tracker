@@ -33,9 +33,6 @@ test("fetchGitHubActivity retrieves metadata and historical periods", async () =
     return jsonResponse({
       data: {
         user: {
-          week: collection(2),
-          month: collection(5),
-          year: collection(20),
           year2025: collection(25),
           year2026: collection(20),
         },
@@ -65,13 +62,84 @@ test("fetchGitHubActivity retrieves metadata and historical periods", async () =
   assert.deepEqual(Object.keys(result.user.periods.yearly), ["2025", "2026"]);
 });
 
-test("buildPeriodQuery uses Monday, month, and year boundaries", () => {
+test("fetchGitHubActivity requests the year the rolling window starts in", async () => {
+  const requests = [];
+  const fetchImpl = async (url, options) => {
+    const body = JSON.parse(options.body);
+    requests.push(body);
+
+    if (body.query.includes("ProfileMetadata")) {
+      return jsonResponse({
+        data: {
+          user: {
+            login: "example-user",
+            languageRepositories: {
+              nodes: [],
+              pageInfo: { hasNextPage: false, endCursor: null },
+            },
+            // GitHub omits 2025 because that year holds no contributions.
+            contributionsCollection: { contributionYears: [2026] },
+          },
+        },
+      });
+    }
+
+    return jsonResponse({
+      data: { user: { year2025: collection(0), year2026: collection(4) } },
+    });
+  };
+
+  const result = await fetchGitHubActivity({
+    token: "test-token",
+    username: "example-user",
+    windows: createActivityWindows(new Date("2026-07-23T14:00:00Z")),
+    fetchImpl,
+  });
+
+  assert.deepEqual(Object.keys(result.user.periods.yearly), ["2025", "2026"]);
+  assert.match(requests[1].query, /year2025/);
+});
+
+test("fetchGitHubActivity rejects a year whose calendar is missing", async () => {
+  const fetchImpl = async (url, options) => {
+    const body = JSON.parse(options.body);
+
+    if (body.query.includes("ProfileMetadata")) {
+      return jsonResponse({
+        data: {
+          user: {
+            login: "example-user",
+            languageRepositories: {
+              nodes: [],
+              pageInfo: { hasNextPage: false, endCursor: null },
+            },
+            contributionsCollection: { contributionYears: [2026, 2025] },
+          },
+        },
+      });
+    }
+
+    return jsonResponse({ data: { user: { year2026: collection(4) } } });
+  };
+
+  await assert.rejects(
+    fetchGitHubActivity({
+      token: "test-token",
+      username: "example-user",
+      windows: createActivityWindows(new Date("2026-07-23T14:00:00Z")),
+      fetchImpl,
+    }),
+    /2025 is missing/,
+  );
+});
+
+test("buildPeriodQuery fetches only canonical years with a shared cutoff", () => {
   const windows = createActivityWindows(new Date("2026-07-23T14:00:00Z"));
   const request = buildPeriodQuery([2025, 2026], windows);
 
-  assert.equal(request.variables.weekFrom, "2026-07-20T00:00:00.000Z");
-  assert.equal(request.variables.monthFrom, "2026-07-01T00:00:00.000Z");
-  assert.equal(request.variables.yearFrom, "2026-01-01T00:00:00.000Z");
+  assert.equal(request.variables.year2026From, "2026-01-01T00:00:00.000Z");
+  assert.equal(request.variables.year2026To, "2026-07-23T14:00:00.000Z");
+  assert.doesNotMatch(request.query, /week:|month:|year:/);
   assert.equal(request.variables.year2025From, "2025-01-01T00:00:00.000Z");
   assert.equal(request.variables.year2025To, "2025-12-31T23:59:59.999Z");
 });

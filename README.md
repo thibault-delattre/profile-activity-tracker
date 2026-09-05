@@ -142,9 +142,17 @@ repositories; this ordering is not a measure of proficiency. Add generated,
 tutorial, archived, or otherwise unrepresentative repositories to
 `excludedRepositories`.
 
-Week means Monday through the current day in UTC. Month and year are calendar
-periods. All-time contributions and active days are calculated by collecting
-every contribution year returned by GitHub. Totals follow GitHub's public
+The three periods are rolling windows of whole UTC days that all end today:
+the last 7, 30, and 365 days. Rolling windows keep the columns nested, so each
+one always contains the one to its left. Calendar-to-date periods cannot
+promise that, because a week beginning on Monday reaches back into the previous
+month or year and can report more activity than the month it spilled into.
+
+All four columns are summed from one map of daily counts, so they can never
+disagree with each other; active days count distinct dates with a positive
+contribution count. Exact UTC date ranges are recorded in `stats.json` and in
+the SVG description. All-time contributions and active days are calculated by
+collecting every contribution year returned by GitHub. Totals follow GitHub's public
 contribution calendar and can include anonymized private activity when that
 visibility option is enabled on the profile. Contributions can include commits,
 issues, pull requests, reviews, and other activity recognized by GitHub.

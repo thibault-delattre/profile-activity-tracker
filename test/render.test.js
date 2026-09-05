@@ -23,6 +23,11 @@ const metrics = {
   username: "example-user",
   sourceCount: 2,
   generatedAt: "2026-07-23T14:00:00.000Z",
+  periods: {
+    week: { from: "2026-07-17", to: "2026-07-23", days: 7 },
+    month: { from: "2026-06-24", to: "2026-07-23", days: 30 },
+    year: { from: "2025-07-24", to: "2026-07-23", days: 365 },
+  },
   activity: {
     week: { contributions: 3, activeDays: 2 },
     month: { contributions: 14, activeDays: 6 },
@@ -42,10 +47,11 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.doesNotMatch(svg, />GITHUB ACTIVITY</);
   assert.doesNotMatch(svg, /COMBINED GITHUB ACTIVITY/);
   assert.doesNotMatch(svg, /Combined across/);
-  assert.match(svg, /THIS WEEK/);
-  assert.match(svg, /THIS MONTH/);
-  assert.match(svg, /THIS YEAR/);
+  assert.match(svg, /LAST 7 DAYS/);
+  assert.match(svg, /LAST 30 DAYS/);
+  assert.match(svg, /LAST 365 DAYS/);
   assert.match(svg, /ALL TIME/);
+  assert.doesNotMatch(svg, /THIS WEEK|THIS MONTH|THIS YEAR/);
   assert.match(svg, /CONTRIBUTIONS/);
   assert.match(
     svg,
@@ -68,11 +74,9 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.match(svg, /@keyframes smooth-appear/);
   assert.match(
     svg,
-    /smooth-appear 1050ms cubic-bezier\(0\.16, 1, 0\.3, 1\) both/,
+    /smooth-appear 720ms cubic-bezier\(0\.22, 1, 0\.36, 1\) both/,
   );
   assert.match(svg, /will-change: opacity, transform/);
-  assert.match(svg, /scale\(0\.92\)/);
-  assert.match(svg, /scale\(1\.018\)/);
   assert.match(svg, /animation-delay:\d+ms/);
   assert.match(svg, /prefers-reduced-motion: reduce/);
   assert.doesNotMatch(svg, /textLength=/);
@@ -110,6 +114,31 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.doesNotMatch(svg, /<foreignObject/i);
   assert.doesNotMatch(svg, /javascript:/i);
   assert.doesNotMatch(svg, /(?:href|src)=["']https?:\/\//i);
+});
+
+test("the reveal sweeps left to right without overlapping rows", () => {
+  const svg = renderCard(metrics, config, "dark");
+  const rowOf = (pattern) =>
+    [...svg.matchAll(pattern)].map((match) => Number(match[1]));
+  const values = rowOf(/class="value reveal" style="animation-delay:(\d+)ms"/g);
+
+  assert.equal(values.length, 8);
+  const [contributions, activeDays] = [values.slice(0, 4), values.slice(4)];
+  for (const row of [contributions, activeDays]) {
+    assert.deepEqual([...row].sort((a, b) => a - b), row);
+    assert.equal(new Set(row).size, 4);
+  }
+  // The first row finishes before the second starts.
+  assert.ok(contributions.at(-1) < activeDays[0]);
+});
+
+test("no reveal is nested inside another, which would fade it twice", () => {
+  const svg = renderCard(metrics, config, "dark");
+
+  assert.doesNotMatch(
+    svg,
+    /<g[^>]*class="[^"]*reveal[^"]*"[^>]*>(?:(?!<\/g>)[\s\S])*class="[^"]*reveal/,
+  );
 });
 
 test("wrapText keeps prose intact and wraps only at word boundaries", () => {

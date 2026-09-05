@@ -4,10 +4,17 @@
  * @property {Date} to
  * @property {string} fromDate
  * @property {string} toDate
+ * @property {number} days
  */
 
 /**
- * Build calendar-to-date windows in UTC. Weeks begin on Monday.
+ * Build rolling UTC windows that all end today.
+ *
+ * Every window is a trailing span of whole days, so the shorter spans are
+ * always contained in the longer ones and the rendered columns can only grow
+ * from left to right. Calendar-to-date periods cannot promise that: a week
+ * starting on Monday reaches into the previous month or year, which made a
+ * fresh month look smaller than the week that spilled into it.
  *
  * @param {Date} now
  * @returns {{week: DateWindow, month: DateWindow, year: DateWindow}}
@@ -17,42 +24,33 @@ export function createActivityWindows(now) {
     throw new Error("now must be a valid Date.");
   }
 
-  const todayStart = new Date(
-    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()),
-  );
-  const mondayOffset = (todayStart.getUTCDay() + 6) % 7;
-  const weekStart = new Date(
-    Date.UTC(
-      todayStart.getUTCFullYear(),
-      todayStart.getUTCMonth(),
-      todayStart.getUTCDate() - mondayOffset,
-    ),
-  );
-  const monthStart = new Date(
-    Date.UTC(todayStart.getUTCFullYear(), todayStart.getUTCMonth(), 1),
-  );
-  const yearStart = new Date(
-    Date.UTC(todayStart.getUTCFullYear(), 0, 1),
-  );
-
   return {
-    week: toWindow(weekStart, now),
-    month: toWindow(monthStart, now),
-    year: toWindow(yearStart, now),
+    week: toWindow(now, 7),
+    month: toWindow(now, 30),
+    year: toWindow(now, 365),
   };
 }
 
 /**
- * @param {Date} from
- * @param {Date} to
+ * @param {Date} now
+ * @param {number} days
  * @returns {DateWindow}
  */
-function toWindow(from, to) {
+function toWindow(now, days) {
+  const from = new Date(
+    Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate() - (days - 1),
+    ),
+  );
+
   return {
     from,
-    to,
+    to: now,
     fromDate: formatDate(from),
-    toDate: formatDate(to),
+    toDate: formatDate(now),
+    days,
   };
 }
 
