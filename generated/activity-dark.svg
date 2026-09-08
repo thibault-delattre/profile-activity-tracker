@@ -99,7 +99,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; animation: none; }
-      .liquid-blob, .liquid-texture-layer { animation: none; }
+      .liquid-blob, .liquid-blob.secondary, .liquid-texture-layer { animation: none; }
     }
   </style>
   <rect width="900" height="344" fill="#0d1117"/>
@@ -112,8 +112,9 @@
       <rect x="16" y="164" width="868" height="164" rx="18" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
         <rect x="16" y="164" width="868" height="164" fill="url(#glass-glow)"/>
-        <ellipse class="liquid-blob" cx="176" cy="188" rx="300" ry="58" fill="#ffffff" filter="url(#soft-glow)"/>
-        <ellipse class="liquid-blob secondary" cx="716" cy="296" rx="260" ry="64" fill="#ffffff" filter="url(#soft-glow)"/>
+        <!-- Keep highlights translucent when CSS animations are disabled or unsupported. -->
+        <ellipse class="liquid-blob" cx="176" cy="188" rx="300" ry="58" fill="#ffffff" opacity="0.08" filter="url(#soft-glow)"/>
+        <ellipse class="liquid-blob secondary" cx="716" cy="296" rx="260" ry="64" fill="#ffffff" opacity="0.07" filter="url(#soft-glow)"/>
         <rect class="liquid-texture-layer" x="-4" y="144" width="908" height="204" rx="38" fill="#ffffff" fill-opacity="0.07" filter="url(#liquid-texture)"/>
       </g>
       <rect x="19" y="167" width="862" height="158" rx="15" fill="none" stroke="#ffffff" stroke-opacity="0.2"/>

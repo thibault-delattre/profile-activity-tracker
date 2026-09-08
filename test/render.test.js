@@ -116,6 +116,29 @@ test("renderCard creates a self-contained, escaped activity table", () => {
   assert.doesNotMatch(svg, /(?:href|src)=["']https?:\/\//i);
 });
 
+test("glass highlights stay translucent without CSS animation support", () => {
+  for (const mode of ["light", "dark"]) {
+    const svg = renderCard(metrics, config, mode);
+    const highlights = [...svg.matchAll(/<ellipse\b[^>]*class="liquid-blob[^"]*"[^>]*>/g)];
+
+    assert.equal(highlights.length, 2);
+    for (const [highlight] of highlights) {
+      const opacity = Number(highlight.match(/ opacity="([^"]+)"/)?.[1]);
+      assert.ok(opacity > 0 && opacity <= 0.2, `${mode}: unsafe static highlight opacity`);
+    }
+  }
+});
+
+test("reduced motion overrides both highlight animation selectors", () => {
+  const svg = renderCard(metrics, config, "dark");
+
+  // The secondary selector must match the specificity of its animation rule.
+  assert.match(
+    svg,
+    /@media \(prefers-reduced-motion: reduce\)\s*\{[\s\S]*?\.liquid-blob, \.liquid-blob\.secondary, \.liquid-texture-layer\s*\{ animation: none; \}/,
+  );
+});
+
 test("the reveal sweeps left to right without overlapping rows", () => {
   const svg = renderCard(metrics, config, "dark");
   const rowOf = (pattern) =>

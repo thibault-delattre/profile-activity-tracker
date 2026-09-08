@@ -225,7 +225,7 @@ export function renderCard(metrics, config, mode) {
     }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; animation: none; }
-      .liquid-blob, .liquid-texture-layer { animation: none; }
+      .liquid-blob, .liquid-blob.secondary, .liquid-texture-layer { animation: none; }
     }
   </style>
   <rect width="${WIDTH}" height="${height}" fill="${theme.background}"/>
@@ -243,8 +243,9 @@ export function renderCard(metrics, config, mode) {
       <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" rx="${panel.radius}" fill="url(#glass-fill)"/>
       <g clip-path="url(#glass-clip)" pointer-events="none">
         <rect x="${panel.x}" y="${panel.y}" width="${panel.width}" height="${panel.height}" fill="url(#glass-glow)"/>
-        <ellipse class="liquid-blob" cx="${panel.x + 160}" cy="${panel.y + 24}" rx="300" ry="58" fill="#ffffff" filter="url(#soft-glow)"/>
-        <ellipse class="liquid-blob secondary" cx="${panel.x + 700}" cy="${panel.y + 132}" rx="260" ry="64" fill="#ffffff" filter="url(#soft-glow)"/>
+        <!-- Keep highlights translucent when CSS animations are disabled or unsupported. -->
+        <ellipse class="liquid-blob" cx="${panel.x + 160}" cy="${panel.y + 24}" rx="300" ry="58" fill="#ffffff" opacity="${mode === "light" ? 0.18 : 0.08}" filter="url(#soft-glow)"/>
+        <ellipse class="liquid-blob secondary" cx="${panel.x + 700}" cy="${panel.y + 132}" rx="260" ry="64" fill="#ffffff" opacity="${mode === "light" ? 0.14 : 0.07}" filter="url(#soft-glow)"/>
         <rect class="liquid-texture-layer" x="${panel.x - 20}" y="${panel.y - 20}" width="${panel.width + 40}" height="${panel.height + 40}" rx="${panel.radius + 20}" fill="#ffffff" fill-opacity="${theme.textureOpacity}" filter="url(#liquid-texture)"/>
       </g>
       <rect x="${panel.x + 3}" y="${panel.y + 3}" width="${panel.width - 6}" height="${panel.height - 6}" rx="${panel.radius - 3}" fill="none" stroke="#ffffff" stroke-opacity="${mode === "light" ? 0.66 : 0.2}"/>
