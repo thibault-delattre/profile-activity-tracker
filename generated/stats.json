@@ -2,21 +2,21 @@
   "schemaVersion": 6,
   "username": "thibault-delattre",
   "sourceCount": 1,
-  "generatedAt": "2026-09-19T00:53:36.422Z",
+  "generatedAt": "2026-09-20T01:01:07.697Z",
   "periods": {
     "week": {
-      "from": "2026-09-13",
-      "to": "2026-09-19",
+      "from": "2026-09-14",
+      "to": "2026-09-20",
       "days": 7
     },
     "month": {
-      "from": "2026-08-21",
-      "to": "2026-09-19",
+      "from": "2026-08-22",
+      "to": "2026-09-20",
       "days": 30
     },
     "year": {
-      "from": "2025-09-20",
-      "to": "2026-09-19",
+      "from": "2025-09-21",
+      "to": "2026-09-20",
       "days": 365
     }
   },
@@ -67,6 +67,6 @@
   "rateLimit": {
     "cost": 1,
     "remaining": 4998,
-    "resetAt": "2026-09-19T01:53:36Z"
+    "resetAt": "2026-09-20T02:01:07Z"
   }
 }
