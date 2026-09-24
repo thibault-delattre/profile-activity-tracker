@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="344" viewBox="0 0 900 344" role="img" aria-labelledby="title desc">
   <title id="title">GitHub activity for @thibault-delattre</title>
-  <desc id="desc">My name is Thibault Delattre As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital experiences. 0 contributions in the last 7 days, 214 in the last 30 days, 2949 in the last 365 days, 5270 total. Every period is a rolling window of whole UTC days ending today, so each column contains the one before it. UTC date ranges: week: 2026-09-17 to 2026-09-23, month: 2026-08-25 to 2026-09-23, year: 2025-09-24 to 2026-09-23.</desc>
+  <desc id="desc">My name is Thibault Delattre As a software developer and AI Data Analyst, I am passionate about building intuitive applications where artificial intelligence solves practical problems. I currently design and engineer reliable web platforms that connect powerful AI models to user-friendly interfaces. Moving forward, my focus is to keep creating smart, scalable tools that turn ambitious ideas into engaging digital experiences. 0 contributions in the last 7 days, 214 in the last 30 days, 2933 in the last 365 days, 5270 total. Every period is a rolling window of whole UTC days ending today, so each column contains the one before it. UTC date ranges: week: 2026-09-18 to 2026-09-24, month: 2026-08-26 to 2026-09-24, year: 2025-09-25 to 2026-09-24.</desc>
   <defs>
     <clipPath id="glass-clip">
       <rect x="16" y="164" width="868" height="164" rx="18"/>
@@ -127,12 +127,12 @@
     </g>
     <g>
       <text x="44" y="242" class="row-label reveal" style="animation-delay:495ms" fill="#46515e">CONTRIBUTIONS</text>
-      <text x="275" y="247" text-anchor="middle" class="value reveal" style="animation-delay:495ms" fill="#1f2328">0</text><text x="435" y="247" text-anchor="middle" class="value reveal" style="animation-delay:540ms" fill="#1f2328">214</text><text x="595" y="247" text-anchor="middle" class="value reveal" style="animation-delay:585ms" fill="#1f2328">2,949</text><text x="760" y="247" text-anchor="middle" class="value reveal" style="animation-delay:630ms" fill="#1f2328">5,270</text>
+      <text x="275" y="247" text-anchor="middle" class="value reveal" style="animation-delay:495ms" fill="#1f2328">0</text><text x="435" y="247" text-anchor="middle" class="value reveal" style="animation-delay:540ms" fill="#1f2328">214</text><text x="595" y="247" text-anchor="middle" class="value reveal" style="animation-delay:585ms" fill="#1f2328">2,933</text><text x="760" y="247" text-anchor="middle" class="value reveal" style="animation-delay:630ms" fill="#1f2328">5,270</text>
     </g>
     <g>
       <line class="reveal" style="animation-delay:645ms" x1="184" y1="262" x2="856" y2="262" stroke="#cfd7e1" stroke-opacity="0.72"/>
       <text x="44" y="301" class="row-label reveal" style="animation-delay:645ms" fill="#46515e">ACTIVE DAYS</text>
-      <text x="275" y="306" text-anchor="middle" class="value reveal" style="animation-delay:645ms" fill="#1f2328">0</text><text x="435" y="306" text-anchor="middle" class="value reveal" style="animation-delay:690ms" fill="#1f2328">8</text><text x="595" y="306" text-anchor="middle" class="value reveal" style="animation-delay:735ms" fill="#1f2328">180</text><text x="760" y="306" text-anchor="middle" class="value reveal" style="animation-delay:780ms" fill="#1f2328">388</text>
+      <text x="275" y="306" text-anchor="middle" class="value reveal" style="animation-delay:645ms" fill="#1f2328">0</text><text x="435" y="306" text-anchor="middle" class="value reveal" style="animation-delay:690ms" fill="#1f2328">8</text><text x="595" y="306" text-anchor="middle" class="value reveal" style="animation-delay:735ms" fill="#1f2328">179</text><text x="760" y="306" text-anchor="middle" class="value reveal" style="animation-delay:780ms" fill="#1f2328">388</text>
     </g>
   </g>
 
