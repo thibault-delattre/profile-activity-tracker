@@ -2,7 +2,7 @@
   "schemaVersion": 6,
   "username": "thibault-delattre",
   "sourceCount": 1,
-  "generatedAt": "2026-11-18T00:36:01.623Z",
+  "generatedAt": "2026-11-18T02:19:47.373Z",
   "periods": {
     "week": {
       "from": "2026-11-12",
@@ -22,19 +22,19 @@
   },
   "activity": {
     "week": {
-      "contributions": 103,
+      "contributions": 107,
       "activeDays": 7
     },
     "month": {
-      "contributions": 261,
+      "contributions": 265,
       "activeDays": 28
     },
     "year": {
-      "contributions": 2972,
+      "contributions": 2976,
       "activeDays": 199
     },
     "total": {
-      "contributions": 5751,
+      "contributions": 5755,
       "activeDays": 437
     }
   },
@@ -66,7 +66,7 @@
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4996,
-    "resetAt": "2026-11-18T00:40:57Z"
+    "remaining": 4998,
+    "resetAt": "2026-11-18T03:19:47Z"
   }
 }
