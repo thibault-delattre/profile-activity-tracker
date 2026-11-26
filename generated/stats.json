@@ -2,32 +2,32 @@
   "schemaVersion": 6,
   "username": "thibault-delattre",
   "sourceCount": 1,
-  "generatedAt": "2026-11-25T15:15:41.153Z",
+  "generatedAt": "2026-11-26T00:34:34.136Z",
   "periods": {
     "week": {
-      "from": "2026-11-19",
-      "to": "2026-11-25",
+      "from": "2026-11-20",
+      "to": "2026-11-26",
       "days": 7
     },
     "month": {
-      "from": "2026-10-27",
-      "to": "2026-11-25",
+      "from": "2026-10-28",
+      "to": "2026-11-26",
       "days": 30
     },
     "year": {
-      "from": "2025-11-26",
-      "to": "2026-11-25",
+      "from": "2025-11-27",
+      "to": "2026-11-26",
       "days": 365
     }
   },
   "activity": {
     "week": {
-      "contributions": 49,
-      "activeDays": 7
+      "contributions": 36,
+      "activeDays": 6
     },
     "month": {
-      "contributions": 258,
-      "activeDays": 28
+      "contributions": 255,
+      "activeDays": 27
     },
     "year": {
       "contributions": 3008,
@@ -66,7 +66,7 @@
   ],
   "rateLimit": {
     "cost": 1,
-    "remaining": 4998,
-    "resetAt": "2026-11-25T15:41:15Z"
+    "remaining": 4999,
+    "resetAt": "2026-11-26T01:34:35Z"
   }
 }
